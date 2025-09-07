@@ -2,9 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "COBOL: Build active file",
+      "label": "COBOL: Build InCollege (main + subs)",
       "type": "shell",
-      "command": "mkdir -p bin && cobc -x -free -o bin/${fileBasenameNoExtension} ${file}",
+      "command": "bash -lc 'set -e; shopt -s nullglob; mkdir -p bin; for f in /workspace/src/*.cob; do base=$(basename \"$f\"); if [ \"$base\" != \"InCollege.cob\" ]; then cobc -free -c -o \"bin/${base%.cob}.o\" \"$f\"; fi; done; objs=(bin/*.o); cobc -x -free -o bin/InCollege /workspace/src/InCollege.cob \"${objs[@]}\"'",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -30,10 +30,10 @@
       }
     },
     {
-      "label": "COBOL: Run active file",
+      "label": "COBOL: Run InCollege",
       "type": "process",
-      "command": "bin/${fileBasenameNoExtension}",
-      "dependsOn": "COBOL: Build active file",
+      "command": "bin/InCollege",
+      "dependsOn": "COBOL: Build InCollege (main + subs)",
       "presentation": {
         "echo": true,
         "reveal": "always",
