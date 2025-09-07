@@ -30,13 +30,14 @@ PROCEDURE DIVISION.
             AT END
                 MOVE "Y" TO EOF
             NOT AT END
-                UNSTRING IN-REC DELIMITED BY ","
+                UNSTRING IN-REC DELIMITED BY "|"
                     INTO COMMAND, ARGS
                 END-UNSTRING
 
                 EVALUATE COMMAND
                     WHEN "CREATE"
                         IF NUM-ACCOUNTS < MAX-ACCOUNTS
+                           DISPLAY "Creating account..."
                            CALL 'CREATE-ACCOUNT' USING ARGS
                            ADD 1 TO NUM-ACCOUNTS
                         ELSE

@@ -1,0 +1,3 @@
+01     ACCOUNT-INFO.
+     05  AR-USERNAME   PIC X(20).
+     05  AR-PASSWORD   PIC X(12).

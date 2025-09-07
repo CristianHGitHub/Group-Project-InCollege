@@ -1,0 +1,7 @@
+{
+    "coboleditor.copybookdirs": [
+        "$COBCPY",
+        "$COPYPATH",
+        "src/copy"
+    ]
+}
