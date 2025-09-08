@@ -46,3 +46,13 @@ PASWRD123!
 ```
 
 Note: The Log In and Create New Account commands should be followed by a username and password on separate lines. The Log In sequence will fail if the account does not have a corresponding record in `AccountRecords.txt`.
+
+### Running the code with MAKEFILE
+For Linux/Unix/MacOS:
+make test #compile only
+make run #compile and run
+make clean
+
+For Windows
+build.bat
+clean.bat
