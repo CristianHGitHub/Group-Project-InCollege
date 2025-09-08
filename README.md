@@ -31,7 +31,11 @@ src/    # Modularized source code
     ./InCollege
     ```
 
-### Preparation of Input File `InCollege-Input.txt`
+### Contribution Guidelines
+- Create a new branch for each Jira story, following the naming convention `SCRUM-<story-number>`. Commit all relevant changes to this branch. When the story is complete, open a pull request to merge the changes into the `develop` branch. After the merge into `develop`, conduct additional testing to ensure that the merge did not introduce any issues. Then, open a pull request to merge `develop` into `main`.
+- Please conduct at least minimal testing of your changes before submitting a pull request.
+
+### Preparation of Input File `InCollege-Input.txt` for Testing
 
 The input file should contain commands for the program to execute. Each command should be on a new line. Initially, the input file would require that arguments are passed along with the command on the same line (e.g. LOGIN|nick,PASWRD123!). Although this was easier to parse and handle errors for, it doesn't allow for the type of natural language output that we need in order to match the sample provided in the assignment guidelines. In its current form, it mimics CLI input by users in an interactive session, where input is collected sequentially in response to certain prompts (e.g. Enter your choice: ). We can revise it as necessary if we decide that it isn't efficient enough for testing. Below are some examples of valid input sequences with the current format:
 ```
