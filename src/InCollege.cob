@@ -19,9 +19,10 @@ FD  INFILE.
 FD  OUTFILE.
 01  OUT-REC            PIC X(100).
 FD  ACCOUNT-FILE.
-01  ACCOUNT-RECORD     PIC X(100).
+01  ACCOUNT-REC        PIC X(100).
 
 WORKING-STORAGE SECTION.
+COPY "AccountRecord.cpy".
 01  EOF                PIC X(1) VALUE "N".
 01  CURRENT-LINE       PIC X(100).
 01  PARSED-INPUT.
@@ -29,6 +30,8 @@ WORKING-STORAGE SECTION.
    05  ARGS            PIC X(100).
 01  CREATE-RESPONSE    PIC X(100).
 01  CREATE-STATUS      PIC X(1) VALUE "N".
+01  LOGIN-RESPONSE     PIC X(100).
+01  LOGIN-STATUS       PIC X(1) VALUE "N".
 01  NUM-ACCOUNTS       PIC 9(1) VALUE 0.
 01  MAX-ACCOUNTS       PIC 9(1) VALUE 5.
 01  EOF-ACCT           PIC X(1) VALUE "N".
@@ -43,12 +46,15 @@ PROCEDURE DIVISION.
             AT END
                 MOVE "Y" TO EOF-ACCT
             NOT AT END
-                IF ACCOUNT-RECORD NOT = SPACES
+                IF ACCOUNT-REC NOT = SPACES
                    ADD 1 TO NUM-ACCOUNTS
                 END-IF
         END-READ
     END-PERFORM
     CLOSE ACCOUNT-FILE.
+
+    MOVE 'Welcome to InCollege!' TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
 
     OPEN INPUT INFILE
     PERFORM UNTIL EOF = "Y"
@@ -56,17 +62,32 @@ PROCEDURE DIVISION.
             AT END
                 MOVE "Y" TO EOF
             NOT AT END
-                UNSTRING IN-REC DELIMITED BY "|"
-                    INTO COMMAND, ARGS
-                END-UNSTRING
+                MOVE 'Log In' TO OUTPUT-BUFFER
+                PERFORM DUAL-OUTPUT
 
-                EVALUATE COMMAND
-                    WHEN "CREATE"
+                MOVE 'Create New Account' TO OUTPUT-BUFFER
+                PERFORM DUAL-OUTPUT
+
+                MOVE 'Enter your choice:' TO OUTPUT-BUFFER
+                PERFORM DUAL-OUTPUT
+
+                EVALUATE IN-REC
+                    WHEN "Create New Account"
                         IF NUM-ACCOUNTS < MAX-ACCOUNTS
-                           MOVE "Creating account..." TO OUTPUT-BUFFER
-                           PERFORM DUAL-OUTPUT
+                           READ INFILE
+                               AT END
+                                   MOVE "Y" TO EOF
+                               NOT AT END
+                                   MOVE IN-REC TO AR-USERNAME
+                           END-READ
+                           READ INFILE
+                               AT END
+                                   MOVE "Y" TO EOF
+                               NOT AT END
+                                   MOVE IN-REC TO AR-PASSWORD
+                           END-READ
 
-                           CALL 'CREATE-ACCOUNT' USING ARGS CREATE-RESPONSE CREATE-STATUS
+                           CALL 'CREATE-ACCOUNT' USING AR-USERNAME AR-PASSWORD CREATE-RESPONSE CREATE-STATUS
 
                            MOVE CREATE-RESPONSE TO OUTPUT-BUFFER
                            PERFORM DUAL-OUTPUT
@@ -77,6 +98,31 @@ PROCEDURE DIVISION.
                         ELSE
                            MOVE "Cannot create more than 5 accounts." TO OUTPUT-BUFFER
                            PERFORM DUAL-OUTPUT
+                        END-IF
+                    WHEN "Log In"
+                        READ INFILE
+                            AT END
+                                MOVE "Y" TO EOF
+                            NOT AT END
+                                MOVE IN-REC TO AR-USERNAME
+                        END-READ
+                        READ INFILE
+                            AT END
+                                MOVE "Y" TO EOF
+                            NOT AT END
+                                MOVE IN-REC TO AR-PASSWORD
+                        END-READ
+
+                        CALL 'LOGIN' USING AR-USERNAME AR-PASSWORD LOGIN-RESPONSE LOGIN-STATUS
+
+                        MOVE LOGIN-RESPONSE TO OUTPUT-BUFFER
+                        PERFORM DUAL-OUTPUT
+
+                        IF LOGIN-STATUS = "Y"
+                            STRING 'Welcome, ' DELIMITED BY SIZE
+                            AR-USERNAME DELIMITED BY SIZE
+                            INTO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
                         END-IF
                 END-EVALUATE
         END-READ
