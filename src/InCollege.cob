@@ -30,6 +30,8 @@ COPY "AccountRecord.cpy".
    05  ARGS            PIC X(100).
 01  CREATE-RESPONSE    PIC X(100).
 01  CREATE-STATUS      PIC X(1) VALUE "N".
+01  LOGIN-RESPONSE     PIC X(100).
+01  LOGIN-STATUS       PIC X(1) VALUE "N".
 01  NUM-ACCOUNTS       PIC 9(1) VALUE 0.
 01  MAX-ACCOUNTS       PIC 9(1) VALUE 5.
 01  EOF-ACCT           PIC X(1) VALUE "N".
@@ -96,6 +98,31 @@ PROCEDURE DIVISION.
                         ELSE
                            MOVE "Cannot create more than 5 accounts." TO OUTPUT-BUFFER
                            PERFORM DUAL-OUTPUT
+                        END-IF
+                    WHEN "Log In"
+                        READ INFILE
+                            AT END
+                                MOVE "Y" TO EOF
+                            NOT AT END
+                                MOVE IN-REC TO AR-USERNAME
+                        END-READ
+                        READ INFILE
+                            AT END
+                                MOVE "Y" TO EOF
+                            NOT AT END
+                                MOVE IN-REC TO AR-PASSWORD
+                        END-READ
+
+                        CALL 'LOGIN' USING AR-USERNAME AR-PASSWORD LOGIN-RESPONSE LOGIN-STATUS
+
+                        MOVE LOGIN-RESPONSE TO OUTPUT-BUFFER
+                        PERFORM DUAL-OUTPUT
+
+                        IF LOGIN-STATUS = "Y"
+                            STRING 'Welcome, ' DELIMITED BY SIZE
+                            AR-USERNAME DELIMITED BY SIZE
+                            INTO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
                         END-IF
                 END-EVALUATE
         END-READ
