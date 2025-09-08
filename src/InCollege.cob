@@ -37,6 +37,13 @@ COPY "AccountRecord.cpy".
 01  EOF-ACCT           PIC X(1) VALUE "N".
 01  OUTPUT-BUFFER      PIC X(100).
 
+
+01  NAV-ACTION         PIC X(20).
+01  NAV-LINE           PIC X(100).
+01  NAV-DONE           PIC X.
+01  NAV-INDEX          PIC 9 VALUE 0.
+
+
 PROCEDURE DIVISION.
     *> Count existing accounts from AccountRecords.txt
     MOVE 0 TO NUM-ACCOUNTS.
@@ -67,7 +74,6 @@ PROCEDURE DIVISION.
 
                 MOVE 'Create New Account' TO OUTPUT-BUFFER
                 PERFORM DUAL-OUTPUT
-
                 MOVE 'Enter your choice:' TO OUTPUT-BUFFER
                 PERFORM DUAL-OUTPUT
 
@@ -99,6 +105,7 @@ PROCEDURE DIVISION.
                            MOVE "Cannot create more than 5 accounts." TO OUTPUT-BUFFER
                            PERFORM DUAL-OUTPUT
                         END-IF
+
                     WHEN "Log In"
                         READ INFILE
                             AT END
@@ -120,10 +127,66 @@ PROCEDURE DIVISION.
 
                         IF LOGIN-STATUS = "Y"
                             STRING 'Welcome, ' DELIMITED BY SIZE
-                            AR-USERNAME DELIMITED BY SIZE
-                            INTO OUTPUT-BUFFER
+                                   AR-USERNAME DELIMITED BY SIZE
+                                   INTO OUTPUT-BUFFER
+                            END-STRING
                             PERFORM DUAL-OUTPUT
+                            *> immediately show menu after successful login
+                            MOVE 0            TO NAV-INDEX
+                            MOVE "SHOW-MENU"  TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
                         END-IF
+
+                    *> Navigation commands
+                    WHEN "Menu"
+                        MOVE 0            TO NAV-INDEX
+                        MOVE "SHOW-MENU"  TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Job"
+                        MOVE 0        TO NAV-INDEX
+                        MOVE "JOB"    TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Find"
+                        MOVE 0        TO NAV-INDEX
+                        MOVE "FIND"   TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Skills"
+                        MOVE 0              TO NAV-INDEX
+                        MOVE "SHOW-SKILLS"  TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Skill-1"
+                        MOVE 0         TO NAV-INDEX
+                        MOVE "SKILL-1" TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Skill-2"
+                        MOVE 0         TO NAV-INDEX
+                        MOVE "SKILL-2" TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Skill-3"
+                        MOVE 0         TO NAV-INDEX
+                        MOVE "SKILL-3" TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Skill-4"
+                        MOVE 0         TO NAV-INDEX
+                        MOVE "SKILL-4" TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Skill-5"
+                        MOVE 0         TO NAV-INDEX
+                        MOVE "SKILL-5" TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
+                    WHEN "Back"
+                        MOVE 0            TO NAV-INDEX
+                        MOVE "SHOW-MENU"  TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
                 END-EVALUATE
         END-READ
     END-PERFORM
@@ -137,4 +200,20 @@ DUAL-OUTPUT.
     WRITE OUT-REC FROM OUTPUT-BUFFER
     CLOSE OUTFILE.
     MOVE SPACES TO OUTPUT-BUFFER.
+    EXIT PARAGRAPH.
+
+*> Navigation helpers
+NAV-PRINT-LOOP.
+    MOVE "N" TO NAV-DONE
+    PERFORM UNTIL NAV-DONE = "Y"
+        CALL 'NAVIGATION' USING
+             BY CONTENT   NAV-ACTION
+             BY REFERENCE NAV-INDEX
+             BY REFERENCE NAV-LINE
+             BY REFERENCE NAV-DONE
+        IF NAV-LINE NOT = SPACES
+            MOVE NAV-LINE TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+        END-IF
+    END-PERFORM
     EXIT PARAGRAPH.
