@@ -4,7 +4,7 @@
     {
       "label": "COBOL: Build InCollege (main + subs)",
       "type": "shell",
-      "command": "bash -lc 'set -e; shopt -s nullglob; mkdir -p bin; for f in /workspace/src/*.cob; do base=$(basename \"$f\"); if [ \"$base\" != \"InCollege.cob\" ]; then cobc -free -c -o \"bin/${base%.cob}.o\" \"$f\"; fi; done; objs=(bin/*.o); cobc -x -free -o bin/InCollege /workspace/src/InCollege.cob \"${objs[@]}\"'",
+      "command": "bash -lc 'set -e; shopt -s nullglob; mkdir -p bin; for f in /workspace/src/*.cob; do base=$(basename \"$f\"); if [ \"$base\" != \"InCollege.cob\" ]; then cobc -I/workspace/src/copy -free -c -o \"bin/${base%.cob}.o\" \"$f\"; fi; done; objs=(bin/*.o); cobc -I/workspace/src/copy -x -free -o bin/InCollege /workspace/src/InCollege.cob \"${objs[@]}\"'",
       "group": {
         "kind": "build",
         "isDefault": true
