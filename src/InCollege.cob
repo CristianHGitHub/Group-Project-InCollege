@@ -74,12 +74,10 @@ PROCEDURE DIVISION.
 
                 MOVE 'Create New Account' TO OUTPUT-BUFFER
                 PERFORM DUAL-OUTPUT
-
                 MOVE 'Enter your choice:' TO OUTPUT-BUFFER
                 PERFORM DUAL-OUTPUT
 
                 EVALUATE IN-REC
-
                     WHEN "Create New Account"
                         IF NUM-ACCOUNTS < MAX-ACCOUNTS
                            READ INFILE
@@ -189,7 +187,6 @@ PROCEDURE DIVISION.
                         MOVE 0            TO NAV-INDEX
                         MOVE "SHOW-MENU"  TO NAV-ACTION
                         PERFORM NAV-PRINT-LOOP
-
                 END-EVALUATE
         END-READ
     END-PERFORM
