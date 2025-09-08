@@ -33,7 +33,7 @@ src/    # Modularized source code
 
 ### Preparation of Input File `InCollege-Input.txt`
 
-The input file should contain commands for the program to execute. Each command should be on a new line. Below are some examples of valid input sequences:
+The input file should contain commands for the program to execute. Each command should be on a new line. Initially, the input file would require that arguments are passed along with the command on the same line (e.g. LOGIN|nick,PASWRD123!). Although this was easier to parse and handle errors for, it doesn't allow for the type of natural language output that we need in order to match the sample provided in the assignment guidelines. In its current form, it mimics CLI input by users in an interactive session, where input is collected sequentially in response to certain prompts (e.g. Enter your choice: ). We can revise it as necessary if we decide that it isn't efficient enough for testing. Below are some examples of valid input sequences with the current format:
 ```
 Create New Account
 nick
@@ -43,6 +43,7 @@ PASWRD123!
 Log In
 nick
 PASWRD123!
+Job
 ```
 
 Note: The Log In and Create New Account commands should be followed by a username and password on separate lines. The Log In sequence will fail if the account does not have a corresponding record in `AccountRecords.txt`.

@@ -69,13 +69,14 @@ PROCEDURE DIVISION.
             AT END
                 MOVE "Y" TO EOF
             NOT AT END
-                MOVE 'Log In' TO OUTPUT-BUFFER
-                PERFORM DUAL-OUTPUT
-
-                MOVE 'Create New Account' TO OUTPUT-BUFFER
-                PERFORM DUAL-OUTPUT
-                MOVE 'Enter your choice:' TO OUTPUT-BUFFER
-                PERFORM DUAL-OUTPUT
+                IF LOGIN-STATUS NOT = "Y"
+                   MOVE 'Log In' TO OUTPUT-BUFFER
+                   PERFORM DUAL-OUTPUT
+                   MOVE 'Create New Account' TO OUTPUT-BUFFER
+                   PERFORM DUAL-OUTPUT
+                   MOVE 'Enter your choice:' TO OUTPUT-BUFFER
+                   PERFORM DUAL-OUTPUT
+                END-IF
 
                 EVALUATE IN-REC
                     WHEN "Create New Account"
