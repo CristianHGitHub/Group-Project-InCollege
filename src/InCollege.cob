@@ -79,6 +79,13 @@ PROCEDURE DIVISION.
                 END-IF
 
                 EVALUATE IN-REC
+                    WHEN "Log Out"
+                        MOVE "N" TO LOGIN-STATUS
+                        MOVE 0 TO NAV-INDEX
+                        MOVE SPACES TO NAV-ACTION
+
+                        MOVE 'Welcome to InCollege!' TO OUTPUT-BUFFER
+                        PERFORM DUAL-OUTPUT
                     WHEN "Create New Account"
                         IF NUM-ACCOUNTS < MAX-ACCOUNTS
                            READ INFILE

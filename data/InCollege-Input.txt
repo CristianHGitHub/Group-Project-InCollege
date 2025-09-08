@@ -2,3 +2,14 @@ Log In
 nick
 PASWRD123!
 Job
+Log Out
+Create New Account
+dat
+PASSWRD123@
+Log Out
+Log In
+dat
+PASSWRD123@
+Skills
+Back
+Job
