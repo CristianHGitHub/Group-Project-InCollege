@@ -23,6 +23,8 @@ WORKING-STORAGE SECTION.
 01  PARSED-INPUT.
    05  COMMAND         PIC X(10).
    05  ARGS            PIC X(100).
+01  CREATE-RESPONSE    PIC X(100).
+01  CREATE-STATUS      PIC X(1) VALUE "N".
 01  NUM-ACCOUNTS       PIC 9(1) VALUE 0.
 01  MAX-ACCOUNTS       PIC 9(1) VALUE 5.
 01  EOF-ACCT           PIC X(1) VALUE "N".
@@ -57,8 +59,13 @@ PROCEDURE DIVISION.
                     WHEN "CREATE"
                         IF NUM-ACCOUNTS < MAX-ACCOUNTS
                            DISPLAY "Creating account..."
-                           CALL 'CREATE-ACCOUNT' USING ARGS
-                           ADD 1 TO NUM-ACCOUNTS
+                           CALL 'CREATE-ACCOUNT' USING ARGS CREATE-RESPONSE CREATE-STATUS
+                           IF CREATE-STATUS = "Y"
+                               DISPLAY CREATE-RESPONSE
+                               ADD 1 TO NUM-ACCOUNTS
+                           ELSE
+                               DISPLAY CREATE-RESPONSE
+                           END-IF
                         ELSE
                            DISPLAY "Cannot create more than 5 accounts."
                         END-IF
