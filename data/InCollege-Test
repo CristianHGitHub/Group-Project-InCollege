@@ -1,0 +1,89 @@
+#################    Negative test Cases    ######################################
+
+Test Case #1 (all lowercase)
+Create New Account
+tmp3
+abcdef1!
+
+#Passed
+
+Test Case #2 (Creating more than 5 Account)
+
+Create New Account
+tmp1
+Abcd1!
+Create New Account
+tmp2
+Abcdefg1234!@
+Create New Account
+tmp3
+Abcdef1!
+Create New Account
+tmp4
+Abcdefg2!
+Create New Account
+tmp5
+Abcdefg1@
+Create New Account
+tmp6
+A1B234@!
+
+#Passes but its not shows wrong error after 5 accounts are created
+
+
+######################### Edge Cases ############################################
+
+Test Case #1 (8-12 Charecter For password)
+
+Create New Account
+tmp1
+Abc1!
+
+#Fails in the lower limit
+
+Test Case #2 (limit for User name)
+
+Create New Account
+tmp3123456789685k432
+Abcdef1!
+
+#Failed After 20 letters the it cuts the rest off.
+
+
+
+########################## Positive Cases ###################################
+
+Test Case #1 (General test)
+
+Create New Account
+tmp3
+Abcdef1!
+
+Passed
+
+Test Case #2 (Login test)
+
+Create New Account
+tmp3
+Abcdef1!
+Log In:
+
+Log In
+tmp3
+Abcdef1!
+
+Test Case #3 (Already Exist)
+
+Create New Account
+tmp3
+Abcdef1!
+
+Create New Account
+tmp3
+Abcdef1!
+
+Username tmp3 already exists.
+
+
+
+
