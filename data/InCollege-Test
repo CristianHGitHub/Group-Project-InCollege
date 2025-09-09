@@ -28,7 +28,22 @@ Create New Account
 tmp6
 A1B234@!
 
-#Passes but its not shows wrong error after 5 accounts are created
+#passed
+
+Test Case #3 (Invalid Choice)
+
+Create New Account
+tmp3
+Abcdef1!
+Log In:
+
+Log In
+tmp3
+Abcdef1!
+
+Login 
+
+#Failed
 
 
 ######################### Edge Cases ############################################
@@ -47,13 +62,13 @@ Create New Account
 tmp3123456789685k432
 Abcdef1!
 
-#Failed After 20 letters the it cuts the rest off.
+#passed
 
 
 
 ########################## Positive Cases ###################################
 
-Test Case #1 (General test)
+Test Case #1 (General Account creation test)
 
 Create New Account
 tmp3
@@ -72,7 +87,9 @@ Log In
 tmp3
 Abcdef1!
 
-Test Case #3 (Already Exist)
+#passed
+
+Test Case #3 (Already Existing account test)
 
 Create New Account
 tmp3
@@ -82,8 +99,41 @@ Create New Account
 tmp3
 Abcdef1!
 
-Username tmp3 already exists.
+#passed
 
+Test Case #4 (Job Search)
+
+Log In
+tmp1
+Aabcd1!
+Job
+
+#passed
+
+Test Case #5 (Nagivation hierarchy)
+
+Log In
+tmp1
+Aabcd1!
+Job
+Skill-1
+Back
+Skill-1
+
+#Failed
+
+Test Case #6 (Logout test)
+
+Create New Account
+tmp3
+Abcdef1!
+Log In:
+
+Log In
+tmp3
+Abcdef1!
+
+Log Out
 
 
 
