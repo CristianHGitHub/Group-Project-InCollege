@@ -108,6 +108,13 @@ PROCEDURE DIVISION.
                         ELSE
                            MOVE "Cannot create more than 5 accounts." TO OUTPUT-BUFFER
                            PERFORM DUAL-OUTPUT
+                           END-IF
+                           IF EOF NOT = "Y"
+                               READ INFILE
+                                   AT END
+                                       MOVE "Y" TO EOF
+                               END-READ
+                           END-IF
                         END-IF
 
                     WHEN "Log In"
