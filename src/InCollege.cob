@@ -108,6 +108,13 @@ PROCEDURE DIVISION.
                         ELSE
                            MOVE "Cannot create more than 5 accounts." TO OUTPUT-BUFFER
                            PERFORM DUAL-OUTPUT
+                           *> Consume the next two input lines (username/password)
+                           *> so the main loop doesn't output the menu for them.
+                           IF EOF NOT = "Y"
+                               READ INFILE
+                                   AT END
+                                       MOVE "Y" TO EOF
+                               END-READ
                            END-IF
                            IF EOF NOT = "Y"
                                READ INFILE
