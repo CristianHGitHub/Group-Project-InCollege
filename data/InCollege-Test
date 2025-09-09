@@ -1,55 +1,89 @@
-2
-tmp1
-Abcd1!
-2
-tmp2
-Abcdefg1234!@
-2
+#################    Negative test Cases    ######################################
+
+Test Case #1 (all lowercase)
+Create New Account
 tmp3
 abcdef1!
-2
+
+#Passed
+
+Test Case #2 (Creating more than 5 Account)
+
+Create New Account
+tmp1
+Abcd1!
+Create New Account
+tmp2
+Abcdefg1234!@
+Create New Account
+tmp3
+Abcdef1!
+Create New Account
 tmp4
-Abcdefg!
-2
+Abcdefg2!
+Create New Account
 tmp5
-Abcdefg1
-2
-alice
+Abcdefg1@
+Create New Account
+tmp6
+A1B234@!
+
+#Passes but its not shows wrong error after 5 accounts are created
+
+
+######################### Edge Cases ############################################
+
+Test Case #1 (8-12 Charecter For password)
+
+Create New Account
+tmp1
+Abc1!
+
+#Fails in the lower limit
+
+Test Case #2 (limit for User name)
+
+Create New Account
+tmp3123456789685k432
 Abcdef1!
-2
-alice
+
+#Failed After 20 letters the it cuts the rest off.
+
+
+
+########################## Positive Cases ###################################
+
+Test Case #1 (General test)
+
+Create New Account
+tmp3
 Abcdef1!
-2
-bob
-StrongP9!
-2
-carol
-C4rol!Pass
-2
-dave
-D@vePass123
-2
-erin
-Erin2025!aa
-2
-frank
+
+Passed
+
+Test Case #2 (Login test)
+
+Create New Account
+tmp3
 Abcdef1!
-1
-alice
+Log In:
+
+Log In
+tmp3
 Abcdef1!
-1
-alice
-WrongP1!
-alice
+
+Test Case #3 (Already Exist)
+
+Create New Account
+tmp3
 Abcdef1!
-1
-ghost
+
+Create New Account
+tmp3
 Abcdef1!
-1
-alice
-Abcdef1!
-1
-2
-3
-1
-6
+
+Username tmp3 already exists.
+
+
+
+
