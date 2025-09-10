@@ -57,6 +57,7 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             MOVE 0 TO L-INDEX
             MOVE "SHOW-MENU" TO L-ACTION
             PERFORM SHOW-MENU
+            MOVE "Y" TO L-DONE
 
         WHEN OTHER
             MOVE "Invalid option" TO L-OUT
