@@ -85,12 +85,17 @@ PROCEDURE DIVISION.
 
                     WHEN "Create New Account"
                         IF NUM-ACCOUNTS < MAX-ACCOUNTS
+                           MOVE "Please enter your username:" TO OUTPUT-BUFFER
+                           PERFORM DUAL-OUTPUT
                            READ INFILE
                                AT END
                                    MOVE "Y" TO EOF
                                NOT AT END
                                    MOVE IN-REC TO AR-USERNAME
                            END-READ
+
+                           MOVE "Please enter your password:" TO OUTPUT-BUFFER
+                           PERFORM DUAL-OUTPUT
                            READ INFILE
                                AT END
                                    MOVE "Y" TO EOF
@@ -124,10 +129,15 @@ PROCEDURE DIVISION.
 
                     WHEN "Log In"
                         IF LOGIN-STATUS = "N"
+                            MOVE "Please enter your username:" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
                             READ INFILE
                                 AT END MOVE "Y" TO EOF
                                 NOT AT END MOVE IN-REC TO AR-USERNAME
                             END-READ
+
+                            MOVE "Please enter your password:" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
                             READ INFILE
                                 AT END MOVE "Y" TO EOF
                                 NOT AT END MOVE IN-REC TO AR-PASSWORD
