@@ -33,12 +33,12 @@ COPY "AccountRecord.cpy".
 01  EOF-ACCT           PIC X(1) VALUE "N".
 01  OUTPUT-BUFFER      PIC X(100).
 
-
 01  NAV-ACTION         PIC X(20).
 01  NAV-LINE           PIC X(100).
 01  NAV-DONE           PIC X.
 01  NAV-INDEX          PIC 9 VALUE 0.
 
+01  CURRENT-MENU       PIC X(10) VALUE "MAIN".
 
 PROCEDURE DIVISION.
     *> Count existing accounts from AccountRecords.txt
@@ -77,11 +77,12 @@ PROCEDURE DIVISION.
                 EVALUATE IN-REC
                     WHEN "Log Out"
                         MOVE "N" TO LOGIN-STATUS
+                        MOVE "MAIN" TO CURRENT-MENU
                         MOVE 0 TO NAV-INDEX
                         MOVE SPACES TO NAV-ACTION
-
                         MOVE 'Welcome to InCollege!' TO OUTPUT-BUFFER
                         PERFORM DUAL-OUTPUT
+
                     WHEN "Create New Account"
                         IF NUM-ACCOUNTS < MAX-ACCOUNTS
                            READ INFILE
@@ -108,8 +109,6 @@ PROCEDURE DIVISION.
                         ELSE
                            MOVE "Cannot create more than 5 accounts." TO OUTPUT-BUFFER
                            PERFORM DUAL-OUTPUT
-                           *> Consume the next two input lines (username/password)
-                           *> so the main loop doesn't output the menu for them.
                            IF EOF NOT = "Y"
                                READ INFILE
                                    AT END
@@ -125,34 +124,39 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Log In"
-                        READ INFILE
-                            AT END
-                                MOVE "Y" TO EOF
-                            NOT AT END
-                                MOVE IN-REC TO AR-USERNAME
-                        END-READ
-                        READ INFILE
-                            AT END
-                                MOVE "Y" TO EOF
-                            NOT AT END
-                                MOVE IN-REC TO AR-PASSWORD
-                        END-READ
+                        IF LOGIN-STATUS = "N"
+                            READ INFILE
+                                AT END
+                                    MOVE "Y" TO EOF
+                                NOT AT END
+                                    MOVE IN-REC TO AR-USERNAME
+                            END-READ
+                            READ INFILE
+                                AT END
+                                    MOVE "Y" TO EOF
+                                NOT AT END
+                                    MOVE IN-REC TO AR-PASSWORD
+                            END-READ
 
-                        CALL 'LOGIN' USING AR-USERNAME AR-PASSWORD LOGIN-RESPONSE LOGIN-STATUS
+                            CALL 'LOGIN' USING AR-USERNAME AR-PASSWORD LOGIN-RESPONSE LOGIN-STATUS
 
-                        MOVE LOGIN-RESPONSE TO OUTPUT-BUFFER
-                        PERFORM DUAL-OUTPUT
-
-                        IF LOGIN-STATUS = "Y"
-                            STRING 'Welcome, ' DELIMITED BY SIZE
-                                   AR-USERNAME DELIMITED BY SIZE
-                                   INTO OUTPUT-BUFFER
-                            END-STRING
+                            MOVE LOGIN-RESPONSE TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
-                            *> immediately show menu after successful login
-                            MOVE 0            TO NAV-INDEX
-                            MOVE "SHOW-MENU"  TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
+
+                            IF LOGIN-STATUS = "Y"
+                                STRING 'Welcome, ' DELIMITED BY SIZE
+                                       AR-USERNAME DELIMITED BY SIZE
+                                       INTO OUTPUT-BUFFER
+                                END-STRING
+                                PERFORM DUAL-OUTPUT
+                                MOVE "MAIN" TO CURRENT-MENU
+                                MOVE 0            TO NAV-INDEX
+                                MOVE "SHOW-MENU"  TO NAV-ACTION
+                                PERFORM NAV-PRINT-LOOP
+                            END-IF
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
                         END-IF
 
                     *> Navigation commands
@@ -172,39 +176,70 @@ PROCEDURE DIVISION.
                         PERFORM NAV-PRINT-LOOP
 
                     WHEN "Skills"
+                        MOVE "SKILLS" TO CURRENT-MENU
                         MOVE 0              TO NAV-INDEX
                         MOVE "SHOW-SKILLS"  TO NAV-ACTION
                         PERFORM NAV-PRINT-LOOP
 
                     WHEN "Skill-1"
-                        MOVE 0         TO NAV-INDEX
-                        MOVE "SKILL-1" TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF CURRENT-MENU = "SKILLS"
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "SKILL-1" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN "Skill-2"
-                        MOVE 0         TO NAV-INDEX
-                        MOVE "SKILL-2" TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF CURRENT-MENU = "SKILLS"
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "SKILL-2" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN "Skill-3"
-                        MOVE 0         TO NAV-INDEX
-                        MOVE "SKILL-3" TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF CURRENT-MENU = "SKILLS"
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "SKILL-3" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN "Skill-4"
-                        MOVE 0         TO NAV-INDEX
-                        MOVE "SKILL-4" TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF CURRENT-MENU = "SKILLS"
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "SKILL-4" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN "Skill-5"
-                        MOVE 0         TO NAV-INDEX
-                        MOVE "SKILL-5" TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF CURRENT-MENU = "SKILLS"
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "SKILL-5" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN "Back"
+                        MOVE "MAIN" TO CURRENT-MENU
                         MOVE 0            TO NAV-INDEX
                         MOVE "SHOW-MENU"  TO NAV-ACTION
                         PERFORM NAV-PRINT-LOOP
+
+                    WHEN OTHER
+                        MOVE "Invalid option" TO OUTPUT-BUFFER
+                        PERFORM DUAL-OUTPUT
                 END-EVALUATE
         END-READ
     END-PERFORM
@@ -229,6 +264,7 @@ NAV-PRINT-LOOP.
              BY REFERENCE NAV-INDEX
              BY REFERENCE NAV-LINE
              BY REFERENCE NAV-DONE
+             BY REFERENCE CURRENT-MENU
         IF NAV-LINE NOT = SPACES
             MOVE NAV-LINE TO OUTPUT-BUFFER
             PERFORM DUAL-OUTPUT
