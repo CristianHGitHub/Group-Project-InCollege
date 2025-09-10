@@ -20,7 +20,7 @@ if not exist "bin" mkdir bin
 REM Compile with free format support - compile all modules together
 echo Compiling and linking all source files...
 
-cobc -free -x -Wall -Wextra -std=cobol2014 -static -I"src\copy" -o "bin\InCollege.exe" "src\InCollege.cob" "src\CreateAccount.cob" "src\Login.cob"
+cobc -free -x -Wall -Wextra -std=cobol2014 -static -I"src\copy" -o "bin\InCollege.exe" "src\InCollege.cob" "src\CreateAccount.cob" "src\Login.cob" "src\Navigation.cob"
 if %errorlevel% neq 0 (
     echo Error: Failed to compile and link executable
     pause
