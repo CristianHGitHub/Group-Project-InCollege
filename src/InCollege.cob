@@ -84,47 +84,52 @@ PROCEDURE DIVISION.
                         PERFORM DUAL-OUTPUT
 
                     WHEN "Create New Account"
-                        IF NUM-ACCOUNTS < MAX-ACCOUNTS
-                           MOVE "Please enter your username:" TO OUTPUT-BUFFER
-                           PERFORM DUAL-OUTPUT
-                           READ INFILE
-                               AT END
-                                   MOVE "Y" TO EOF
-                               NOT AT END
-                                   MOVE IN-REC TO AR-USERNAME
-                           END-READ
+                        IF LOGIN-STATUS = "N"
+                           IF NUM-ACCOUNTS < MAX-ACCOUNTS
+                               MOVE "Please enter your username:" TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+                               READ INFILE
+                                   AT END
+                                       MOVE "Y" TO EOF
+                                   NOT AT END
+                                       MOVE IN-REC TO AR-USERNAME
+                               END-READ
 
-                           MOVE "Please enter your password:" TO OUTPUT-BUFFER
-                           PERFORM DUAL-OUTPUT
-                           READ INFILE
-                               AT END
-                                   MOVE "Y" TO EOF
-                               NOT AT END
-                                   MOVE IN-REC TO AR-PASSWORD
-                           END-READ
+                               MOVE "Please enter your password:" TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+                               READ INFILE
+                                   AT END
+                                       MOVE "Y" TO EOF
+                                   NOT AT END
+                                       MOVE IN-REC TO AR-PASSWORD
+                               END-READ
 
-                           CALL 'CREATE-ACCOUNT' USING AR-USERNAME AR-PASSWORD CREATE-RESPONSE CREATE-STATUS
+                               CALL 'CREATE-ACCOUNT' USING AR-USERNAME AR-PASSWORD CREATE-RESPONSE CREATE-STATUS
 
-                           MOVE CREATE-RESPONSE TO OUTPUT-BUFFER
-                           PERFORM DUAL-OUTPUT
+                               MOVE CREATE-RESPONSE TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
 
-                           IF CREATE-STATUS = "Y"
-                               ADD 1 TO NUM-ACCOUNTS
+                               IF CREATE-STATUS = "Y"
+                                   ADD 1 TO NUM-ACCOUNTS
+                               END-IF
+                           ELSE
+                               MOVE "Cannot create more than 5 accounts." TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+                               *> discard two extra lines from input
+                               IF EOF NOT = "Y"
+                                   READ INFILE
+                                       AT END MOVE "Y" TO EOF
+                                   END-READ
+                               END-IF
+                               IF EOF NOT = "Y"
+                                   READ INFILE
+                                       AT END MOVE "Y" TO EOF
+                                   END-READ
+                               END-IF
                            END-IF
                         ELSE
-                           MOVE "Cannot create more than 5 accounts." TO OUTPUT-BUFFER
-                           PERFORM DUAL-OUTPUT
-                           *> discard two extra lines from input
-                           IF EOF NOT = "Y"
-                               READ INFILE
-                                   AT END MOVE "Y" TO EOF
-                               END-READ
-                           END-IF
-                           IF EOF NOT = "Y"
-                               READ INFILE
-                                   AT END MOVE "Y" TO EOF
-                               END-READ
-                           END-IF
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
                         END-IF
 
                     WHEN "Log In"
