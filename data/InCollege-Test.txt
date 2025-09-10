@@ -1,4 +1,4 @@
-#################    Negative test Cases    ######################################
+#################    Negative test Cases    ##################################
 
 Test Case #1 (all lowercase)
 Create New Account
@@ -43,10 +43,10 @@ Abcdef1!
 
 Login 
 
-#Failed
+#Passed
 
 
-######################### Edge Cases ############################################
+######################### Edge Cases #########################################
 
 Test Case #1 (8-12 Charecter For password)
 
@@ -62,7 +62,7 @@ Create New Account
 tmp3123456789685k432
 Abcdef1!
 
-#passed
+#Passed
 
 
 
@@ -87,7 +87,7 @@ Log In
 tmp3
 Abcdef1!
 
-#passed
+#Passed
 
 Test Case #3 (Already Existing account test)
 
@@ -108,7 +108,7 @@ tmp1
 Aabcd1!
 Job
 
-#passed
+#Passed
 
 Test Case #5 (Nagivation hierarchy)
 
@@ -120,7 +120,7 @@ Skill-1
 Back
 Skill-1
 
-#Failed
+#Passed
 
 Test Case #6 (Logout test)
 
@@ -135,5 +135,5 @@ Abcdef1!
 
 Log Out
 
-
+#Passed
 
