@@ -28,6 +28,10 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             MOVE "SKILLS" TO L-MENU
             PERFORM SHOW-SKILLS
 
+        WHEN "SHOW-PROFILE"
+            MOVE "PROFILE" TO L-MENU
+            PERFORM SHOW-PROFILE
+
         WHEN "JOB"
             IF L-MENU = "MAIN"
                 MOVE "Job search/internship is under construction." TO L-OUT
@@ -52,6 +56,24 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             END-IF
             MOVE "Y" TO L-DONE
 
+        WHEN "PROFILE"
+            IF L-MENU = "MAIN"
+                MOVE "PROFILE" TO L-MENU
+                PERFORM SHOW-PROFILE
+            ELSE
+                MOVE "Invalid option" TO L-OUT
+            END-IF
+            MOVE "Y" TO L-DONE
+
+        WHEN "CREATE-PROFILE"
+            IF L-MENU = "PROFILE"
+                MOVE "CREATE-PROFILE" TO L-MENU
+                PERFORM SHOW-CREATE-PROFILE
+            ELSE
+                MOVE "Invalid option" TO L-OUT
+            END-IF
+            MOVE "Y" TO L-DONE
+
         WHEN "BACK"
             MOVE "MAIN" TO L-MENU
             MOVE 0 TO L-INDEX
@@ -71,14 +93,15 @@ SHOW-MENU.
         WHEN 0  MOVE "Search for a job"      TO L-OUT
         WHEN 1  MOVE "Find someone you know" TO L-OUT
         WHEN 2  MOVE "Learn a new skill"     TO L-OUT
-        WHEN 3  MOVE "Enter your choice:"    TO L-OUT
+        WHEN 3  MOVE "Create/Edit Profile"   TO L-OUT
+        WHEN 4  MOVE "Enter your choice:"    TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
             GOBACK
     END-EVALUATE
     ADD 1 TO L-INDEX
-    IF L-INDEX > 3
+    IF L-INDEX > 4
         MOVE "Y" TO L-DONE
     END-IF
 .
@@ -101,6 +124,49 @@ SHOW-SKILLS.
     END-EVALUATE
     ADD 1 TO L-INDEX
     IF L-INDEX > 7
+        MOVE "Y" TO L-DONE
+    END-IF
+.
+
+SHOW-PROFILE.
+    MOVE "N" TO L-DONE
+    EVALUATE L-INDEX
+        WHEN 0  MOVE "Profile Management:" TO L-OUT
+        WHEN 1  MOVE "Create New Profile" TO L-OUT
+        WHEN 2  MOVE "Edit Existing Profile" TO L-OUT
+        WHEN 3  MOVE "Go Back"           TO L-OUT
+        WHEN 4  MOVE "Enter your choice:" TO L-OUT
+        WHEN OTHER
+            MOVE "Y" TO L-DONE
+            MOVE SPACES TO L-OUT
+            GOBACK
+    END-EVALUATE
+    ADD 1 TO L-INDEX
+    IF L-INDEX > 4
+        MOVE "Y" TO L-DONE
+    END-IF
+.
+
+SHOW-CREATE-PROFILE.
+    MOVE "N" TO L-DONE
+    EVALUATE L-INDEX
+        WHEN 0  MOVE "=== CREATE PROFILE ===" TO L-OUT
+        WHEN 1  MOVE "Required Fields:" TO L-OUT
+        WHEN 2  MOVE "1. First Name (Required)" TO L-OUT
+        WHEN 3  MOVE "2. Last Name (Required)" TO L-OUT
+        WHEN 4  MOVE "3. University/College (Required)" TO L-OUT
+        WHEN 5  MOVE "4. Major (Required)" TO L-OUT
+        WHEN 6  MOVE "5. Graduation Year (Required - 4 digits)" TO L-OUT
+        WHEN 7  MOVE "Optional Fields:" TO L-OUT
+        WHEN 8  MOVE "6. About Me (Optional)" TO L-OUT
+        WHEN 9  MOVE "Enter your choice:" TO L-OUT
+        WHEN OTHER
+            MOVE "Y" TO L-DONE
+            MOVE SPACES TO L-OUT
+            GOBACK
+    END-EVALUATE
+    ADD 1 TO L-INDEX
+    IF L-INDEX > 9
         MOVE "Y" TO L-DONE
     END-IF
 .

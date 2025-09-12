@@ -199,6 +199,12 @@ PROCEDURE DIVISION.
                         MOVE "SHOW-SKILLS"  TO NAV-ACTION
                         PERFORM NAV-PRINT-LOOP
 
+                    WHEN "Profile"
+                        MOVE "PROFILE" TO CURRENT-MENU
+                        MOVE 0              TO NAV-INDEX
+                        MOVE "SHOW-PROFILE"  TO NAV-ACTION
+                        PERFORM NAV-PRINT-LOOP
+
                     WHEN "Skill-1"
                         IF CURRENT-MENU = "SKILLS"
                             MOVE 0         TO NAV-INDEX
@@ -259,6 +265,20 @@ PROCEDURE DIVISION.
                             PERFORM NAV-PRINT-LOOP
                             MOVE 0              TO NAV-INDEX
                             MOVE "SHOW-SKILLS" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
+
+                    WHEN "Create Profile"
+                        IF CURRENT-MENU = "PROFILE"
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "CREATE-PROFILE" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                            *> re-display profile menu
+                            MOVE 0              TO NAV-INDEX
+                            MOVE "SHOW-PROFILE" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER

@@ -2,7 +2,8 @@
      05  AR-USERNAME   PIC X(50).
      05  AR-PASSWORD   PIC X(50).
      05  AR-PROFILE.
-         10  AR-NAME           PIC X(50).
+         10  AR-FIRST-NAME     PIC X(25).
+         10  AR-LAST-NAME      PIC X(25).
          10  AR-UNIVERSITY     PIC X(50).
          10  AR-MAJOR          PIC X(50).
          10  AR-GRADUATION-YEAR PIC 9(4).

@@ -17,6 +17,7 @@ MAIN_SRC = $(SRCDIR)/InCollege.cob
 CREATE_SRC = $(SRCDIR)/CreateAccount.cob
 LOGIN_SRC = $(SRCDIR)/Login.cob
 NAV_SRC = $(SRCDIR)/Navigation.cob
+PROFILE_SRC = $(SRCDIR)/ProfileCreation.cob
 
 # Object files
 MAIN_OBJ = $(BINDIR)/InCollege.o
@@ -31,10 +32,10 @@ TARGET = $(BINDIR)/InCollege
 all: $(TARGET)
 
 # Main executable - compile all modules together
-$(TARGET): $(MAIN_SRC) $(CREATE_SRC) $(LOGIN_SRC) $(NAV_SRC)
+$(TARGET): $(MAIN_SRC) $(CREATE_SRC) $(LOGIN_SRC) $(NAV_SRC) $(PROFILE_SRC)
 	@echo "Compiling and linking $(TARGET)..."
 	@mkdir -p $(BINDIR)
-	$(COBC) $(COBCFLAGS) -I$(COPYDIR) -o $(TARGET) $(MAIN_SRC) $(CREATE_SRC) $(LOGIN_SRC) $(NAV_SRC)
+	$(COBC) $(COBCFLAGS) -I$(COPYDIR) -o $(TARGET) $(MAIN_SRC) $(CREATE_SRC) $(LOGIN_SRC) $(NAV_SRC) $(PROFILE_SRC)
 	@echo "Build completed successfully!"
 
 # Run the program
