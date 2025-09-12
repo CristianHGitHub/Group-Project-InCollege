@@ -36,9 +36,9 @@ COPY "AccountRecord.cpy".
 01  NAV-ACTION         PIC X(20).
 01  NAV-LINE           PIC X(100).
 01  NAV-DONE           PIC X.
-01  NAV-INDEX          PIC 9 VALUE 0.
+01  NAV-INDEX          PIC 99 VALUE 0.
 
-01  CURRENT-MENU       PIC X(10) VALUE "MAIN".
+01  CURRENT-MENU       PIC X(15) VALUE "MAIN".
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -271,15 +271,48 @@ PROCEDURE DIVISION.
                             PERFORM DUAL-OUTPUT
                         END-IF
 
-                    WHEN "Create Profile"
+                    WHEN "Create New Profile"
                         IF CURRENT-MENU = "PROFILE"
+                            MOVE "CREATE-PROFILE" TO CURRENT-MENU
                             MOVE 0         TO NAV-INDEX
                             MOVE "CREATE-PROFILE" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
-                            *> re-display profile menu
-                            MOVE 0              TO NAV-INDEX
-                            MOVE "SHOW-PROFILE" TO NAV-ACTION
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
+
+                    WHEN "Add Experience"
+                        IF CURRENT-MENU = "CREATE-PROFILE"
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "ADD-EXPERIENCE" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
+                            *> re-display profile creation form
+                            MOVE 0              TO NAV-INDEX
+                            MOVE "CREATE-PROFILE" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
+
+                    WHEN "Add Education"
+                        IF CURRENT-MENU = "CREATE-PROFILE"
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "ADD-EDUCATION" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                            *> re-display profile creation form
+                            MOVE 0              TO NAV-INDEX
+                            MOVE "CREATE-PROFILE" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
+
+                    WHEN "Save Profile"
+                        IF CURRENT-MENU = "CREATE-PROFILE"
+                            PERFORM PROFILE-INPUT-PROCESS
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
@@ -324,4 +357,62 @@ NAV-PRINT-LOOP.
             PERFORM DUAL-OUTPUT
         END-IF
     END-PERFORM
+    EXIT PARAGRAPH.
+
+PROFILE-INPUT-PROCESS.
+    *> Interactive profile input process
+    MOVE "Please enter your first name:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-FIRST-NAME
+    END-READ
+
+    MOVE "Please enter your last name:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-LAST-NAME
+    END-READ
+
+    MOVE "Please enter your university:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-UNIVERSITY
+    END-READ
+
+    MOVE "Please enter your major:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-MAJOR
+    END-READ
+
+    MOVE "Please enter your graduation year (4 digits):" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-GRADUATION-YEAR
+    END-READ
+
+    MOVE "Please enter about me (optional):" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-ABOUT-ME
+    END-READ
+
+    *> Call profile creation with validation and storage
+    CALL 'PROFILE-CREATION' USING AR-USERNAME CREATE-RESPONSE CREATE-STATUS
+
+    MOVE CREATE-RESPONSE TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    *> Return to main menu
+    MOVE "MAIN" TO CURRENT-MENU
+    MOVE 0 TO NAV-INDEX
+    MOVE "SHOW-MENU" TO NAV-ACTION
+    PERFORM NAV-PRINT-LOOP
+
     EXIT PARAGRAPH.

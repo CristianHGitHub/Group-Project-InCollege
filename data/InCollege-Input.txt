@@ -1,8 +1,18 @@
+Create New Account
+testuser
+TestPass123!
 Log In
 testuser
-testpass
+TestPass123!
 Menu
 Profile
-Create Profile
+Create New Profile
+Save Profile
+John
+Doe
+State University
+Computer Science
+2024
+I am a computer science student passionate about software development
 Back
 Log Out
