@@ -1,20 +1,4 @@
-## InCollege Program Outline
-
-This is a tentative outline for the InCollege program. The structure may change as the project progresses.
-
-```
-data/   # I/O files
-│
-├── InCollege-Input.txt             # Sample input file
-├── InCollege-Test.txt              # Test input file
-├── InCollege-Output-Sample.txt     # Sample output file showing expected output
-└── InCollege-Output.txt            # Temporary file containing actual program output, produced during runtime
-
-src/    # Modularized source code
-│
-├── InCollege.cob                   # Main program that contains core logic
-└── ...                             # Various other subprograms called during main loop
-```
+## InCollege Application
 
 ### Prerequisites
 
@@ -121,3 +105,92 @@ make clean && make
 # Windows equivalent
 build.bat
 ```
+
+## Testing Framework
+
+### Test Case Development
+
+The project includes a comprehensive testing framework using structured test files and a Python-based test runner. Test cases are designed to validate specific functionality and edge cases in the InCollege application.
+
+#### Test File Structure
+
+Test files follow a specific format that the test runner can parse:
+
+```
+Test: Description of what this test validates
+ResetAccounts: yes/no
+Input:
+Create New Account
+testuser
+TestPass1!
+Log In
+testuser
+TestPass1!
+Profile
+[... additional input lines ...]
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+[... expected output lines ...]
+End
+```
+
+#### Key Components:
+- **Test:** Brief description of the test case
+- **ResetAccounts:** Whether to clear `AccountRecords.txt` before running this test
+- **Input:** Sequential commands that simulate user interaction
+- **Expected:** Line-by-line expected program output
+- **End:** Marks the end of the test case
+
+#### Test Files Location
+```
+tests/
+├── InCollege-Test.txt                    # Basic functionality tests
+├── InCollege-ProfileCreation-Test.txt    # Profile creation and validation tests
+└── [other test files...]
+```
+
+### Test Runner (`test_runner.py`)
+
+The `tools/test_runner.py` script automates test execution and validation:
+
+#### Features:
+- **Automated Execution:** Runs the InCollege binary with test input files
+- **Output Comparison:** Compares actual program output with expected results line-by-line
+- **Account Reset:** Optionally clears account data between tests
+- **Detailed Reporting:** Shows pass/fail status and highlights mismatches
+
+#### Usage:
+```bash
+# Run all profile creation tests
+python3 tools/test_runner.py tests/InCollege-ProfileCreation-Test.txt
+
+# Run basic functionality tests
+python3 tools/test_runner.py tests/InCollege-Test.txt
+
+# Run with default test file
+python3 tools/test_runner.py
+```
+
+#### Example Output:
+```
+[1/3] Create complete profile with all fields
+  PASS (86 lines)
+[2/3] Missing required field validation
+  FAIL at line 54
+    expected: Error: First name is required and cannot be empty.
+    actual  : Please enter your last name:
+  (Tip: check ../data/InCollege-Output.txt)
+[3/3] Optional fields can be left empty
+  PASS (86 lines)
+
+Summary: 2 passed, 1 failed, 3 total
+```
+
+#### Writing New Tests:
+1. Create test cases in the appropriate test file using the standard format
+2. Ensure input sequences provide all required data (profile creation needs 27+ input lines)
+3. Match expected output exactly to program prompts and messages
+4. Test both success scenarios and validation/error cases
+5. Run tests frequently during development to catch regressions

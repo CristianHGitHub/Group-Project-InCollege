@@ -1,0 +1,310 @@
+Test: Invalid password (missing uppercase)
+ResetAccounts: yes
+Input:
+Create New Account
+tmp3
+abcdef1!
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Password must contain at least one uppercase letter, one digit, and one special character.
+End
+
+Test: Password too short (edge)
+ResetAccounts: yes
+Input:
+Create New Account
+tmp1
+Abc1!
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Password must be between 8 and 12 characters long.
+End
+
+Test: Create account then login successfully
+ResetAccounts: yes
+Input:
+Create New Account
+tmp3
+Abcdef1!
+Log In
+tmp3
+Abcdef1!
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp3
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, tmp3
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+End
+
+Test: Invalid choice then login
+ResetAccounts: yes
+Input:
+Create New Account
+tmp3
+Abcdef1!
+Log In:
+Log In
+tmp3
+Abcdef1!
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp3
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, tmp3
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+End
+
+Test: Duplicate account creation
+ResetAccounts: yes
+Input:
+Create New Account
+tmp3
+Abcdef1!
+Create New Account
+tmp3
+Abcdef1!
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp3
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Username tmp3 already exists.
+End
+
+Test: Creating more than 5 accounts (limit)
+ResetAccounts: yes
+Input:
+Create New Account
+u1
+Abcd1!aa
+Create New Account
+u2
+Abcd1!bb
+Create New Account
+u3
+Abcd1!cc
+Create New Account
+u4
+Abcd1!dd
+Create New Account
+u5
+Abcd1!ee
+Create New Account
+u6
+Abcd1!ff
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u1
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u2
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u3
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u4
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u5
+Log In
+Create New Account
+Enter your choice:
+Cannot create more than 5 accounts.
+End
+
+Test: Job option after login
+ResetAccounts: yes
+Input:
+Create New Account
+tmp1
+Aabcd12!
+Log In
+tmp1
+Aabcd12!
+Job
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp1
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, tmp1
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+Job search/internship is under construction.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+End
+
+Test: Skills flow and back
+ResetAccounts: yes
+Input:
+Create New Account
+tmp2
+Aabcd12!
+Log In
+tmp2
+Aabcd12!
+Skills
+Skill-1
+Back
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp2
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, tmp2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+Learn a New Skill:
+Skill 1
+Skill 2
+Skill 3
+Skill 4
+Skill 5
+Go Back
+Enter your choice:
+This skill is under construction.
+Learn a New Skill:
+Skill 1
+Skill 2
+Skill 3
+Skill 4
+Skill 5
+Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+End
+
+Test: Logout test
+ResetAccounts: yes
+Input:
+Create New Account
+tmp3
+Abcdef1!
+Log In
+tmp3
+Abcdef1!
+Log Out
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp3
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, tmp3
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+Welcome to InCollege!
+End
+
