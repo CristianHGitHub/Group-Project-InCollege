@@ -32,6 +32,10 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             MOVE "PROFILE" TO L-MENU
             PERFORM SHOW-PROFILE
 
+        WHEN "SHOW-CREATE-PROFILE"
+            MOVE "CREATE-PROFILE" TO L-MENU
+            PERFORM SHOW-CREATE-PROFILE
+
         WHEN "JOB"
             IF L-MENU = "MAIN"
                 MOVE "Job search/internship is under construction." TO L-OUT
@@ -74,23 +78,6 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             END-IF
             MOVE "Y" TO L-DONE
 
-        WHEN "ADD-EXPERIENCE"
-            IF L-MENU = "CREATE-PROFILE"
-                MOVE "EXPERIENCE" TO L-MENU
-                PERFORM SHOW-EXPERIENCE-PROMPTS
-            ELSE
-                MOVE "Invalid option" TO L-OUT
-            END-IF
-            MOVE "Y" TO L-DONE
-
-        WHEN "ADD-EDUCATION"
-            IF L-MENU = "CREATE-PROFILE"
-                MOVE "EDUCATION" TO L-MENU
-                PERFORM SHOW-EDUCATION-PROMPTS
-            ELSE
-                MOVE "Invalid option" TO L-OUT
-            END-IF
-            MOVE "Y" TO L-DONE
 
         WHEN "BACK"
             MOVE "MAIN" TO L-MENU
@@ -170,78 +157,45 @@ SHOW-CREATE-PROFILE.
     EVALUATE L-INDEX
         WHEN 0  MOVE "=== CREATE PROFILE ===" TO L-OUT
         WHEN 1  MOVE "Required Fields:" TO L-OUT
-        WHEN 2  MOVE "1. First Name (Required)" TO L-OUT
-        WHEN 3  MOVE "2. Last Name (Required)" TO L-OUT
-        WHEN 4  MOVE "3. University/College (Required)" TO L-OUT
-        WHEN 5  MOVE "4. Major (Required)" TO L-OUT
-        WHEN 6  MOVE "5. Graduation Year (Required - 4 digits)" TO L-OUT
+        WHEN 2  MOVE "First Name:" TO L-OUT
+        WHEN 3  MOVE "Last Name:" TO L-OUT
+        WHEN 4  MOVE "University/College:" TO L-OUT
+        WHEN 5  MOVE "Major:" TO L-OUT
+        WHEN 6  MOVE "Graduation Year (4 digits):" TO L-OUT
         WHEN 7  MOVE "Optional Fields:" TO L-OUT
-        WHEN 8  MOVE "6. About Me (Optional)" TO L-OUT
-        WHEN 9  MOVE "7. Experience (Optional - up to 3 entries)" TO L-OUT
-        WHEN 10 MOVE "   - Title (e.g., Software Intern)" TO L-OUT
-        WHEN 11 MOVE "   - Company/Organization" TO L-OUT
-        WHEN 12 MOVE "   - Dates (e.g., Summer 2024)" TO L-OUT
-        WHEN 13 MOVE "   - Description (Optional)" TO L-OUT
-        WHEN 14 MOVE "8. Education (Optional - up to 3 entries)" TO L-OUT
-        WHEN 15 MOVE "   - Degree (e.g., Master of Science)" TO L-OUT
-        WHEN 16 MOVE "   - University/College" TO L-OUT
-        WHEN 17 MOVE "   - Years Attended (e.g., 2023-2025)" TO L-OUT
-        WHEN 18 MOVE "Enter your choice:" TO L-OUT
+        WHEN 8  MOVE "About Me:" TO L-OUT
+        WHEN 9  MOVE "Experience (up to 3 entries):" TO L-OUT
+        WHEN 10 MOVE "Experience #1 - Title (e.g., Software Intern):" TO L-OUT
+        WHEN 11 MOVE "Experience #1 - Company/Organization:" TO L-OUT
+        WHEN 12 MOVE "Experience #1 - Dates (e.g., Summer 2024):" TO L-OUT
+        WHEN 13 MOVE "Experience #1 - Description:" TO L-OUT
+        WHEN 14 MOVE "Experience #2 - Title:" TO L-OUT
+        WHEN 15 MOVE "Experience #2 - Company/Organization:" TO L-OUT
+        WHEN 16 MOVE "Experience #2 - Dates:" TO L-OUT
+        WHEN 17 MOVE "Experience #2 - Description:" TO L-OUT
+        WHEN 18 MOVE "Experience #3 - Title:" TO L-OUT
+        WHEN 19 MOVE "Experience #3 - Company/Organization:" TO L-OUT
+        WHEN 20 MOVE "Experience #3 - Dates:" TO L-OUT
+        WHEN 21 MOVE "Experience #3 - Description:" TO L-OUT
+        WHEN 22 MOVE "Education (up to 3 entries):" TO L-OUT
+        WHEN 23 MOVE "Education #1 - Degree (e.g., Master of Science):" TO L-OUT
+        WHEN 24 MOVE "Education #1 - University/College:" TO L-OUT
+        WHEN 25 MOVE "Education #1 - Years Attended (e.g., 2023-2025):" TO L-OUT
+        WHEN 26 MOVE "Education #2 - Degree:" TO L-OUT
+        WHEN 27 MOVE "Education #2 - University/College:" TO L-OUT
+        WHEN 28 MOVE "Education #2 - Years Attended:" TO L-OUT
+        WHEN 29 MOVE "Education #3 - Degree:" TO L-OUT
+        WHEN 30 MOVE "Education #3 - University/College:" TO L-OUT
+        WHEN 31 MOVE "Education #3 - Years Attended:" TO L-OUT
+        WHEN 32 MOVE "Enter your choice:" TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
             GOBACK
     END-EVALUATE
     ADD 1 TO L-INDEX
-    IF L-INDEX > 18
+    IF L-INDEX > 32
         MOVE "Y" TO L-DONE
     END-IF
 .
 
-SHOW-EXPERIENCE-PROMPTS.
-    MOVE "N" TO L-DONE
-    EVALUATE L-INDEX
-        WHEN 0  MOVE "=== ADD EXPERIENCE ===" TO L-OUT
-        WHEN 1  MOVE "Experience Entry (up to 3 total):" TO L-OUT
-        WHEN 2  MOVE "1. Job Title:" TO L-OUT
-        WHEN 3  MOVE "   (e.g., Software Intern, Marketing Assistant)" TO L-OUT
-        WHEN 4  MOVE "2. Company/Organization:" TO L-OUT
-        WHEN 5  MOVE "   (e.g., Tech Solutions Inc., ABC Corp)" TO L-OUT
-        WHEN 6  MOVE "3. Dates:" TO L-OUT
-        WHEN 7  MOVE "   (e.g., Summer 2024, Jan 2023 - May 2024)" TO L-OUT
-        WHEN 8  MOVE "4. Description (Optional):" TO L-OUT
-        WHEN 9  MOVE "   (Responsibilities, achievements, etc.)" TO L-OUT
-        WHEN 10 MOVE "Enter your choice:" TO L-OUT
-        WHEN OTHER
-            MOVE "Y" TO L-DONE
-            MOVE SPACES TO L-OUT
-            GOBACK
-    END-EVALUATE
-    ADD 1 TO L-INDEX
-    IF L-INDEX > 10
-        MOVE "Y" TO L-DONE
-    END-IF
-.
-
-SHOW-EDUCATION-PROMPTS.
-    MOVE "N" TO L-DONE
-    EVALUATE L-INDEX
-        WHEN 0  MOVE "=== ADD EDUCATION ===" TO L-OUT
-        WHEN 1  MOVE "Education Entry (up to 3 total):" TO L-OUT
-        WHEN 2  MOVE "1. Degree:" TO L-OUT
-        WHEN 3  MOVE "   (e.g., Master of Science, Bachelor of Arts)" TO L-OUT
-        WHEN 4  MOVE "2. University/College:" TO L-OUT
-        WHEN 5  MOVE "   (e.g., State University, Community College)" TO L-OUT
-        WHEN 6  MOVE "3. Years Attended:" TO L-OUT
-        WHEN 7  MOVE "   (e.g., 2023-2025, 2020-2024)" TO L-OUT
-        WHEN 8  MOVE "Enter your choice:" TO L-OUT
-        WHEN OTHER
-            MOVE "Y" TO L-DONE
-            MOVE SPACES TO L-OUT
-            GOBACK
-    END-EVALUATE
-    ADD 1 TO L-INDEX
-    IF L-INDEX > 8
-        MOVE "Y" TO L-DONE
-    END-IF
-.

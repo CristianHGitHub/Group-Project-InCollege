@@ -17,10 +17,7 @@ MAIN_SRC = $(SRCDIR)/InCollege.cob
 CREATE_SRC = $(SRCDIR)/CreateAccount.cob
 LOGIN_SRC = $(SRCDIR)/Login.cob
 NAV_SRC = $(SRCDIR)/Navigation.cob
-PROFILE_SRC = $(SRCDIR)/ProfileCreation.cob
-PROFILE_VAL_SRC = $(SRCDIR)/ProfileValidation.cob
 PROFILE_STOR_SRC = $(SRCDIR)/ProfileStorage.cob
-PROFILE_INPUT_SRC = $(SRCDIR)/ProfileInputHandler.cob
 
 # Object files
 MAIN_OBJ = $(BINDIR)/InCollege.o
@@ -35,10 +32,10 @@ TARGET = $(BINDIR)/InCollege
 all: $(TARGET)
 
 # Main executable - compile all modules together
-$(TARGET): $(MAIN_SRC) $(CREATE_SRC) $(LOGIN_SRC) $(NAV_SRC) $(PROFILE_SRC) $(PROFILE_VAL_SRC) $(PROFILE_STOR_SRC) $(PROFILE_INPUT_SRC)
+$(TARGET): $(MAIN_SRC) $(CREATE_SRC) $(LOGIN_SRC) $(NAV_SRC) $(PROFILE_STOR_SRC)
 	@echo "Compiling and linking $(TARGET)..."
 	@mkdir -p $(BINDIR)
-	$(COBC) $(COBCFLAGS) -I$(COPYDIR) -o $(TARGET) $(MAIN_SRC) $(CREATE_SRC) $(LOGIN_SRC) $(NAV_SRC) $(PROFILE_SRC) $(PROFILE_VAL_SRC) $(PROFILE_STOR_SRC) $(PROFILE_INPUT_SRC)
+	$(COBC) $(COBCFLAGS) -I$(COPYDIR) -o $(TARGET) $(MAIN_SRC) $(CREATE_SRC) $(LOGIN_SRC) $(NAV_SRC) $(PROFILE_STOR_SRC)
 	@echo "Build completed successfully!"
 
 # Run the program
@@ -46,7 +43,7 @@ run: $(TARGET)
 	@echo "Running $(TARGET)..."
 	cd $(BINDIR) && ./InCollege
 
-# Clean generated files
+# Clean generated files (preserves profile data)
 clean:
 	@echo "Cleaning generated files..."
 	rm -f $(BINDIR)/*.o
@@ -55,11 +52,35 @@ clean:
 	@echo "Clearing output file content..."
 	@touch data/InCollege-Output.txt
 	@echo "" > data/InCollege-Output.txt
+	@echo "Preserving profile records..."
+	@if [ -f data/ProfileRecords.txt ]; then \
+		echo "✓ ProfileRecords.txt preserved"; \
+	else \
+		echo "! ProfileRecords.txt not found"; \
+	fi
 	@echo "Removing temporary files..."
 	rm -f *.tmp *.bak core *.log
 	@echo "Removing bin directory if empty..."
 	rmdir $(BINDIR) 2>/dev/null || true
 	@echo "Clean completed!"
+
+# Clean everything including profile data (use with caution!)
+clean-all:
+	@echo "Cleaning ALL files including profile data..."
+	rm -f $(BINDIR)/*.o
+	rm -f $(BINDIR)/InCollege
+	rm -f $(BINDIR)/InCollege.exe
+	@echo "Clearing output file content..."
+	@touch data/InCollege-Output.txt
+	@echo "" > data/InCollege-Output.txt
+	@echo "Clearing profile records (keeping file)..."
+	@touch data/ProfileRecords.txt
+	@echo "" > data/ProfileRecords.txt
+	@echo "Removing temporary files..."
+	rm -f *.tmp *.bak core *.log
+	@echo "Removing bin directory if empty..."
+	rmdir $(BINDIR) 2>/dev/null || true
+	@echo "Clean-all completed!"
 
 # Test compilation
 test: $(TARGET)
@@ -88,7 +109,8 @@ help:
 	@echo "  run       - Build and run the program"
 	@echo "  test      - Test compilation only"
 	@echo "  run-test  - Build, run, and show output"
-	@echo "  clean     - Remove all generated files and clear output files"
+	@echo "  clean     - Remove generated files (preserves profile data)"
+	@echo "  clean-all - Remove ALL files including profile data (use with caution!)"
 	@echo "  help      - Show this help message"
 
-.PHONY: all run clean test run-test help
+.PHONY: all run clean clean-all test run-test help

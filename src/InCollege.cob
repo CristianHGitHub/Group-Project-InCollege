@@ -39,6 +39,7 @@ COPY "AccountRecord.cpy".
 01  NAV-INDEX          PIC 99 VALUE 0.
 
 01  CURRENT-MENU       PIC X(15) VALUE "MAIN".
+01  PROFILE-DATA-STRING PIC X(1000).
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -200,10 +201,11 @@ PROCEDURE DIVISION.
                         PERFORM NAV-PRINT-LOOP
 
                     WHEN "Profile"
-                        MOVE "PROFILE" TO CURRENT-MENU
-                        MOVE 0              TO NAV-INDEX
-                        MOVE "SHOW-PROFILE"  TO NAV-ACTION
+                        MOVE "CREATE-PROFILE" TO CURRENT-MENU
+                        MOVE 0         TO NAV-INDEX
+                        MOVE "SHOW-CREATE-PROFILE" TO NAV-ACTION
                         PERFORM NAV-PRINT-LOOP
+                        PERFORM PROFILE-INPUT-PROCESS
 
                     WHEN "Skill-1"
                         IF CURRENT-MENU = "SKILLS"
@@ -271,6 +273,17 @@ PROCEDURE DIVISION.
                             PERFORM DUAL-OUTPUT
                         END-IF
 
+                    WHEN "1"
+                        IF CURRENT-MENU = "PROFILE"
+                            MOVE "CREATE-PROFILE" TO CURRENT-MENU
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "CREATE-PROFILE" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
+
                     WHEN "Create New Profile"
                         IF CURRENT-MENU = "PROFILE"
                             MOVE "CREATE-PROFILE" TO CURRENT-MENU
@@ -282,33 +295,6 @@ PROCEDURE DIVISION.
                             PERFORM DUAL-OUTPUT
                         END-IF
 
-                    WHEN "Add Experience"
-                        IF CURRENT-MENU = "CREATE-PROFILE"
-                            MOVE 0         TO NAV-INDEX
-                            MOVE "ADD-EXPERIENCE" TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
-                            *> re-display profile creation form
-                            MOVE 0              TO NAV-INDEX
-                            MOVE "CREATE-PROFILE" TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
-                        ELSE
-                            MOVE "Invalid option" TO OUTPUT-BUFFER
-                            PERFORM DUAL-OUTPUT
-                        END-IF
-
-                    WHEN "Add Education"
-                        IF CURRENT-MENU = "CREATE-PROFILE"
-                            MOVE 0         TO NAV-INDEX
-                            MOVE "ADD-EDUCATION" TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
-                            *> re-display profile creation form
-                            MOVE 0              TO NAV-INDEX
-                            MOVE "CREATE-PROFILE" TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
-                        ELSE
-                            MOVE "Invalid option" TO OUTPUT-BUFFER
-                            PERFORM DUAL-OUTPUT
-                        END-IF
 
                     WHEN "Save Profile"
                         IF CURRENT-MENU = "CREATE-PROFILE"
@@ -403,16 +389,266 @@ PROFILE-INPUT-PROCESS.
         NOT AT END MOVE IN-REC TO AR-ABOUT-ME
     END-READ
 
-    *> Call profile creation with validation and storage
-    CALL 'PROFILE-CREATION' USING AR-USERNAME CREATE-RESPONSE CREATE-STATUS
+    *> Collect experience data (up to 3 entries)
+    PERFORM COLLECT-EXPERIENCE-DATA
 
-    MOVE CREATE-RESPONSE TO OUTPUT-BUFFER
+    *> Collect education data (up to 3 entries)
+    PERFORM COLLECT-EDUCATION-DATA
+
+    *> Save profile data
+    PERFORM SAVE-PROFILE-DATA
+
+    *> Show custom profile completion menu
+    PERFORM SHOW-PROFILE-COMPLETION-MENU
+
+    EXIT PARAGRAPH.
+
+SHOW-PROFILE-COMPLETION-MENU.
+    MOVE "DONE" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
 
-    *> Return to main menu
-    MOVE "MAIN" TO CURRENT-MENU
-    MOVE 0 TO NAV-INDEX
-    MOVE "SHOW-MENU" TO NAV-ACTION
-    PERFORM NAV-PRINT-LOOP
+    MOVE "Profile saved successfully!" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    MOVE "1. Create/Edit My Profile" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    MOVE "2. View My Profile" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    MOVE "3. Search for User" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    MOVE "4. Learn a New Skill" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    MOVE "Enter your choice:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    *> Stop the program here - don't continue reading input
+    MOVE "Y" TO EOF
+
+    EXIT PARAGRAPH.
+
+COLLECT-EXPERIENCE-DATA.
+    *> Experience #1
+    MOVE "Experience #1 - Title (e.g., Software Intern):" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-TITLE(1)
+    END-READ
+
+    MOVE "Experience #1 - Company/Organization:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-COMPANY(1)
+    END-READ
+
+    MOVE "Experience #1 - Dates (e.g., Summer 2024):" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-START-DATE(1)
+    END-READ
+
+    MOVE "Experience #1 - Description:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-DESCRIPTION(1)
+    END-READ
+
+    *> Experience #2
+    MOVE "Experience #2 - Title:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-TITLE(2)
+    END-READ
+
+    MOVE "Experience #2 - Company/Organization:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-COMPANY(2)
+    END-READ
+
+    MOVE "Experience #2 - Dates:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-START-DATE(2)
+    END-READ
+
+    MOVE "Experience #2 - Description:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-DESCRIPTION(2)
+    END-READ
+
+    *> Experience #3
+    MOVE "Experience #3 - Title:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-TITLE(3)
+    END-READ
+
+    MOVE "Experience #3 - Company/Organization:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-COMPANY(3)
+    END-READ
+
+    MOVE "Experience #3 - Dates:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-START-DATE(3)
+    END-READ
+
+    MOVE "Experience #3 - Description:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EXP-DESCRIPTION(3)
+    END-READ
+
+    EXIT PARAGRAPH.
+
+COLLECT-EDUCATION-DATA.
+    *> Education #1
+    MOVE "Education #1 - Degree (e.g., Master of Science):" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-DEGREE(1)
+    END-READ
+
+    MOVE "Education #1 - University/College:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-SCHOOL(1)
+    END-READ
+
+    MOVE "Education #1 - Years Attended (e.g., 2023-2025):" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-START-DATE(1)
+    END-READ
+
+    *> Education #2
+    MOVE "Education #2 - Degree:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-DEGREE(2)
+    END-READ
+
+    MOVE "Education #2 - University/College:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-SCHOOL(2)
+    END-READ
+
+    MOVE "Education #2 - Years Attended:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-START-DATE(2)
+    END-READ
+
+    *> Education #3
+    MOVE "Education #3 - Degree:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-DEGREE(3)
+    END-READ
+
+    MOVE "Education #3 - University/College:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-SCHOOL(3)
+    END-READ
+
+    MOVE "Education #3 - Years Attended:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-EDU-START-DATE(3)
+    END-READ
+
+    EXIT PARAGRAPH.
+
+SAVE-PROFILE-DATA.
+    *> Create profile data string from all collected information
+    MOVE SPACES TO PROFILE-DATA-STRING
+    STRING AR-FIRST-NAME DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-LAST-NAME DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-UNIVERSITY DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-MAJOR DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-GRADUATION-YEAR DELIMITED BY SIZE
+           "|" DELIMITED BY SIZE
+           AR-ABOUT-ME DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-TITLE(1) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-COMPANY(1) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-START-DATE(1) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-DESCRIPTION(1) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-TITLE(2) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-COMPANY(2) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-START-DATE(2) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-DESCRIPTION(2) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-TITLE(3) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-COMPANY(3) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-START-DATE(3) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EXP-DESCRIPTION(3) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-DEGREE(1) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-SCHOOL(1) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-START-DATE(1) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-DEGREE(2) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-SCHOOL(2) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-START-DATE(2) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-DEGREE(3) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-SCHOOL(3) DELIMITED BY SPACE
+           "|" DELIMITED BY SIZE
+           AR-EDU-START-DATE(3) DELIMITED BY SPACE
+           INTO PROFILE-DATA-STRING
+    END-STRING
+
+    *> Call profile storage module
+    CALL 'PROFILE-STORAGE' USING AR-USERNAME PROFILE-DATA-STRING CREATE-STATUS CREATE-RESPONSE
 
     EXIT PARAGRAPH.
