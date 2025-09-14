@@ -4,7 +4,18 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install GNU COBOL and useful tools
-RUN apt-get update &&         apt-get install -y --no-install-recommends             gnucobol             build-essential             gdb             make             git             locales             ca-certificates             && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends \
+		gnucobol \
+		build-essential \
+		gdb \
+		make \
+		git \
+		locales \
+		ca-certificates \
+		python3 \
+		python3-pip \
+	&& rm -rf /var/lib/apt/lists/*
 
 # Configure UTF-8 locale
 RUN locale-gen en_US.UTF-8
