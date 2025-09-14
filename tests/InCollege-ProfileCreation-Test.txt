@@ -1,0 +1,860 @@
+Test: Create complete profile with all fields
+ResetAccounts: yes
+Input:
+Create New Account
+testuser
+TestPass1!
+Log In
+testuser
+TestPass1!
+Profile
+John
+Doe
+University of South Florida
+Computer Science
+2025
+I am a passionate computer science student with experience in software development.
+Software Intern
+Tech Solutions Inc
+Summer 2024
+Developed web applications using modern frameworks and collaborated with cross-functional teams.
+Research Assistant
+University Lab
+Spring 2024
+Conducted research on machine learning algorithms and published findings in academic journals.
+Teaching Assistant
+Computer Science Department
+Fall 2023
+Assisted professors with grading and tutoring students in programming courses.
+Bachelor of Science
+University of South Florida
+2021-2025
+Associate of Arts
+Community College
+2019-2021
+High School Diploma
+Local High School
+2015-2019
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+=== CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Please enter about me (optional):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+DONE
+Profile saved successfully!
+1. Create/Edit My Profile
+2. View My Profile
+3. Search for User
+4. Learn a New Skill
+Enter your choice:
+End
+
+Test: Max experiences and education entries filled
+ResetAccounts: yes
+Input:
+Create New Account
+testuser7
+TestPass7!
+Log In
+testuser7
+TestPass7!
+Profile
+Eva
+Turner
+National University
+Data Science
+2028
+Data enthusiast.
+Data Intern
+Data Co
+Summer 2026
+Worked on datasets.
+Research Fellow
+University Lab
+2025-2026
+Published paper.
+Tutor
+Freelance
+2024-2025
+Coached students.
+B.Sc Data Science
+National University
+2024-2028
+Certificate ML
+Coursera
+2025
+Diploma Stats
+Community Institute
+2023-2024
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser7
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser7
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+=== CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Please enter about me (optional):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+DONE
+Profile saved successfully!
+1. Create/Edit My Profile
+2. View My Profile
+3. Search for User
+4. Learn a New Skill
+Enter your choice:
+End
+Test: Graduation year must be 4 digits
+ResetAccounts: yes
+Input:
+Create New Account
+testuser3
+TestPass3!
+Log In
+testuser3
+TestPass3!
+Profile
+Alice
+Smith
+State University
+Biology
+20A5
+Short bio here.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser3
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser3
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+=== CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Error: Graduation year must be a valid 4-digit year.
+Please re-enter your graduation year (4 digits):
+End
+
+Test: Graduation year must be 4 digits
+ResetAccounts: yes
+Input:
+Create New Account
+testuser4
+TestPass4!
+Log In
+testuser4
+TestPass4!
+Profile
+Bob
+Johnson
+Tech Institute
+Information Technology
+999
+About Bob.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser4
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser4
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+=== CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Error: Graduation year must be a valid 4-digit year.
+Please re-enter your graduation year (4 digits):
+End
+
+Test: Optional fields can be left empty
+ResetAccounts: yes
+Input:
+Create New Account
+testuser5
+TestPass5!
+Log In
+testuser5
+TestPass5!
+Profile
+Carol
+Nguyen
+City College
+Mathematics
+2026
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser5
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser5
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+=== CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Please enter about me (optional):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+DONE
+Profile saved successfully!
+1. Create/Edit My Profile
+2. View My Profile
+3. Search for User
+4. Learn a New Skill
+Enter your choice:
+End
+
+Test: Missing major should be rejected
+ResetAccounts: yes
+Input:
+Create New Account
+testuser6
+TestPass6!
+Log In
+testuser6
+TestPass6!
+Profile
+Diego
+Lopez
+Engineering College
+
+2027
+About Diego.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser6
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser6
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+=== CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Error: Major is required and cannot be empty.
+Please re-enter your major:
+End
+Test: Profile creation should reject empty required fields
+ResetAccounts: yes
+Input:
+Create New Account
+testuser2
+TestPass2!
+Log In
+testuser2
+TestPass2!
+Profile
+
+Doe
+University of South Florida
+Computer Science
+2025
+I am a student with missing first name.
+Software Intern
+Tech Solutions Inc
+Summer 2024
+Developed web applications using modern frameworks and collaborated with cross-functional teams.
+Research Assistant
+University Lab
+Spring 2024
+Conducted research on machine learning algorithms and published findings in academic journals.
+Teaching Assistant
+Computer Science Department
+Fall 2023
+Assisted professors with grading and tutoring students in programming courses.
+Bachelor of Science
+University of South Florida
+2021-2025
+Associate of Arts
+Community College
+2019-2021
+High School Diploma
+Local High School
+2015-2019
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser2
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+=== CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Error: First name is required and cannot be empty.
+Please re-enter your first name:
+End
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser2
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+Enter your choice:
+=== CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Please enter about me (optional):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education #1 - Degree (e.g., Master of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2023-2025):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+DONE
+Profile saved successfully!
+1. Create/Edit My Profile
+2. View My Profile
+3. Search for User
+4. Learn a New Skill
+Enter your choice:
+End
