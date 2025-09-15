@@ -40,6 +40,9 @@ COPY "AccountRecord.cpy".
 
 01  CURRENT-MENU       PIC X(15) VALUE "MAIN".
 01  PROFILE-DATA-STRING PIC X(1000).
+01  TEMP-GRAD-YEAR     PIC X(10).
+01  YEAR-LEN           PIC 99.
+01  YEAR-NUMERIC       PIC X VALUE "N".
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -346,13 +349,9 @@ NAV-PRINT-LOOP.
     EXIT PARAGRAPH.
 
 PROFILE-INPUT-PROCESS.
-    *> Interactive profile input process
-    MOVE "Please enter your first name:" TO OUTPUT-BUFFER
-    PERFORM DUAL-OUTPUT
-    READ INFILE
-        AT END MOVE "Y" TO EOF
-        NOT AT END MOVE IN-REC TO AR-FIRST-NAME
-    END-READ
+    *> Interactive profile input process with validation
+    PERFORM VALIDATE-FIRST-NAME
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
 
     MOVE "Please enter your last name:" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
@@ -368,19 +367,11 @@ PROFILE-INPUT-PROCESS.
         NOT AT END MOVE IN-REC TO AR-UNIVERSITY
     END-READ
 
-    MOVE "Please enter your major:" TO OUTPUT-BUFFER
-    PERFORM DUAL-OUTPUT
-    READ INFILE
-        AT END MOVE "Y" TO EOF
-        NOT AT END MOVE IN-REC TO AR-MAJOR
-    END-READ
+    PERFORM VALIDATE-MAJOR
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
 
-    MOVE "Please enter your graduation year (4 digits):" TO OUTPUT-BUFFER
-    PERFORM DUAL-OUTPUT
-    READ INFILE
-        AT END MOVE "Y" TO EOF
-        NOT AT END MOVE IN-REC TO AR-GRADUATION-YEAR
-    END-READ
+    PERFORM VALIDATE-GRADUATION-YEAR
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
 
     MOVE "Please enter about me (optional):" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
@@ -587,6 +578,79 @@ COLLECT-EDUCATION-DATA.
         NOT AT END MOVE IN-REC TO AR-EDU-START-DATE(3)
     END-READ
 
+    EXIT PARAGRAPH.
+
+VALIDATE-FIRST-NAME.
+    MOVE "Please enter your first name:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-FIRST-NAME
+    END-READ
+
+    IF EOF NOT = "Y"
+        *> Check if first name is empty or only spaces
+        IF AR-FIRST-NAME = SPACES
+            MOVE "Error: First name is required and cannot be empty." TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            MOVE "Please re-enter your first name:" TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            *> Stop processing after validation error
+            MOVE "Y" TO EOF
+        END-IF
+    END-IF
+    EXIT PARAGRAPH.
+
+VALIDATE-MAJOR.
+    MOVE "Please enter your major:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-MAJOR
+    END-READ
+
+    IF EOF NOT = "Y"
+        *> Check if major is empty or only spaces
+        IF AR-MAJOR = SPACES
+            MOVE "Error: Major is required and cannot be empty." TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            MOVE "Please re-enter your major:" TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            *> Stop processing after validation error
+            MOVE "Y" TO EOF
+        END-IF
+    END-IF
+    EXIT PARAGRAPH.
+
+VALIDATE-GRADUATION-YEAR.
+    MOVE "Please enter your graduation year (4 digits):" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO TEMP-GRAD-YEAR
+    END-READ
+
+    IF EOF NOT = "Y"
+        *> Check if graduation year is exactly 4 digits and numeric
+        MOVE "N" TO YEAR-NUMERIC
+        INSPECT TEMP-GRAD-YEAR TALLYING YEAR-LEN FOR CHARACTERS BEFORE INITIAL SPACE
+        IF YEAR-LEN = 4
+            IF TEMP-GRAD-YEAR (1:4) IS NUMERIC
+                MOVE "Y" TO YEAR-NUMERIC
+            END-IF
+        END-IF
+
+        IF YEAR-NUMERIC = "N"
+            MOVE "Error: Graduation year must be a valid 4-digit year." TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            MOVE "Please re-enter your graduation year (4 digits):" TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            *> Stop processing after validation error
+            MOVE "Y" TO EOF
+        ELSE
+            MOVE TEMP-GRAD-YEAR (1:4) TO AR-GRADUATION-YEAR
+        END-IF
+    END-IF
     EXIT PARAGRAPH.
 
 SAVE-PROFILE-DATA.
