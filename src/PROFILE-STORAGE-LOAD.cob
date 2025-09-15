@@ -1,4 +1,4 @@
-*> Profile Storage Loader (read-only)
+*> Profile Storage Loader 
 IDENTIFICATION DIVISION.
 PROGRAM-ID. PROFILE-STORAGE-LOAD.
 
