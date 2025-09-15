@@ -3,7 +3,7 @@ testuser
 TestPass123!
 Profile
 John
-Doe
+Suck
 State University
 Computer Science
 2024
@@ -23,14 +23,10 @@ Analyzing large datasets and creating reports
 Bachelor of Science
 State University
 2020-2024
-Computer Science major with focus on software engineering
 Master of Science
 Tech University
 2024-2026
-Advanced studies in machine learning and AI
 Certificate
 Online Learning Platform
 2023-2024
-Full-stack web development certification
-Back
-Log Out
+View Profile
