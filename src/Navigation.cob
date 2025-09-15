@@ -99,14 +99,15 @@ SHOW-MENU.
         WHEN 1  MOVE "Find someone you know" TO L-OUT
         WHEN 2  MOVE "Learn a new skill"     TO L-OUT
         WHEN 3  MOVE "Create/Edit Profile"   TO L-OUT
-        WHEN 4  MOVE "Enter your choice:"    TO L-OUT
+        WHEN 4  MOVE "View Profile"          TO L-OUT
+        WHEN 5  MOVE "Enter your choice:"    TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
             GOBACK
     END-EVALUATE
     ADD 1 TO L-INDEX
-    IF L-INDEX > 4
+    IF L-INDEX > 5
         MOVE "Y" TO L-DONE
     END-IF
 .
@@ -134,24 +135,11 @@ SHOW-SKILLS.
 .
 
 SHOW-PROFILE.
-    MOVE "N" TO L-DONE
-    EVALUATE L-INDEX
-        WHEN 0  MOVE "Profile Management:" TO L-OUT
-        WHEN 1  MOVE "Create New Profile" TO L-OUT
-        WHEN 2  MOVE "Edit Existing Profile" TO L-OUT
-        WHEN 3  MOVE "Go Back"           TO L-OUT
-        WHEN 4  MOVE "Enter your choice:" TO L-OUT
-        WHEN OTHER
-            MOVE "Y" TO L-DONE
-            MOVE SPACES TO L-OUT
-            GOBACK
-    END-EVALUATE
-    ADD 1 TO L-INDEX
-    IF L-INDEX > 4
-        MOVE "Y" TO L-DONE
-    END-IF
+    *> No submenu needed for Profile (handled directly in INCOLLEGE)
+    MOVE "Y" TO L-DONE
+    MOVE SPACES TO L-OUT
+    GOBACK
 .
-
 SHOW-CREATE-PROFILE.
     MOVE "N" TO L-DONE
     EVALUATE L-INDEX
@@ -198,4 +186,3 @@ SHOW-CREATE-PROFILE.
         MOVE "Y" TO L-DONE
     END-IF
 .
-
