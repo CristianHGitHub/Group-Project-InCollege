@@ -142,7 +142,7 @@ SHOW-PROFILE.
 SHOW-CREATE-PROFILE.
     MOVE "N" TO L-DONE
     EVALUATE L-INDEX
-        WHEN 0  MOVE "=== CREATE PROFILE ===" TO L-OUT
+        WHEN 0  MOVE "=== EDIT/CREATE PROFILE ===" TO L-OUT
         WHEN 1  MOVE "Required Fields:" TO L-OUT
         WHEN 2  MOVE "First Name:" TO L-OUT
         WHEN 3  MOVE "Last Name:" TO L-OUT
