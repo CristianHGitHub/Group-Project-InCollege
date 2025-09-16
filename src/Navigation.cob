@@ -154,7 +154,7 @@ SHOW-CREATE-PROFILE.
         WHEN 9  MOVE "Experience (up to 3 entries):" TO L-OUT
         WHEN 10 MOVE "Experience #1 - Title (e.g., Software Intern):" TO L-OUT
         WHEN 11 MOVE "Experience #1 - Company/Organization:" TO L-OUT
-        WHEN 12 MOVE "Experience #1 - Dates (e.g., Summer 2024):" TO L-OUT
+        WHEN 12 MOVE "Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):" TO L-OUT
         WHEN 13 MOVE "Experience #1 - Description:" TO L-OUT
         WHEN 14 MOVE "Experience #2 - Title:" TO L-OUT
         WHEN 15 MOVE "Experience #2 - Company/Organization:" TO L-OUT
@@ -165,9 +165,9 @@ SHOW-CREATE-PROFILE.
         WHEN 20 MOVE "Experience #3 - Dates:" TO L-OUT
         WHEN 21 MOVE "Experience #3 - Description:" TO L-OUT
         WHEN 22 MOVE "Education (up to 3 entries):" TO L-OUT
-        WHEN 23 MOVE "Education #1 - Degree (e.g., Master of Science):" TO L-OUT
+        WHEN 23 MOVE "Education #1 - Degree (e.g., Bachelor of Science):" TO L-OUT
         WHEN 24 MOVE "Education #1 - University/College:" TO L-OUT
-        WHEN 25 MOVE "Education #1 - Years Attended (e.g., 2023-2025):" TO L-OUT
+        WHEN 25 MOVE "Education #1 - Years Attended (e.g., 2020-2024):" TO L-OUT
         WHEN 26 MOVE "Education #2 - Degree:" TO L-OUT
         WHEN 27 MOVE "Education #2 - University/College:" TO L-OUT
         WHEN 28 MOVE "Education #2 - Years Attended:" TO L-OUT
