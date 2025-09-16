@@ -78,7 +78,6 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             END-IF
             MOVE "Y" TO L-DONE
 
-
         WHEN "BACK"
             MOVE "MAIN" TO L-MENU
             MOVE 0 TO L-INDEX
@@ -99,17 +98,18 @@ SHOW-MENU.
         WHEN 1  MOVE "Find someone you know" TO L-OUT
         WHEN 2  MOVE "Learn a new skill"     TO L-OUT
         WHEN 3  MOVE "Create/Edit Profile"   TO L-OUT
-        WHEN 4  MOVE "Enter your choice:"    TO L-OUT
+        WHEN 4  MOVE "View Profile"          TO L-OUT
+        WHEN 5  MOVE "Enter your choice:"    TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
-            GOBACK
+            EXIT PARAGRAPH
     END-EVALUATE
     ADD 1 TO L-INDEX
-    IF L-INDEX > 4
+    IF L-INDEX > 5
         MOVE "Y" TO L-DONE
     END-IF
-.
+    EXIT PARAGRAPH.
 
 SHOW-SKILLS.
     MOVE "N" TO L-DONE
@@ -125,37 +125,24 @@ SHOW-SKILLS.
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
-            GOBACK
+            EXIT PARAGRAPH
     END-EVALUATE
     ADD 1 TO L-INDEX
     IF L-INDEX > 7
         MOVE "Y" TO L-DONE
     END-IF
-.
+    EXIT PARAGRAPH.
 
 SHOW-PROFILE.
-    MOVE "N" TO L-DONE
-    EVALUATE L-INDEX
-        WHEN 0  MOVE "Profile Management:" TO L-OUT
-        WHEN 1  MOVE "Create New Profile" TO L-OUT
-        WHEN 2  MOVE "Edit Existing Profile" TO L-OUT
-        WHEN 3  MOVE "Go Back"           TO L-OUT
-        WHEN 4  MOVE "Enter your choice:" TO L-OUT
-        WHEN OTHER
-            MOVE "Y" TO L-DONE
-            MOVE SPACES TO L-OUT
-            GOBACK
-    END-EVALUATE
-    ADD 1 TO L-INDEX
-    IF L-INDEX > 4
-        MOVE "Y" TO L-DONE
-    END-IF
-.
+    *> No submenu needed for Profile (handled directly in INCOLLEGE)
+    MOVE "Y" TO L-DONE
+    MOVE SPACES TO L-OUT
+    EXIT PARAGRAPH.
 
 SHOW-CREATE-PROFILE.
     MOVE "N" TO L-DONE
     EVALUATE L-INDEX
-        WHEN 0  MOVE "=== CREATE PROFILE ===" TO L-OUT
+        WHEN 0  MOVE "=== EDIT/CREATE PROFILE ===" TO L-OUT
         WHEN 1  MOVE "Required Fields:" TO L-OUT
         WHEN 2  MOVE "First Name:" TO L-OUT
         WHEN 3  MOVE "Last Name:" TO L-OUT
@@ -167,7 +154,7 @@ SHOW-CREATE-PROFILE.
         WHEN 9  MOVE "Experience (up to 3 entries):" TO L-OUT
         WHEN 10 MOVE "Experience #1 - Title (e.g., Software Intern):" TO L-OUT
         WHEN 11 MOVE "Experience #1 - Company/Organization:" TO L-OUT
-        WHEN 12 MOVE "Experience #1 - Dates (e.g., Summer 2024):" TO L-OUT
+        WHEN 12 MOVE "Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):" TO L-OUT
         WHEN 13 MOVE "Experience #1 - Description:" TO L-OUT
         WHEN 14 MOVE "Experience #2 - Title:" TO L-OUT
         WHEN 15 MOVE "Experience #2 - Company/Organization:" TO L-OUT
@@ -178,9 +165,9 @@ SHOW-CREATE-PROFILE.
         WHEN 20 MOVE "Experience #3 - Dates:" TO L-OUT
         WHEN 21 MOVE "Experience #3 - Description:" TO L-OUT
         WHEN 22 MOVE "Education (up to 3 entries):" TO L-OUT
-        WHEN 23 MOVE "Education #1 - Degree (e.g., Master of Science):" TO L-OUT
+        WHEN 23 MOVE "Education #1 - Degree (e.g., Bachelor of Science):" TO L-OUT
         WHEN 24 MOVE "Education #1 - University/College:" TO L-OUT
-        WHEN 25 MOVE "Education #1 - Years Attended (e.g., 2023-2025):" TO L-OUT
+        WHEN 25 MOVE "Education #1 - Years Attended (e.g., 2020-2024):" TO L-OUT
         WHEN 26 MOVE "Education #2 - Degree:" TO L-OUT
         WHEN 27 MOVE "Education #2 - University/College:" TO L-OUT
         WHEN 28 MOVE "Education #2 - Years Attended:" TO L-OUT
@@ -191,11 +178,10 @@ SHOW-CREATE-PROFILE.
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
-            GOBACK
+            EXIT PARAGRAPH
     END-EVALUATE
     ADD 1 TO L-INDEX
     IF L-INDEX > 32
         MOVE "Y" TO L-DONE
     END-IF
-.
-
+    EXIT PARAGRAPH.
