@@ -1,4 +1,4 @@
-*> Simple Profile Storage Module
+*> Profile Storage Module (UPSERT)
 IDENTIFICATION DIVISION.
 PROGRAM-ID. PROFILE-STORAGE.
 
@@ -7,42 +7,98 @@ INPUT-OUTPUT SECTION.
 FILE-CONTROL.
     SELECT PROFILE-FILE ASSIGN TO "../data/ProfileRecords.txt"
         ORGANIZATION IS LINE SEQUENTIAL.
+    SELECT TMP-FILE     ASSIGN TO "../data/ProfileRecords.tmp"
+        ORGANIZATION IS LINE SEQUENTIAL.
 
 DATA DIVISION.
 FILE SECTION.
 FD PROFILE-FILE.
-01 PROFILE-RECORD          PIC X(1000).
+01 PROFILE-RECORD          PIC X(5000).
+
+FD TMP-FILE.
+01 TMP-RECORD              PIC X(5000).
 
 WORKING-STORAGE SECTION.
-COPY "AccountRecord.cpy".
-
-01  PROFILE-DATA-STRING    PIC X(1000).
-01  EOF-PROFILE            PIC X VALUE "N".
+01 NEW-RECORD              PIC X(5000).
+01 EXISTING-USER           PIC X(50).
+01 FOUND-FLAG              PIC X VALUE "N".
+01 EOF-PROFILE             PIC X VALUE "N".
+01 EOF-TMP                 PIC X VALUE "N".
 
 LINKAGE SECTION.
-01  L-USERNAME             PIC X(50).
-01  L-PROFILE-DATA         PIC X(1000).
-01  L-STATUS               PIC X.
-01  L-RESPONSE             PIC X(200).
+01 L-USERNAME              PIC X(50).
+01 L-PROFILE-DATA          PIC X(5000).
+01 L-STATUS                PIC X.
+01 L-RESPONSE              PIC X(200).
 
 PROCEDURE DIVISION USING L-USERNAME L-PROFILE-DATA L-STATUS L-RESPONSE.
     MOVE "N" TO L-STATUS
     MOVE SPACES TO L-RESPONSE
+    MOVE SPACES TO NEW-RECORD
 
-    *> Create profile record with username and profile data
-    MOVE SPACES TO PROFILE-DATA-STRING
-    STRING L-USERNAME DELIMITED BY SPACE
-           "|" DELIMITED BY SIZE
-           L-PROFILE-DATA DELIMITED BY SIZE
-           INTO PROFILE-DATA-STRING
+    *> Build "username|profile-data"
+    STRING
+        FUNCTION TRIM(L-USERNAME) DELIMITED BY SIZE
+        "|" DELIMITED BY SIZE
+        FUNCTION TRIM(L-PROFILE-DATA) DELIMITED BY SIZE
+        INTO NEW-RECORD
     END-STRING
 
-    *> Write to profile file
-    OPEN EXTEND PROFILE-FILE
-    WRITE PROFILE-RECORD FROM PROFILE-DATA-STRING
+    *> Step 1: copy/replace into temp
+    OPEN INPUT PROFILE-FILE
+    OPEN OUTPUT TMP-FILE
+    MOVE "N" TO FOUND-FLAG
+    MOVE "N" TO EOF-PROFILE
+
+    PERFORM UNTIL EOF-PROFILE = "Y"
+        READ PROFILE-FILE
+            AT END
+                MOVE "Y" TO EOF-PROFILE
+            NOT AT END
+                UNSTRING PROFILE-RECORD DELIMITED BY "|"
+                    INTO EXISTING-USER
+                END-UNSTRING
+
+                IF FUNCTION TRIM(EXISTING-USER) = FUNCTION TRIM(L-USERNAME)
+                    MOVE NEW-RECORD TO TMP-RECORD
+                    WRITE TMP-RECORD
+                    MOVE "Y" TO FOUND-FLAG
+                ELSE
+                    MOVE PROFILE-RECORD TO TMP-RECORD
+                    WRITE TMP-RECORD
+                END-IF
+        END-READ
+    END-PERFORM
+    CLOSE PROFILE-FILE
+
+    *> If not found, append new record
+    IF FOUND-FLAG = "N"
+        MOVE NEW-RECORD TO TMP-RECORD
+        WRITE TMP-RECORD
+    END-IF
+    CLOSE TMP-FILE
+
+    *> Step 2: copy temp back to original
+    OPEN OUTPUT PROFILE-FILE   *> truncate
+    CLOSE PROFILE-FILE
+
+    OPEN INPUT TMP-FILE
+    OPEN OUTPUT PROFILE-FILE
+    MOVE "N" TO EOF-TMP
+
+    PERFORM UNTIL EOF-TMP = "Y"
+        READ TMP-FILE
+            AT END
+                MOVE "Y" TO EOF-TMP
+            NOT AT END
+                MOVE TMP-RECORD TO PROFILE-RECORD
+                WRITE PROFILE-RECORD
+        END-READ
+    END-PERFORM
+
+    CLOSE TMP-FILE
     CLOSE PROFILE-FILE
 
     MOVE "Y" TO L-STATUS
     MOVE "Profile saved successfully!" TO L-RESPONSE
-
     GOBACK.
