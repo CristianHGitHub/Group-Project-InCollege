@@ -380,19 +380,11 @@ PROFILE-INPUT-PROCESS.
     PERFORM VALIDATE-FIRST-NAME
     IF EOF = "Y" EXIT PARAGRAPH END-IF
 
-    MOVE "Please enter your last name:" TO OUTPUT-BUFFER
-    PERFORM DUAL-OUTPUT
-    READ INFILE
-        AT END MOVE "Y" TO EOF
-        NOT AT END MOVE IN-REC TO AR-LAST-NAME
-    END-READ
+    PERFORM VALIDATE-LAST-NAME
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
 
-    MOVE "Please enter your university:" TO OUTPUT-BUFFER
-    PERFORM DUAL-OUTPUT
-    READ INFILE
-        AT END MOVE "Y" TO EOF
-        NOT AT END MOVE IN-REC TO AR-UNIVERSITY
-    END-READ
+    PERFORM VALIDATE-UNIVERSITY
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
 
     PERFORM VALIDATE-MAJOR
     IF EOF = "Y" EXIT PARAGRAPH END-IF
@@ -543,6 +535,44 @@ VALIDATE-FIRST-NAME.
             MOVE "Error: First name is required and cannot be empty." TO OUTPUT-BUFFER
             PERFORM DUAL-OUTPUT
             MOVE "Please re-enter your first name:" TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            MOVE "Y" TO EOF
+        END-IF
+    END-IF
+    EXIT PARAGRAPH.
+
+VALIDATE-LAST-NAME.
+    MOVE "Please enter your last name:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-LAST-NAME
+    END-READ
+
+    IF EOF NOT = "Y"
+        IF AR-LAST-NAME = SPACES
+            MOVE "Error: Last name is required and cannot be empty." TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            MOVE "Please re-enter your last name:" TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            MOVE "Y" TO EOF
+        END-IF
+    END-IF
+    EXIT PARAGRAPH.
+
+VALIDATE-UNIVERSITY.
+    MOVE "Please enter your university:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO AR-UNIVERSITY
+    END-READ
+
+    IF EOF NOT = "Y"
+        IF AR-UNIVERSITY = SPACES
+            MOVE "Error: University is required and cannot be empty." TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+            MOVE "Please re-enter your university:" TO OUTPUT-BUFFER
             PERFORM DUAL-OUTPUT
             MOVE "Y" TO EOF
         END-IF
