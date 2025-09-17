@@ -1,0 +1,40 @@
+Create New Account
+persist
+Persist1!
+Log In
+persist
+Persist1!
+Profile
+First
+Last
+Uni
+Major
+2027
+Persist profile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+View Profile
+Log Out
+Log In
+persist
+Persist1!
+View Profile

@@ -171,6 +171,12 @@ python3 tools/test_runner.py tests/InCollege-Test.txt
 
 # Run with default test file
 python3 tools/test_runner.py
+
+# Export per-test inputs/outputs for a suite
+python3 tools/test_runner.py --export tests/InCollege-ViewProfile-Tests.txt
+
+# Run ALL test files and export inputs/outputs (quote the asterisk)
+python3 tools/test_runner.py --export "*"
 ```
 
 #### Example Output:
@@ -194,3 +200,14 @@ Summary: 2 passed, 1 failed, 3 total
 3. Match expected output exactly to program prompts and messages
 4. Test both success scenarios and validation/error cases
 5. Run tests frequently during development to catch regressions
+
+### Exporting Test Inputs/Outputs
+
+- Use the `--export` flag to write each test case's raw input and actual output to the project root under `export/`.
+- File layout:
+  - `export/input/<testfile-stem>-<case-number>.txt`
+  - `export/output/<testfile-stem>-<case-number>.txt`
+- The `<testfile-stem>` is the test file name without the `.txt` extension, and `<case-number>` is the 1-based index within that file.
+- To export for all test files in `tests/`, run (note the quotes to avoid shell glob expansion):
+  - `python3 tools/test_runner.py --export "*"`
+- Running export multiple times overwrites existing files of the same name.

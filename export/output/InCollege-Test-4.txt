@@ -1,0 +1,24 @@
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp3
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, tmp3
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View Profile
+Enter your choice:

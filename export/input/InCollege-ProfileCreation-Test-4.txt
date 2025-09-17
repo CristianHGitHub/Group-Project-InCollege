@@ -1,0 +1,34 @@
+Create New Account
+testuser7
+TestPass7!
+Log In
+testuser7
+TestPass7!
+Profile
+Eva
+Turner
+National University
+Data Science
+2028
+Data enthusiast.
+Data Intern
+Data Co
+Summer 2026
+Worked on datasets.
+Research Fellow
+University Lab
+2025-2026
+Published paper.
+Tutor
+Freelance
+2024-2025
+Coached students.
+B.Sc Data Science
+National University
+2024-2028
+Certificate ML
+Coursera
+2025
+Diploma Stats
+Community Institute
+2023-2024

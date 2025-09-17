@@ -2,6 +2,7 @@
 import os
 import subprocess
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import List
 
 
@@ -87,7 +88,7 @@ def read_lines(path: str) -> List[str]:
         return [rtrim(l) for l in f.readlines()]
 
 
-def run_tests(test_file: str) -> int:
+def run_tests(test_file: str, export: bool = False) -> int:
     tests = parse_tests(test_file)
     if not tests:
         print(f"No tests found in {test_file}")
@@ -98,6 +99,15 @@ def run_tests(test_file: str) -> int:
         print("bin/InCollege not found. Build the project first (e.g., make).")
 
     start_cwd = os.getcwd()
+    # Prepare export directories (in repo root) if requested
+    export_root = Path(start_cwd) / "export"
+    export_in_dir = export_root / "input"
+    export_out_dir = export_root / "output"
+    testfile_stem = Path(test_file).name
+    testfile_stem = Path(testfile_stem).stem  # base name without extension
+    if export:
+        export_in_dir.mkdir(parents=True, exist_ok=True)
+        export_out_dir.mkdir(parents=True, exist_ok=True)
     os.chdir("bin")
     in_path = "../data/InCollege-Input.txt"
     out_path = "../data/InCollege-Output.txt"
@@ -117,9 +127,18 @@ def run_tests(test_file: str) -> int:
         except subprocess.CalledProcessError as e:
             print(f"  ERROR: InCollege exited with code {e.returncode}")
             failed += 1
+            # Export input (only) for crash cases if requested
+            if export:
+                case_name = f"{testfile_stem}-{idx}.txt"
+                write_lines(str(export_in_dir / case_name), tc.input_lines)
             continue
 
         actual = read_lines(out_path)
+        # Export input and actual output if requested
+        if export:
+            case_name = f"{testfile_stem}-{idx}.txt"
+            write_lines(str(export_in_dir / case_name), tc.input_lines)
+            write_lines(str(export_out_dir / case_name), actual)
         exp = tc.expected_lines
         max_len = max(len(exp), len(actual))
         ok = True
@@ -152,5 +171,20 @@ if __name__ == "__main__":
     import argparse
     p = argparse.ArgumentParser(description="InCollege test runner (Python)")
     p.add_argument("test_file", nargs="?", default="tests/InCollege-Test.txt", help="Path to test file")
+    p.add_argument("--export", action="store_true", help="Export per-test input/output under ./export/{input,output}")
     args = p.parse_args()
-    raise SystemExit(run_tests(args.test_file))
+    # If user specifies '*' (must be quoted to avoid shell globbing), run all test files under tests/
+    if args.test_file == "*":
+        test_dir = Path("tests")
+        all_tests = sorted(str(p) for p in test_dir.glob("*.txt"))
+        if not all_tests:
+            print("No test files found in ./tests")
+            raise SystemExit(1)
+        overall_rc = 0
+        for tf in all_tests:
+            rc = run_tests(tf, export=args.export)
+            if rc != 0:
+                overall_rc = 1
+        raise SystemExit(overall_rc)
+    else:
+        raise SystemExit(run_tests(args.test_file, export=args.export))

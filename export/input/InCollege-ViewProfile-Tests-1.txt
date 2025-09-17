@@ -1,0 +1,35 @@
+Create New Account
+viewfull
+ViewFull1!
+Log In
+viewfull
+ViewFull1!
+Profile
+John
+Doe
+University of South Florida
+Computer Science
+2025
+I am a passionate computer science student with experience in software development.
+Software Intern
+Tech Solutions Inc
+Summer 2024
+Developed web applications using modern frameworks and collaborated with cross-functional teams.
+Research Assistant
+University Lab
+Spring 2024
+Conducted research on machine learning algorithms and published findings in academic journals.
+Teaching Assistant
+Computer Science Department
+Fall 2023
+Assisted professors with grading and tutoring students in programming courses.
+Bachelor of Science
+University of South Florida
+2021-2025
+Associate of Arts
+Community College
+2019-2021
+High School Diploma
+Local High School
+2015-2019
+View Profile

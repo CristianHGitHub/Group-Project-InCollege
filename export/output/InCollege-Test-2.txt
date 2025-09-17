@@ -1,0 +1,7 @@
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Password must be between 8 and 12 characters long.

@@ -1,0 +1,13 @@
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp3
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Username tmp3 already exists.

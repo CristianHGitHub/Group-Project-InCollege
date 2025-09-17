@@ -1,0 +1,75 @@
+Create New Account
+isolateA
+IsoA1one!
+Log In
+isolateA
+IsoA1one!
+Profile
+A
+One
+Uni A
+Major A
+2025
+About A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+isolateB
+IsoB1two!
+Log In
+isolateB
+IsoB1two!
+Profile
+B
+Two
+Uni B
+Major B
+2026
+About B
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+View Profile
+Log Out
+Log In
+isolateA
+IsoA1one!
+View Profile

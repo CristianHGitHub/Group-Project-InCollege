@@ -1,0 +1,36 @@
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for noview
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, noview
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View Profile
+Enter your choice:
+--- Your Profile ---
+Name:
+University:
+Major:
+Graduation Year:
+About Me:
+Experience:
+Education:
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View Profile
+Enter your choice:

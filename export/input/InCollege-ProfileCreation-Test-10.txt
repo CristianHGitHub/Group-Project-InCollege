@@ -1,0 +1,34 @@
+Create New Account
+testuser8
+TestPass8!
+Log In
+testuser8
+TestPass8!
+Profile
+Frank
+Miller
+Tech University
+Software Engineering
+2024
+Aspiring software engineer.
+Junior Developer
+StartupCorp
+2023-2024
+Built mobile applications.
+
+
+
+
+Bachelor of Science
+Tech University
+2020-2024
+Associate Degree
+Community College
+2018-2020
+
+
+
+
+
+
+

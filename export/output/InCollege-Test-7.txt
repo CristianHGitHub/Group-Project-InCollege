@@ -1,0 +1,27 @@
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for tmp1
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, tmp1
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View Profile
+Enter your choice:
+Job search/internship is under construction.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View Profile
+Enter your choice:

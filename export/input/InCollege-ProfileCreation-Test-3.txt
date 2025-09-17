@@ -1,0 +1,35 @@
+Create New Account
+testnouni
+TestPass1!
+Log In
+testnouni
+TestPass1!
+Profile
+Bob
+Clark
+
+Mathematics
+2026
+Another short bio.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+View Profile
