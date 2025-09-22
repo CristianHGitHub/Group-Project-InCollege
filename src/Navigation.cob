@@ -106,6 +106,7 @@ SHOW-MENU.
             EXIT PARAGRAPH
     END-EVALUATE
     ADD 1 TO L-INDEX
+        END-ADD
     IF L-INDEX > 5
         MOVE "Y" TO L-DONE
     END-IF
@@ -128,6 +129,7 @@ SHOW-SKILLS.
             EXIT PARAGRAPH
     END-EVALUATE
     ADD 1 TO L-INDEX
+        END-ADD
     IF L-INDEX > 7
         MOVE "Y" TO L-DONE
     END-IF
@@ -181,6 +183,7 @@ SHOW-CREATE-PROFILE.
             EXIT PARAGRAPH
     END-EVALUATE
     ADD 1 TO L-INDEX
+        END-ADD
     IF L-INDEX > 32
         MOVE "Y" TO L-DONE
     END-IF
