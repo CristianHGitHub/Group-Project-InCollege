@@ -9,24 +9,27 @@
 
 1. Using a Dev Container in VS Code, open `src/InCollege.cob`.
 2. Build the program by pressing `Ctrl+Shift+B`.
-    This will create a binary executable in the `/bin` directory.
+   This will create a binary executable in the `/bin` directory.
 3. In the terminal, navigate to the `/bin` directory and run the program:
-    ```sh
-    ./InCollege
-    ```
+   ```sh
+   ./InCollege
+   ```
 
 ### Contribution Guidelines
+
 - Create a new branch for each Jira story, following the naming convention `SCRUM-<story-number>`. Commit all relevant changes to this branch. When the story is complete, open a pull request to merge the changes into the `develop` branch. After the merge into `develop`, conduct additional testing to ensure that the merge did not introduce any issues. Then, open a pull request to merge `develop` into `main`.
 - Please conduct at least minimal testing of your changes before submitting a pull request.
 
 ### Preparation of Input File `InCollege-Input.txt` for Testing
 
 The input file should contain commands for the program to execute. Each command should be on a new line. Initially, the input file would require that arguments are passed along with the command on the same line (e.g. LOGIN|nick,PASWRD123!). Although this was easier to parse and handle errors for, it doesn't allow for the type of natural language output that we need in order to match the sample provided in the assignment guidelines. In its current form, it mimics CLI input by users in an interactive session, where input is collected sequentially in response to certain prompts (e.g. Enter your choice: ). We can revise it as necessary if we decide that it isn't efficient enough for testing. To improve testing, there's a hidden Log Out command that can be used at any point in the input to act as a reset, allowing multiple input sequences to be tested from one input file during the same execution of the program. Below are some examples of valid input sequences with the current format:
+
 ```
 Create New Account
 nick
 PASWRD123!
 ```
+
 ```
 Log In
 nick
@@ -36,15 +39,63 @@ Job
 
 Note: The Log In and Create New Account commands should be followed by a username and password on separate lines. The Log In sequence will fail if the account does not have a corresponding record in `AccountRecords.txt`.
 
+### View My Profile Feature
+
+The View My Profile feature allows logged-in users to view their complete profile information. The feature displays:
+
+- **Personal Information**: First name, last name, university, major, graduation year
+- **About Me**: Optional personal description
+- **Experience**: Up to 3 work experience entries (title, company, dates, description)
+- **Education**: Up to 3 education entries (degree, university, years)
+
+#### Key Features:
+
+- **Unified Output**: Every line shown on console is written identically to the output file
+- **Smart Display**: Shows "None" for empty experience/education sections
+- **Missing Profile Handling**: Displays "You have not created a profile yet." for users without profiles
+- **Consistent Formatting**: Uses standard headers and separators for readability
+
+#### Profile Data Format:
+
+Profiles are stored in `ProfileRecords.txt` using pipe-delimited format:
+
+```
+username|first_name|last_name|university|major|grad_year|about_me|exp1_title|exp1_company|exp1_dates|exp1_desc|exp2_title|...|edu3_years
+```
+
+#### Sample Output:
+
+```
+--- Your Profile ---
+Name: John Doe
+University: University of South Florida
+Major: Computer Science
+Graduation Year: 2025
+About Me: Passionate about software development.
+Experience:
+  Title: Software Intern
+  Company: Tech Solutions Inc
+  Dates: Summer 2024
+  Description: Developed web applications using modern frameworks.
+Education:
+  Degree: Bachelor of Science
+  University: University of South Florida
+  Years: 2021-2025
+--------------------
+Returning to Main Menu...
+```
+
 ## 🚀 Quick Start & Build Instructions
 
 ### Prerequisites
+
 - **GnuCOBOL (cobc)** - COBOL compiler for free format support
 - **Make** (Linux/Unix/macOS) or **Command Prompt** (Windows)
 
 ### Build Commands
 
 #### 🐧 Linux/Unix/macOS
+
 ```bash
 # Build and compile the project
 make
@@ -66,6 +117,7 @@ make help
 ```
 
 #### 🪟 Windows
+
 ```cmd
 # Build, compile, and run with output
 build.bat
@@ -75,6 +127,7 @@ clean.bat
 ```
 
 ### 📁 Project Structure
+
 ```
 workspace/
 ├── Makefile              # Linux/Unix build configuration
@@ -85,16 +138,21 @@ workspace/
 │   ├── CreateAccount.cob # Account creation module
 │   ├── Login.cob         # Login module
 │   ├── Navigation.cob    # Navigation module
+│   ├── ViewProfile.cob   # Profile viewing module
+│   ├── ProfileStorage.cob # Profile storage module
+│   ├── PROFILE-STORAGE-LOAD.cob # Profile loading module
 │   └── copy/             # Copybook directory
 │       └── AccountRecord.cpy
 ├── bin/                  # Generated executables
 └── data/                 # Data files
     ├── InCollege-Input.txt
     ├── InCollege-Output.txt
-    └── AccountRecords.txt
+    ├── AccountRecords.txt
+    └── ProfileRecords.txt
 ```
 
 ### ⚡ Single Line Commands
+
 ```bash
 # Quick build and test
 make && make run-test
@@ -137,6 +195,7 @@ End
 ```
 
 #### Key Components:
+
 - **Test:** Brief description of the test case
 - **ResetAccounts:** Whether to clear `AccountRecords.txt` before running this test
 - **Input:** Sequential commands that simulate user interaction
@@ -144,6 +203,7 @@ End
 - **End:** Marks the end of the test case
 
 #### Test Files Location
+
 ```
 tests/
 ├── InCollege-Test.txt                    # Basic functionality tests
@@ -156,12 +216,14 @@ tests/
 The `tools/test_runner.py` script automates test execution and validation:
 
 #### Features:
+
 - **Automated Execution:** Runs the InCollege binary with test input files
 - **Output Comparison:** Compares actual program output with expected results line-by-line
 - **Account Reset:** Optionally clears account data between tests
 - **Detailed Reporting:** Shows pass/fail status and highlights mismatches
 
 #### Usage:
+
 ```bash
 # Run all profile creation tests
 python3 tools/test_runner.py tests/InCollege-ProfileCreation-Test.txt
@@ -180,6 +242,7 @@ python3 tools/test_runner.py --export "*"
 ```
 
 #### Example Output:
+
 ```
 [1/3] Create complete profile with all fields
   PASS (86 lines)
@@ -195,6 +258,7 @@ Summary: 2 passed, 1 failed, 3 total
 ```
 
 #### Writing New Tests:
+
 1. Create test cases in the appropriate test file using the standard format
 2. Ensure input sequences provide all required data (profile creation needs 27+ input lines)
 3. Match expected output exactly to program prompts and messages
