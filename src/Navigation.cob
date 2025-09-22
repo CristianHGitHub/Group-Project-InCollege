@@ -46,7 +46,7 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
 
         WHEN "FIND"
             IF L-MENU = "MAIN"
-                MOVE "Find someone you know is under construction." TO L-OUT
+                MOVE "Enter the full name of the person you are looking for:" TO L-OUT
             ELSE
                 MOVE "Invalid option" TO L-OUT
             END-IF
@@ -98,7 +98,7 @@ SHOW-MENU.
         WHEN 1  MOVE "Find someone you know" TO L-OUT
         WHEN 2  MOVE "Learn a new skill"     TO L-OUT
         WHEN 3  MOVE "Create/Edit Profile"   TO L-OUT
-        WHEN 4  MOVE "View Profile"          TO L-OUT
+        WHEN 4  MOVE "View My Profile"       TO L-OUT
         WHEN 5  MOVE "Enter your choice:"    TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
