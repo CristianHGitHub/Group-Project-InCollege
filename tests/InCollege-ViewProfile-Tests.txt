@@ -55,7 +55,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -122,7 +122,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: John Doe
@@ -131,14 +131,35 @@ Major: Computer Science
 Graduation Year: 2025
 About Me: I am a passionate computer science student with experience in software development.
 Experience:
+  Title: Software Intern
+  Company: Tech Solutions Inc
+  Dates: Summer 2024
+  Description: Developed web applications using modern frameworks and collaborated with cross-functional teams.
+  Title: Research Assistant
+  Company: University Lab
+  Dates: Spring 2024
+  Description: Conducted research on machine learning algorithms and published findings in academic journals.
+  Title: Teaching Assistant
+  Company: Computer Science Department
+  Dates: Fall 2023
+  Description: Assisted professors with grading and tutoring students in programming courses.
 Education:
+  Degree: Bachelor of Science
+  University: University of South Florida
+  Years: 2021-2025
+  Degree: Associate of Arts
+  University: Community College
+  Years: 2019-2021
+  Degree: High School Diploma
+  University: Local High School
+  Years: 2015-2019
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -199,7 +220,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -266,7 +287,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: Alice Smith
@@ -275,14 +296,16 @@ Major: Mathematics
 Graduation Year: 2026
 About Me:
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 Test: View profile before creating any profile
@@ -314,23 +337,14 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
---- Your Profile ---
-Name:
-University:
-Major:
-Graduation Year:
-About Me:
-Experience:
-Education:
---------------------
-Returning to Main Menu...
+You have not created a profile yet.
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -408,7 +422,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -475,7 +489,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -484,14 +498,16 @@ Major: Major
 Graduation Year: 2027
 About Me: Persist profile
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -505,7 +521,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -514,14 +530,16 @@ Major: Major
 Graduation Year: 2027
 About Me: Persist profile
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -622,7 +640,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -689,7 +707,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -709,7 +727,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -776,7 +794,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: B Two
@@ -785,14 +803,16 @@ Major: Major B
 Graduation Year: 2026
 About Me: About B
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -806,7 +826,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: A One
@@ -815,14 +835,16 @@ Major: Major A
 Graduation Year: 2025
 About Me: About A
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -883,7 +905,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -950,7 +972,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: Amy Lee
@@ -959,14 +981,16 @@ Major: Math
 Graduation Year: 2028
 About Me: Hello there
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -1028,7 +1052,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1095,7 +1119,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: Dan Stone
@@ -1104,14 +1128,16 @@ Major: CS
 Graduation Year: 2029
 About Me:
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: Dan Stone
@@ -1120,13 +1146,15 @@ Major: CS
 Graduation Year: 2029
 About Me:
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End

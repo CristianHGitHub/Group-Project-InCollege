@@ -25,6 +25,9 @@ WORKING-STORAGE SECTION.
 COPY "AccountRecord.cpy".
 01  EOF                PIC X(1) VALUE "N".
 01  CREATE-RESPONSE    PIC X(100).
+01  SEARCH-NAME        PIC X(205).
+01  FOUND-FLAG         PIC X    VALUE "N".
+01  FOUND-USERNAME     PIC X(50).
 01  CREATE-STATUS      PIC X(1) VALUE "N".
 01  LOGIN-RESPONSE     PIC X(100).
 01  LOGIN-STATUS       PIC X(1) VALUE "N".
@@ -42,6 +45,7 @@ COPY "AccountRecord.cpy".
 01  YEAR-LEN           PIC 99.
 01  YEAR-NUMERIC       PIC X VALUE "N".
 01  IDX                PIC 9 VALUE 0.
+01  VIEW-MODE          PIC X(10).
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -187,14 +191,55 @@ PROCEDURE DIVISION.
                         MOVE "SHOW-MENU"  TO NAV-ACTION
                         PERFORM NAV-PRINT-LOOP
 
-                    WHEN "Find"
-                        MOVE 0        TO NAV-INDEX
-                        MOVE "FIND"   TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
-                        *> re-display main menu
-                        MOVE 0            TO NAV-INDEX
-                        MOVE "SHOW-MENU"  TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+
+                   WHEN "Find"
+                       MOVE 0            TO NAV-INDEX
+                       MOVE "FIND"       TO NAV-ACTION
+                       PERFORM NAV-PRINT-LOOP
+                       READ INFILE
+                           AT END MOVE "Y" TO EOF
+                           NOT AT END MOVE IN-REC TO SEARCH-NAME
+                       END-READ
+
+                       IF EOF NOT = "Y"
+                           CALL 'SEARCHPROFILE' USING SEARCH-NAME FOUND-FLAG FOUND-USERNAME
+                           IF FOUND-FLAG = "Y"
+                               MOVE "---Found User Profile---" TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+
+                               MOVE FOUND-USERNAME TO AR-USERNAME
+                               PERFORM PROFILE-LOAD
+
+                               MOVE "SEARCH" TO VIEW-MODE
+                               CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING VIEW-MODE
+
+                               *> Separator and return message
+                               MOVE "--------------------" TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+                               MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+
+                               MOVE "MAIN" TO CURRENT-MENU
+                               MOVE 0            TO NAV-INDEX
+                               MOVE "SHOW-MENU"  TO NAV-ACTION
+                               PERFORM NAV-PRINT-LOOP
+                           ELSE
+                               MOVE "No one by that name could be found." TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+
+                               *> Separator and return message
+                               MOVE "--------------------" TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+                               MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+
+                               MOVE "MAIN" TO CURRENT-MENU
+                               MOVE 0            TO NAV-INDEX
+                               MOVE "SHOW-MENU"  TO NAV-ACTION
+                               PERFORM NAV-PRINT-LOOP
+                           END-IF
+                       END-IF
+
 
                     WHEN "Skills"
                         MOVE "SKILLS" TO CURRENT-MENU
@@ -212,7 +257,8 @@ PROCEDURE DIVISION.
                    WHEN "View Profile"
                         IF LOGIN-STATUS = "Y"
                             PERFORM PROFILE-LOAD
-                            CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING
+                            MOVE "SELF" TO VIEW-MODE
+                            CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING VIEW-MODE
                             MOVE "MAIN" TO CURRENT-MENU
                             MOVE 0            TO NAV-INDEX
                             MOVE "SHOW-MENU"  TO NAV-ACTION

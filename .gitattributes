@@ -1,0 +1,16 @@
+# Enforce consistent, cross-platform line endings
+
+# Default: normalize text files with LF in repo and checkout
+* text=auto eol=lf
+
+# COBOL sources and copybooks (must be LF)
+*.cob text eol=lf
+*.cpy text eol=lf
+
+# Scripts and build files
+*.sh text eol=lf
+Makefile text eol=lf
+
+# Windows batch scripts keep CRLF for compatibility
+*.bat text eol=crlf
+
