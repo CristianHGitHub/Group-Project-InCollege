@@ -58,7 +58,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -95,7 +95,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -212,14 +212,14 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 Job search/internship is under construction.
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -254,7 +254,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 Learn a New Skill:
 Skill 1
@@ -277,7 +277,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 End
 
@@ -310,8 +310,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 Welcome to InCollege!
 End
-
