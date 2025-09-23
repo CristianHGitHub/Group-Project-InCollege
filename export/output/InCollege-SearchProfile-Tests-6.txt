@@ -106,7 +106,16 @@ Create/Edit Profile
 View My Profile
 Enter your choice:
 Enter the full name of the person you are looking for:
-No one by that name could be found.
+---Found User Profile---
+Name: Jane Doe
+University: State University
+Major: Biology
+Graduation Year: 2028
+About Me: Hello from Jane
+Experience:
+  None
+Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job

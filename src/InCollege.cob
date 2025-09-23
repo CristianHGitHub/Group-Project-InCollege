@@ -83,12 +83,17 @@ PROCEDURE DIVISION.
 
                 EVALUATE IN-REC
                     WHEN "Log Out"
-                        MOVE "N" TO LOGIN-STATUS
-                        MOVE "MAIN" TO CURRENT-MENU
-                        MOVE 0 TO NAV-INDEX
-                        MOVE SPACES TO NAV-ACTION
-                        MOVE 'Welcome to InCollege!' TO OUTPUT-BUFFER
-                        PERFORM DUAL-OUTPUT
+                        IF LOGIN-STATUS = "Y"
+                            MOVE "N" TO LOGIN-STATUS
+                            MOVE "MAIN" TO CURRENT-MENU
+                            MOVE 0 TO NAV-INDEX
+                            MOVE SPACES TO NAV-ACTION
+                            MOVE 'Welcome to InCollege!' TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN "Create New Account"
                         IF LOGIN-STATUS = "N"
@@ -178,81 +183,106 @@ PROCEDURE DIVISION.
 
                     *> Navigation commands
                     WHEN "Menu"
-                        MOVE 0            TO NAV-INDEX
-                        MOVE "SHOW-MENU"  TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF LOGIN-STATUS = "Y"
+                            MOVE 0            TO NAV-INDEX
+                            MOVE "SHOW-MENU"  TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN "Job"
-                        MOVE 0        TO NAV-INDEX
-                        MOVE "JOB"    TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
-                        *> re-display main menu
-                        MOVE 0            TO NAV-INDEX
-                        MOVE "SHOW-MENU"  TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF LOGIN-STATUS = "Y"
+                            MOVE 0        TO NAV-INDEX
+                            MOVE "JOB"    TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                            *> re-display main menu
+                            MOVE 0            TO NAV-INDEX
+                            MOVE "SHOW-MENU"  TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
 
                    WHEN "Find"
-                       MOVE 0            TO NAV-INDEX
-                       MOVE "FIND"       TO NAV-ACTION
-                       PERFORM NAV-PRINT-LOOP
-                       READ INFILE
-                           AT END MOVE "Y" TO EOF
-                           NOT AT END MOVE IN-REC TO SEARCH-NAME
-                       END-READ
+                       IF LOGIN-STATUS = "Y"
+                           MOVE 0            TO NAV-INDEX
+                           MOVE "FIND"       TO NAV-ACTION
+                           PERFORM NAV-PRINT-LOOP
+                           READ INFILE
+                               AT END MOVE "Y" TO EOF
+                               NOT AT END MOVE IN-REC TO SEARCH-NAME
+                           END-READ
 
-                       IF EOF NOT = "Y"
-                           CALL 'SEARCHPROFILE' USING SEARCH-NAME FOUND-FLAG FOUND-USERNAME
-                           IF FOUND-FLAG = "Y"
-                               MOVE "---Found User Profile---" TO OUTPUT-BUFFER
-                               PERFORM DUAL-OUTPUT
+                           IF EOF NOT = "Y"
+                               CALL 'SEARCHPROFILE' USING SEARCH-NAME FOUND-FLAG FOUND-USERNAME
+                               IF FOUND-FLAG = "Y"
+                                   MOVE "---Found User Profile---" TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
 
-                               MOVE FOUND-USERNAME TO AR-USERNAME
-                               PERFORM PROFILE-LOAD
+                                   MOVE FOUND-USERNAME TO AR-USERNAME
+                                   PERFORM PROFILE-LOAD
 
-                               MOVE "SEARCH" TO VIEW-MODE
-                               CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING VIEW-MODE
+                                   MOVE "SEARCH" TO VIEW-MODE
+                                   CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING VIEW-MODE
 
-                               *> Separator and return message
-                               MOVE "--------------------" TO OUTPUT-BUFFER
-                               PERFORM DUAL-OUTPUT
-                               MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
-                               PERFORM DUAL-OUTPUT
+                                   *> Separator and return message
+                                   MOVE "--------------------" TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
+                                   MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
 
-                               MOVE "MAIN" TO CURRENT-MENU
-                               MOVE 0            TO NAV-INDEX
-                               MOVE "SHOW-MENU"  TO NAV-ACTION
-                               PERFORM NAV-PRINT-LOOP
-                           ELSE
-                               MOVE "No one by that name could be found." TO OUTPUT-BUFFER
-                               PERFORM DUAL-OUTPUT
+                                   MOVE "MAIN" TO CURRENT-MENU
+                                   MOVE 0            TO NAV-INDEX
+                                   MOVE "SHOW-MENU"  TO NAV-ACTION
+                                   PERFORM NAV-PRINT-LOOP
+                               ELSE
+                                   MOVE "No one by that name could be found." TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
 
-                               *> Separator and return message
-                               MOVE "--------------------" TO OUTPUT-BUFFER
-                               PERFORM DUAL-OUTPUT
-                               MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
-                               PERFORM DUAL-OUTPUT
+                                   *> Separator and return message
+                                   MOVE "--------------------" TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
+                                   MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
 
-                               MOVE "MAIN" TO CURRENT-MENU
-                               MOVE 0            TO NAV-INDEX
-                               MOVE "SHOW-MENU"  TO NAV-ACTION
-                               PERFORM NAV-PRINT-LOOP
+                                   MOVE "MAIN" TO CURRENT-MENU
+                                   MOVE 0            TO NAV-INDEX
+                                   MOVE "SHOW-MENU"  TO NAV-ACTION
+                                   PERFORM NAV-PRINT-LOOP
+                               END-IF
                            END-IF
+                       ELSE
+                           MOVE "Invalid option" TO OUTPUT-BUFFER
+                           PERFORM DUAL-OUTPUT
                        END-IF
 
 
                     WHEN "Skills"
-                        MOVE "SKILLS" TO CURRENT-MENU
-                        MOVE 0              TO NAV-INDEX
-                        MOVE "SHOW-SKILLS"  TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF LOGIN-STATUS = "Y"
+                            MOVE "SKILLS" TO CURRENT-MENU
+                            MOVE 0              TO NAV-INDEX
+                            MOVE "SHOW-SKILLS"  TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN "Profile"
-                        MOVE "CREATE-PROFILE" TO CURRENT-MENU
-                        MOVE 0         TO NAV-INDEX
-                        MOVE "SHOW-CREATE-PROFILE" TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
-                        PERFORM PROFILE-INPUT-PROCESS
+                        IF LOGIN-STATUS = "Y"
+                            MOVE "CREATE-PROFILE" TO CURRENT-MENU
+                            MOVE 0         TO NAV-INDEX
+                            MOVE "SHOW-CREATE-PROFILE" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                            PERFORM PROFILE-INPUT-PROCESS
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                    WHEN "View Profile"
                         IF LOGIN-STATUS = "Y"
@@ -269,7 +299,7 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Skill-1"
-                        IF CURRENT-MENU = "SKILLS"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "SKILLS"
                             MOVE 0         TO NAV-INDEX
                             MOVE "SKILL-1" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
@@ -283,7 +313,7 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Skill-2"
-                        IF CURRENT-MENU = "SKILLS"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "SKILLS"
                             MOVE 0         TO NAV-INDEX
                             MOVE "SKILL-2" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
@@ -296,7 +326,7 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Skill-3"
-                        IF CURRENT-MENU = "SKILLS"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "SKILLS"
                             MOVE 0         TO NAV-INDEX
                             MOVE "SKILL-3" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
@@ -309,7 +339,7 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Skill-4"
-                        IF CURRENT-MENU = "SKILLS"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "SKILLS"
                             MOVE 0         TO NAV-INDEX
                             MOVE "SKILL-4" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
@@ -322,7 +352,7 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Skill-5"
-                        IF CURRENT-MENU = "SKILLS"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "SKILLS"
                             MOVE 0         TO NAV-INDEX
                             MOVE "SKILL-5" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
@@ -335,7 +365,7 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "1"
-                        IF CURRENT-MENU = "PROFILE"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "PROFILE"
                             MOVE "CREATE-PROFILE" TO CURRENT-MENU
                             MOVE 0         TO NAV-INDEX
                             MOVE "CREATE-PROFILE" TO NAV-ACTION
@@ -346,7 +376,7 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Create New Profile"
-                        IF CURRENT-MENU = "PROFILE"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "PROFILE"
                             MOVE "CREATE-PROFILE" TO CURRENT-MENU
                             MOVE 0         TO NAV-INDEX
                             MOVE "CREATE-PROFILE" TO NAV-ACTION
@@ -357,7 +387,7 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Save Profile"
-                        IF CURRENT-MENU = "CREATE-PROFILE"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "CREATE-PROFILE"
                             PERFORM PROFILE-INPUT-PROCESS
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
@@ -365,10 +395,15 @@ PROCEDURE DIVISION.
                         END-IF
 
                     WHEN "Back"
-                        MOVE "MAIN" TO CURRENT-MENU
-                        MOVE 0            TO NAV-INDEX
-                        MOVE "SHOW-MENU"  TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
+                        IF LOGIN-STATUS = "Y"
+                            MOVE "MAIN" TO CURRENT-MENU
+                            MOVE 0            TO NAV-INDEX
+                            MOVE "SHOW-MENU"  TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
 
                     WHEN OTHER
                         MOVE "Invalid option" TO OUTPUT-BUFFER

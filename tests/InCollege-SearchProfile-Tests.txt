@@ -173,6 +173,17 @@ View My Profile
 Enter your choice:
 End
 
+Test: Find while logged out (should be unavailable)
+ResetAccounts: yes
+Input:
+Find
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+End
 Test: Find with partial first name (no match)
 ResetAccounts: yes
 Input:

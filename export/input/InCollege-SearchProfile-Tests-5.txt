@@ -1,43 +1,8 @@
 Create New Account
-target
-Target1!
-Log In
-target
-Target1!
-Profile
-Jane
-Doe
-State University
-Biology
-2028
-Hello from Jane
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Log Out
-Create New Account
 searcher
 Search1!
 Log In
 searcher
 Search1!
 Find
-Jane Doe
+John Smith

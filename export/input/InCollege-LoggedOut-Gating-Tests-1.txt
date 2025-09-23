@@ -1,0 +1,9 @@
+Menu
+Job
+Skills
+Skill-1
+Profile
+Back
+Log Out
+Create New Profile
+Save Profile
