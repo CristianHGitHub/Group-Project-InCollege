@@ -1,0 +1,54 @@
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Enter your choice:
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Enter your choice:

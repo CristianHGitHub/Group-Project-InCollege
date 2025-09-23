@@ -192,41 +192,53 @@ PROCEDURE DIVISION.
                         PERFORM NAV-PRINT-LOOP
 
 
-                    WHEN "Find"
-                        MOVE 0            TO NAV-INDEX
-                        MOVE "FIND"      TO NAV-ACTION
-                        PERFORM NAV-PRINT-LOOP
-                        READ INFILE
-                            AT END MOVE "Y" TO EOF
-                            NOT AT END MOVE IN-REC TO SEARCH-NAME
-                        END-READ
+                   WHEN "Find"
+                       MOVE 0            TO NAV-INDEX
+                       MOVE "FIND"       TO NAV-ACTION
+                       PERFORM NAV-PRINT-LOOP
+                       READ INFILE
+                           AT END MOVE "Y" TO EOF
+                           NOT AT END MOVE IN-REC TO SEARCH-NAME
+                       END-READ
 
-                        IF EOF NOT = "Y"
-                            CALL 'SEARCHPROFILE' USING SEARCH-NAME FOUND-FLAG FOUND-USERNAME
-                            IF FOUND-FLAG = "Y"
-                                MOVE "---Found User Profile---" TO OUTPUT-BUFFER
-                                PERFORM DUAL-OUTPUT
+                       IF EOF NOT = "Y"
+                           CALL 'SEARCHPROFILE' USING SEARCH-NAME FOUND-FLAG FOUND-USERNAME
+                           IF FOUND-FLAG = "Y"
+                               MOVE "---Found User Profile---" TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
 
-                                MOVE FOUND-USERNAME TO AR-USERNAME
-                                PERFORM PROFILE-LOAD
+                               MOVE FOUND-USERNAME TO AR-USERNAME
+                               PERFORM PROFILE-LOAD
 
-                                MOVE "SEARCH" TO VIEW-MODE
-                                CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING VIEW-MODE
+                               MOVE "SEARCH" TO VIEW-MODE
+                               CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING VIEW-MODE
 
+                               *> Separator and return message
+                               MOVE "--------------------" TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+                               MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
 
-                            ELSE
-                                MOVE "No one by that name could be found." TO OUTPUT-BUFFER
-                                PERFORM DUAL-OUTPUT
-                                MOVE "MAIN" TO CURRENT-MENU
-                                MOVE 0            TO NAV-INDEX
-                                MOVE "SHOW-MENU"  TO NAV-ACTION
-                                PERFORM NAV-PRINT-LOOP
-                            END-IF
-                        END-IF
+                               MOVE "MAIN" TO CURRENT-MENU
+                               MOVE 0            TO NAV-INDEX
+                               MOVE "SHOW-MENU"  TO NAV-ACTION
+                               PERFORM NAV-PRINT-LOOP
+                           ELSE
+                               MOVE "No one by that name could be found." TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
 
+                               *> Separator and return message
+                               MOVE "--------------------" TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
+                               MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
+                               PERFORM DUAL-OUTPUT
 
-
-
+                               MOVE "MAIN" TO CURRENT-MENU
+                               MOVE 0            TO NAV-INDEX
+                               MOVE "SHOW-MENU"  TO NAV-ACTION
+                               PERFORM NAV-PRINT-LOOP
+                           END-IF
+                       END-IF
 
 
                     WHEN "Skills"

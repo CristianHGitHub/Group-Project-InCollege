@@ -1,4 +1,3 @@
 nick,PASWRD123!
-dat,PASSWRD123@
-cris,PASSWRD134#
 testuser,TestPass123!
+janesmith,JanePas1s!
