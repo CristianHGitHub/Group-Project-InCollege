@@ -4,37 +4,24 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for tmp2
+Account created for searcher
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, tmp2
+Welcome, searcher
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
 Enter your choice:
-Learn a New Skill:
-Skill 1
-Skill 2
-Skill 3
-Skill 4
-Skill 5
-Go Back
-Enter your choice:
-This skill is under construction.
-Learn a New Skill:
-Skill 1
-Skill 2
-Skill 3
-Skill 4
-Skill 5
-Go Back
-Enter your choice:
+Enter the full name of the person you are looking for:
+No one by that name could be found.
+--------------------
+Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill

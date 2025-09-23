@@ -16,21 +16,12 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
---- Your Profile ---
-Name:
-University:
-Major:
-Graduation Year:
-About Me:
-Experience:
-Education:
---------------------
-Returning to Main Menu...
+You have not created a profile yet.
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:

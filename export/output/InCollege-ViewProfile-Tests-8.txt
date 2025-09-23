@@ -16,7 +16,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -83,7 +83,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: Dan Stone
@@ -92,14 +92,16 @@ Major: CS
 Graduation Year: 2029
 About Me:
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: Dan Stone
@@ -108,12 +110,14 @@ Major: CS
 Graduation Year: 2029
 About Me:
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:

@@ -20,5 +20,5 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:

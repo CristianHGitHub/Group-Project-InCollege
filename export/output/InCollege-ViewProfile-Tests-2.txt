@@ -16,7 +16,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -83,7 +83,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: Alice Smith
@@ -92,12 +92,14 @@ Major: Mathematics
 Graduation Year: 2026
 About Me:
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:

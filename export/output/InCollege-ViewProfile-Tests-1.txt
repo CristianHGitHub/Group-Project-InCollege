@@ -16,7 +16,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -83,7 +83,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: John Doe
@@ -92,12 +92,33 @@ Major: Computer Science
 Graduation Year: 2025
 About Me: I am a passionate computer science student with experience in software development.
 Experience:
+  Title: Software Intern
+  Company: Tech Solutions Inc
+  Dates: Summer 2024
+  Description: Developed web applications using modern frameworks and collaborated with cross-functional teams.
+  Title: Research Assistant
+  Company: University Lab
+  Dates: Spring 2024
+  Description: Conducted research on machine learning algorithms and published findings in academic journals.
+  Title: Teaching Assistant
+  Company: Computer Science Department
+  Dates: Fall 2023
+  Description: Assisted professors with grading and tutoring students in programming courses.
 Education:
+  Degree: Bachelor of Science
+  University: University of South Florida
+  Years: 2021-2025
+  Degree: Associate of Arts
+  University: Community College
+  Years: 2019-2021
+  Degree: High School Diploma
+  University: Local High School
+  Years: 2015-2019
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:

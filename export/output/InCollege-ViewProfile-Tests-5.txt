@@ -16,7 +16,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -83,7 +83,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -92,14 +92,16 @@ Major: Major
 Graduation Year: 2027
 About Me: Persist profile
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -113,7 +115,7 @@ Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -122,12 +124,14 @@ Major: Major
 Graduation Year: 2027
 About Me: Persist profile
 Experience:
+  None
 Education:
+  None
 --------------------
 Returning to Main Menu...
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
-View Profile
+View My Profile
 Enter your choice:
