@@ -145,10 +145,13 @@ PROCEDURE DIVISION USING L-USERNAME L-PROFILE-DATA L-MODE.
         PERFORM DUAL-OUTPUT
     END-IF
 
-    MOVE "--------------------" TO OUTPUT-BUFFER
-    PERFORM DUAL-OUTPUT
-    MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
-    PERFORM DUAL-OUTPUT
+    *> Only print footer/separator when not invoked from SEARCH context.
+    IF FUNCTION TRIM(L-MODE) NOT = "SEARCH"
+        MOVE "--------------------" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+    END-IF
 
     GOBACK.
 
