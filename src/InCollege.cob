@@ -45,6 +45,11 @@ COPY "AccountRecord.cpy".
 01  YEAR-LEN           PIC 99.
 01  YEAR-NUMERIC       PIC X VALUE "N".
 01  IDX                PIC 9 VALUE 0.
+01  CONN-ACTION         PIC X(10).
+01  CONN-RESPONSE       PIC X(100).
+01  SEND_BOOL               PIC X(10).
+01  SAVED-USERNAME     PIC X(50).
+01  WS-EXISTS   PIC X VALUE "N".
 01  VIEW-MODE          PIC X(10).
 
 PROCEDURE DIVISION.
@@ -219,15 +224,37 @@ PROCEDURE DIVISION.
 
                            IF EOF NOT = "Y"
                                CALL 'SEARCHPROFILE' USING SEARCH-NAME FOUND-FLAG FOUND-USERNAME
+
                                IF FOUND-FLAG = "Y"
                                    MOVE "---Found User Profile---" TO OUTPUT-BUFFER
                                    PERFORM DUAL-OUTPUT
 
+                                   MOVE AR-USERNAME TO SAVED-USERNAME
                                    MOVE FOUND-USERNAME TO AR-USERNAME
                                    PERFORM PROFILE-LOAD
 
                                    MOVE "SEARCH" TO VIEW-MODE
                                    CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING VIEW-MODE
+
+
+                                   MOVE "Send Connection Request" TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
+                                   READ INFILE
+                                        AT END MOVE "Y" TO EOF
+                                        NOT AT END MOVE IN-REC TO SEND_BOOL
+                                      END-READ
+
+                                   IF EOF NOT = "Y"
+                                       IF FUNCTION UPPER-CASE(FUNCTION TRIM(SEND_BOOL)) = "SEND"
+                                           MOVE "SEND" TO CONN-ACTION
+
+                                           CALL 'CONNECTION' USING SAVED-USERNAME FOUND-USERNAME CONN-ACTION CONN-RESPONSE
+                                           MOVE CONN-RESPONSE TO OUTPUT-BUFFER
+                                           PERFORM DUAL-OUTPUT
+                                       END-IF
+                                   END-IF
+
+                                   MOVE SAVED-USERNAME TO AR-USERNAME
 
                                    *> Separator and return message
                                    MOVE "--------------------" TO OUTPUT-BUFFER
@@ -297,6 +324,19 @@ PROCEDURE DIVISION.
                             MOVE "Invalid option" TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
                         END-IF
+
+
+                   WHEN "Requests"
+                       IF LOGIN-STATUS = "Y"
+                           CALL 'VIEWREQUESTS' USING AR-USERNAME
+                       ELSE
+                           MOVE "Invalid option" TO OUTPUT-BUFFER
+                           PERFORM DUAL-OUTPUT
+                       END-IF
+                       MOVE 0            TO NAV-INDEX
+                       MOVE "SHOW-MENU"  TO NAV-ACTION
+                       PERFORM NAV-PRINT-LOOP
+
 
                     WHEN "Skill-1"
                         IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "SKILLS"
