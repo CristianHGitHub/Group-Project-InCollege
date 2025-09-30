@@ -1,5 +1,8 @@
 Log In
 testuser
 TestPass123!
+View Profile
 Find
 Tom O'Connor
+Send
+Requests

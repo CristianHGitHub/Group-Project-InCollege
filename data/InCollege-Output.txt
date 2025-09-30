@@ -5,13 +5,50 @@ Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, testuser
+Welcome, janesmith
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
-Enter your choice:
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Jane Smith
+University: Tech University
+Major: Information Systems
+Graduation Year: 2025
+About Me: N/A
+Experience:
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
 Enter the full name of the person you are looking for:
 ---Found User Profile---
 Name: Tom O'Connor
@@ -42,8 +79,8 @@ Education:
   Degree: N/A
   University: N/A
   Years: N/A
---------------------
-Returning to Main Menu...
+Send Connection Request
+Connection Request Sent to New Student
 --------------------
 Returning to Main Menu...
 Search for a job
@@ -51,4 +88,848 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+View My Pending Connection Requests
+Welcome to InCollege!
+Log In
+Create New Account
 Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, janesmith
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Jane Smith
+University: Tech University
+Major: Information Systems
+Graduation Year: 2025
+About Me: N/A
+Experience:
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You are already connected with this user.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, janesmith
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Jane Smith
+University: Tech University
+Major: Information Systems
+Graduation Year: 2025
+About Me: N/A
+Experience:
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You are already connected with this user.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Jane Smith
+University: Tech University
+Major: Information Systems
+Graduation Year: 2025
+About Me: N/A
+Experience:
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You cannot connect with yourself.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, janesmith
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Jane Smith
+University: Tech University
+Major: Information Systems
+Graduation Year: 2025
+About Me: N/A
+Experience:
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You are already connected with this user.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Jane Smith
+University: Tech University
+Major: Information Systems
+Graduation Year: 2025
+About Me: N/A
+Experience:
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You cannot connect with yourself.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, janesmith
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Jane Smith
+University: Tech University
+Major: Information Systems
+Graduation Year: 2025
+About Me: N/A
+Experience:
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You are already connected with this user.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, janesmith
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Jane Smith
+University: Tech University
+Major: Information Systems
+Graduation Year: 2025
+About Me: N/A
+Experience:
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You are already connected with this user.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Pending connection requests for janesmith
+No pending requests.
+End of connection requests.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You cannot connect with yourself.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Pending connection requests for testuser
+• From: janesmithrequests for testuser
+End of connection requests.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+You cannot connect with yourself.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Pending connection requests for testuser
+From: janesmithion requests for testuser
+End of connection requests.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+--- Your Profile ---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Tom O'Connor
+University: City College
+Major: Data Science
+Graduation Year: 2026
+About Me: Passionate about data, ML & AI!!! Loves Python, R, and SQL <3
+Experience:
+  Title: Intern
+  Company: DataCorp
+  Dates: Summer 2025
+  Description: Analyzed $$$ datasets & visualized trends
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+  Title: N/A
+  Company: N/A
+  Dates: N/A
+  Description: N/A
+Education:
+  Degree: Bachelor of Science
+  University: City College
+  Years: 2022-2026
+  Degree: N/A
+  University: N/A
+  Years: N/A
+  Degree: N/A
+  University: N/A
+  Years: N/A
+Send Connection Request
+
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
+Pending connection requests for testuser
+From: janesmithion requests for testuser
+End of connection requests.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+View My Pending Connection Requests
