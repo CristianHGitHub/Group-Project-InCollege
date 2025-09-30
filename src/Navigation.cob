@@ -24,6 +24,7 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             MOVE "MAIN" TO L-MENU
             PERFORM SHOW-MENU
 
+
         WHEN "SHOW-SKILLS"
             MOVE "SKILLS" TO L-MENU
             PERFORM SHOW-SKILLS
@@ -99,7 +100,9 @@ SHOW-MENU.
         WHEN 2  MOVE "Learn a new skill"     TO L-OUT
         WHEN 3  MOVE "Create/Edit Profile"   TO L-OUT
         WHEN 4  MOVE "View My Profile"       TO L-OUT
-        WHEN 5  MOVE "Enter your choice:"    TO L-OUT
+        WHEN 5  MOVE "View My Pending Connection Requests"  TO L-OUT
+        WHEN 6  MOVE "Enter your choice:"    TO L-OUT
+
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
