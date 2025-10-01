@@ -17,6 +17,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -78,12 +79,13 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -104,6 +106,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -165,12 +168,13 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 --- Your Profile ---
 Name: B Two
@@ -189,6 +193,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -203,6 +208,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 --- Your Profile ---
 Name: A One
@@ -221,4 +227,5 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:

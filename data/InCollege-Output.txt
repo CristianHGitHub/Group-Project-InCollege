@@ -6,18 +6,20 @@ Please enter your username:
 Please enter your password:
 You have successfully logged in.
 Welcome, testuser
-1. Search for a job
-2. Find someone you know
-3. Learn a new skill
-4. Create/Edit Profile
-5. View My Profile
-6. View My Pending Connection Requests
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+Enter your choice:
 Pending connection requests for testuser
 From: janesmith
 End of connection requests.
-1. Search for a job
-2. Find someone you know
-3. Learn a new skill
-4. Create/Edit Profile
-5. View My Profile
-6. View My Pending Connection Requests
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+Enter your choice:
