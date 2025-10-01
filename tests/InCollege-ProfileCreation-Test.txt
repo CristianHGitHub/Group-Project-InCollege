@@ -55,6 +55,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -122,6 +123,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 End
 Test: Missing last name should be rejected
@@ -182,6 +184,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -280,6 +283,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -378,6 +382,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -445,6 +450,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 End
 Profile saved successfully!
@@ -508,6 +514,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -608,6 +615,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -708,6 +716,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -775,6 +784,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 End
 Profile saved successfully!
@@ -846,6 +856,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -944,6 +955,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1001,6 +1013,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1068,6 +1081,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 End
 Profile saved successfully!
@@ -1131,6 +1145,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1198,6 +1213,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 End
 Profile saved successfully!
@@ -1261,6 +1277,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1328,6 +1345,7 @@ Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
+Requests
 Enter your choice:
 End
 Profile saved successfully!

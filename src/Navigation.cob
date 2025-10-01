@@ -94,13 +94,13 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
 SHOW-MENU.
     MOVE "N" TO L-DONE
     EVALUATE L-INDEX
-        WHEN 0  MOVE "1. Search for a job"      TO L-OUT
-        WHEN 1  MOVE "2. Find someone you know" TO L-OUT
-        WHEN 2  MOVE "3. Learn a new skill"     TO L-OUT
-        WHEN 3  MOVE "4. Create/Edit Profile"   TO L-OUT
-        WHEN 4  MOVE "5. View My Profile"       TO L-OUT
-        When 5  MOVE "6. View My Pending Connection Requests" TO L-OUT
-        WHEN 5  MOVE "Enter your choice:"    TO L-OUT
+        WHEN 0  MOVE "Search for a job"      TO L-OUT
+        WHEN 1  MOVE "Find someone you know" TO L-OUT
+        WHEN 2  MOVE "Learn a new skill"     TO L-OUT
+        WHEN 3  MOVE "Create/Edit Profile"   TO L-OUT
+        WHEN 4  MOVE "View My Profile"       TO L-OUT
+        WHEN 5  MOVE "Requests" TO L-OUT
+        WHEN 6  MOVE "Enter your choice:"    TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
@@ -108,7 +108,7 @@ SHOW-MENU.
     END-EVALUATE
     ADD 1 TO L-INDEX
         END-ADD
-    IF L-INDEX > 5
+    IF L-INDEX > 6
         MOVE "Y" TO L-DONE
     END-IF
     EXIT PARAGRAPH.
