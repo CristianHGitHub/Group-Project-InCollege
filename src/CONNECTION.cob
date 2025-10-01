@@ -1,163 +1,147 @@
-IDENTIFICATION DIVISION.
-PROGRAM-ID. CONNECTION.
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CONNECTION.
 
-ENVIRONMENT DIVISION.
-INPUT-OUTPUT SECTION.
-FILE-CONTROL.
-    SELECT CONNECTION-FILE ASSIGN TO '../data/ConnectionRecords.txt'
-        ORGANIZATION IS LINE SEQUENTIAL
-        FILE STATUS IS CONN-STAT.
-     SELECT OUTPUT-FILE ASSIGN TO '../data/InCollege-Output.txt'
-        ORGANIZATION IS LINE SEQUENTIAL.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CONNECTION-FILE
+               ASSIGN TO "../data/ConnectionRecords.txt"
+               ORGANIZATION IS LINE SEQUENTIAL
+               FILE STATUS IS CONN-STAT.
 
+       DATA DIVISION.
+       FILE SECTION.
+       FD  CONNECTION-FILE.
+       01  CONNECTION-RECORD.
+           05  CR-SENDER           PIC X(40).
+           05  CR-RECEIVER         PIC X(40).
 
-DATA DIVISION.
-FILE SECTION.
-FD  CONNECTION-FILE.
-01  CONNECTION-RECORD.
-    05  CR-SENDER         PIC X(80).
-    05  CR-RECEIVER       PIC X(80).
+       WORKING-STORAGE SECTION.
+       01  CONN-STAT               PIC XX   VALUE SPACES.
+       01  WS-MSG                  PIC X(120) VALUE SPACES.
+       01  WS-ACTION               PIC X(3)  VALUE SPACES.
 
-FD OUTPUT-FILE.
-01 OUT-REC PIC X(200).
+       *> validation helpers copied from your uploaded file’s approach
+       01  WS-EXISTS               PIC X     VALUE "N".
+       01  EOF-FLAG                PIC X     VALUE "N".
 
-WORKING-STORAGE SECTION.
-01  EOF PIC X VALUE "N".
-01 WS-MESSAGE PIC X(100).
-01  CONN-STAT        PIC XX.
-01  WS-EXISTS       PIC X VALUE "N".
-01 WS-OPENED PIC X VALUE "N".
+       LINKAGE SECTION.
+       01  L-SENDER                PIC X(40).
+       01  L-RECEIVER              PIC X(40).
+       01  L-ACTION                PIC X(20).
+       01  L-RESPONSE              PIC X(200).
 
+       PROCEDURE DIVISION USING L-SENDER L-RECEIVER L-ACTION L-RESPONSE.
 
-LINKAGE SECTION.
-01 L-SENDER      PIC X(80).
-01 L-RECEIVER    PIC X(80).
-01 L-ACTION      PIC X(20).
-01 L-RESPONSE     PIC X(100).
+      *> normalize the action like your code: only proceed on YES
+           MOVE FUNCTION UPPER-CASE(L-ACTION) TO WS-ACTION.
+           MOVE WS-ACTION(1:3)                TO WS-ACTION.
 
+           IF WS-ACTION NOT = "YES"
+              MOVE "Connection request canceled." TO L-RESPONSE
+              GOBACK
+           END-IF.
 
-PROCEDURE DIVISION USING L-SENDER L-RECEIVER L-ACTION L-RESPONSE.
-    EVALUATE FUNCTION TRIM(L-ACTION)
-        WHEN "SEND"
-            PERFORM SEND-REQUEST
-        WHEN "VIEW"
-            PERFORM VIEW-REQUEST
-    END-EVALUATE
+      *> ========== VALIDATIONS (mirroring your uploaded file) ==========
+      *> 1) Disallow self-connection (case/space-insensitive)
+           IF FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
+              = FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
+              MOVE "You cannot connect with yourself." TO L-RESPONSE
+              GOBACK
+           END-IF.
 
-    GOBACK.
+      *> 2) Duplicate check in BOTH directions (A->B or B->A already exists)
+           PERFORM CHECK-REQUEST-EXISTS
+           IF WS-EXISTS = "Y"
+              MOVE "You are already connected with this user." TO L-RESPONSE
+              GOBACK
+           END-IF.
+      *> ================================================================
 
-SEND-REQUEST.
-    IF FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
-     = FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
-      MOVE "You cannot connect with yourself." TO L-RESPONSE
-
-      EXIT PARAGRAPH
-    END-IF
-
-    PERFORM CHECK-REQUEST-EXISTS
-    IF WS-EXISTS = "Y"
-        MOVE "You are already connected with this user." TO L-RESPONSE
-        EXIT PARAGRAPH
-    END-IF
-
-
-    MOVE "N" TO WS-OPENED
-    OPEN EXTEND CONNECTION-FILE
-    IF CONN-STAT = "35"
-       OPEN OUTPUT CONNECTION-FILE
-       IF CONN-STAT = "00"
-           CLOSE CONNECTION-FILE
+      *>> Try to open for append; create if missing, same behavior as before
            OPEN EXTEND CONNECTION-FILE
-       END-IF
-    END-IF
+           EVALUATE CONN-STAT
+             WHEN "00"
+               CONTINUE
+             WHEN "35"
+               OPEN OUTPUT CONNECTION-FILE
+               IF CONN-STAT NOT = "00"
+                  MOVE "Error: cannot create connection file (status="
+                       TO WS-MSG
+                  STRING WS-MSG CONN-STAT ")" DELIMITED BY SIZE
+                         INTO L-RESPONSE
+                  GOBACK
+               END-IF
+               CLOSE CONNECTION-FILE
+               OPEN EXTEND CONNECTION-FILE
+               IF CONN-STAT NOT = "00"
+                  MOVE "Error: cannot reopen connection file (status="
+                       TO WS-MSG
+                  STRING WS-MSG CONN-STAT ")" DELIMITED BY SIZE
+                         INTO L-RESPONSE
+                  GOBACK
+               END-IF
+             WHEN OTHER
+               MOVE "Error: cannot open connection file (status="
+                    TO WS-MSG
+               STRING WS-MSG CONN-STAT ")" DELIMITED BY SIZE
+                      INTO L-RESPONSE
+               GOBACK
+           END-EVALUATE.
 
-    IF CONN-STAT = "00"
-        MOVE "Y" TO WS-OPENED
-    ELSE
-        MOVE "Error accessing connection records." TO L-RESPONSE
-        EXIT PARAGRAPH
-    END-IF
+      *>> Write the record once validations pass
+           MOVE L-SENDER   TO CR-SENDER
+           MOVE L-RECEIVER TO CR-RECEIVER
+           WRITE CONNECTION-RECORD
 
+           CLOSE CONNECTION-FILE
+           MOVE "Connection Request Sent to New Student" TO L-RESPONSE
 
+           GOBACK.
 
+      *>> ===================== SUPPORT PARAGRAPHS =======================
 
-    MOVE L-SENDER   TO CR-SENDER
-    MOVE L-RECEIVER TO CR-RECEIVER
-    WRITE CONNECTION-RECORD
-    IF WS-OPENED = "Y"
-        CLOSE CONNECTION-FILE
-        MOVE "N" TO WS-OPENED
-    END-IF
+       CHECK-REQUEST-EXISTS.
+           MOVE "N" TO WS-EXISTS
+           MOVE "N" TO EOF-FLAG
 
-    MOVE "Connection Request Sent to New Student" TO L-RESPONSE
+           OPEN INPUT CONNECTION-FILE
+           IF CONN-STAT = "35"
+              *>> file missing => no prior requests
+              EXIT PARAGRAPH
+           END-IF
+           IF CONN-STAT NOT = "00"
+              *>> treat as no duplicates (same as in your uploaded file)
+              EXIT PARAGRAPH
+           END-IF
 
-    EXIT PARAGRAPH.
-
-
-
-CHECK-REQUEST-EXISTS.
-    MOVE "N" TO WS-EXISTS
-    OPEN INPUT CONNECTION-FILE
-    IF CONN-STAT = "35"
-        *> File doesn't exist yet -> no requests
-        CLOSE CONNECTION-FILE
-        EXIT PARAGRAPH
-    END-IF
-    IF CONN-STAT NOT = "00"
-        *> Can't open to check; treat as no dup (optional: log error)
-        CLOSE CONNECTION-FILE
-        EXIT PARAGRAPH
-    END-IF
-
-    PERFORM UNTIL EOF = "Y"
-        READ CONNECTION-FILE
-            AT END
-                MOVE "Y" TO EOF
-            NOT AT END
-                *> Compare case-insensitively, ignoring padding
-                IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-SENDER))   = FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
-                   AND FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER)) = FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
-                    MOVE "Y" TO WS-EXISTS
-                    MOVE "Y" TO EOF
-                ELSE
-                    *> Also consider reverse direction as a duplicate (optional but common)
-                    IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-SENDER))   = FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
-                       AND FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER)) = FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
-                        MOVE "Y" TO WS-EXISTS
-                        MOVE "Y" TO EOF
+           PERFORM UNTIL EOF-FLAG = "Y"
+              READ CONNECTION-FILE
+                 AT END
+                    MOVE "Y" TO EOF-FLAG
+                 NOT AT END
+                    *>> Compare A->B
+                    IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-SENDER)) =
+                       FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
+                       AND
+                       FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER)) =
+                       FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
+                       MOVE "Y" TO WS-EXISTS
+                       MOVE "Y" TO EOF-FLAG
+                    ELSE
+                       *>> Compare B->A (reverse) as duplicate too
+                       IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-SENDER)) =
+                          FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
+                          AND
+                          FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER)) =
+                          FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
+                          MOVE "Y" TO WS-EXISTS
+                          MOVE "Y" TO EOF-FLAG
+                       END-IF
                     END-IF
-                END-IF
-        END-READ
-    END-PERFORM
+              END-READ
+           END-PERFORM
 
-    CLOSE CONNECTION-FILE
-    MOVE "N" TO EOF
-    EXIT PARAGRAPH.
-
-
-
-VIEW-REQUEST.
-        MOVE "N" TO EOF
-        OPEN INPUT CONNECTION-FILE
-
-        PERFORM UNTIL EOF = "Y"
-            READ CONNECTION-FILE
-                AT END
-                    MOVE "Y" TO EOF
-                NOT AT END
-                    IF FUNCTION TRIM(CR-RECEIVER) = FUNCTION TRIM(L-RECEIVER)
-                        STRING "Connection Request from: " DELIMITED BY SIZE
-                                   FUNCTION TRIM(CR-SENDER) DELIMITED BY SIZE
-                               INTO WS-MESSAGE
-                        END-STRING
-                        MOVE WS-MESSAGE TO L-RESPONSE
-                    END-IF
-            END-READ
-        END-PERFORM
-
-
-        CLOSE CONNECTION-FILE
-        MOVE "End of Connection Requests" TO L-RESPONSE
-
-        EXIT PARAGRAPH.
-
+           CLOSE CONNECTION-FILE
+           MOVE "N" TO EOF-FLAG
+           EXIT PARAGRAPH.

@@ -42,6 +42,7 @@ PROCEDURE DIVISION USING L-USERNAME.
         WRITE OUT-REC FROM WS-MESSAGE
         CLOSE OUTFILE
 
+
     END-IF
     IF CONN-STAT NOT = "00"
         MOVE "Error: cannot open connection file." TO WS-MESSAGE
@@ -49,6 +50,7 @@ PROCEDURE DIVISION USING L-USERNAME.
         OPEN EXTEND OUTFILE
         WRITE OUT-REC FROM WS-MESSAGE
         CLOSE OUTFILE
+
 
     END-IF
 
@@ -70,6 +72,7 @@ PROCEDURE DIVISION USING L-USERNAME.
                 IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER))
                    = FUNCTION UPPER-CASE(FUNCTION TRIM(L-USERNAME))
                     MOVE "Y" TO FOUND-ANY
+                    MOVE SPACES  TO WS-MESSAGE
                     STRING "From: "
                            FUNCTION TRIM(CR-SENDER)
                         DELIMITED BY SIZE
