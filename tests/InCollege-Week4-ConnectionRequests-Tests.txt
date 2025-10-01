@@ -1,3 +1,95 @@
+Test: View pending requests when user has none
+ResetAccounts: yes
+Input:
+Create New Account
+testuser
+TestPass1!
+Log In
+testuser
+TestPass1!
+Requests
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for testuser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, testuser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+Enter your choice:
+Pending connection requests for testuser
+No pending requests.
+End of connection requests.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+Enter your choice:
+End
+
+Test: Decline connection request to user
+ResetAccounts: yes
+Input:
+Create New Account
+target
+Target1!
+Log In
+target
+Target1!
+Profile
+Jane
+Doe
+State University
+Biology
+2028
+Hello from Jane
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+searcher
+Search1!
+Log In
+searcher
+Search1!
+Find
+Jane Doe
+No
+Expected:
 Welcome to InCollege!
 Log In
 Create New Account
@@ -79,7 +171,7 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -130,3 +222,51 @@ Create/Edit Profile
 View My Profile
 Requests
 Enter your choice:
+End
+
+Test: Search for non-existent user
+ResetAccounts: yes
+Input:
+Create New Account
+searcher
+Search1!
+Log In
+searcher
+Search1!
+Find
+Nobody Person
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for searcher
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, searcher
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+Enter your choice:
+Enter the full name of the person you are looking for:
+No one by that name could be found.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+Enter your choice:
+End
+

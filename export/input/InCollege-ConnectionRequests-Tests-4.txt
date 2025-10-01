@@ -1,0 +1,76 @@
+Create New Account
+user1
+User1Pass!
+Log In
+user1
+User1Pass!
+Profile
+John
+Smith
+State University
+Business
+2026
+Business student
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+user2
+User2Pass!
+Log In
+user2
+User2Pass!
+Profile
+Jane
+Doe
+Tech College
+IT
+2025
+Tech enthusiast
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Log In
+user1
+User1Pass!
+Find
+Jane Doe
+No

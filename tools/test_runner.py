@@ -112,6 +112,8 @@ def run_tests(test_file: str, export: bool = False) -> int:
     in_path = "../data/InCollege-Input.txt"
     out_path = "../data/InCollege-Output.txt"
     acct_path = "../data/AccountRecords.txt"
+    conn_path = "../data/ConnectionRecords.txt"
+    profile_path = "../data/ProfileRecords.txt"
 
     passed = 0
     failed = 0
@@ -120,6 +122,8 @@ def run_tests(test_file: str, export: bool = False) -> int:
         ensure_truncated(out_path)
         if tc.reset_accounts:
             ensure_truncated(acct_path)
+            ensure_truncated(conn_path)
+            ensure_truncated(profile_path)
         write_lines(in_path, tc.input_lines)
 
         try:

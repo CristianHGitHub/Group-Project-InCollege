@@ -1,0 +1,165 @@
+Create New Account
+receiver
+Recv123!
+Log In
+receiver
+Recv123!
+Profile
+Robert
+Target
+Main University
+Economics
+2024
+Economics student
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+sender1
+Send1Pass!
+Log In
+sender1
+Send1Pass!
+Profile
+Sarah
+First
+College One
+Art
+2025
+Artist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+sender2
+Send2Pass!
+Log In
+sender2
+Send2Pass!
+Profile
+Steve
+Second
+College Two
+Music
+2026
+Musician
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+sender3
+Send3Pass!
+Log In
+sender3
+Send3Pass!
+Profile
+Susan
+Third
+College Three
+Drama
+2027
+Actor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Log In
+sender1
+Send1Pass!
+Find
+Robert Target
+Yes
+Log Out
+Log In
+sender2
+Send2Pass!
+Find
+Robert Target
+Yes
+Log Out
+Log In
+sender3
+Send3Pass!
+Find
+Robert Target
+Yes
+Log Out
+Log In
+receiver
+Recv123!
+Requests

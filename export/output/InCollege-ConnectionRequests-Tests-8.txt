@@ -4,14 +4,14 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for target
+Account created for searcher
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, target
+Welcome, searcher
 Search for a job
 Find someone you know
 Learn a new skill
@@ -79,28 +79,7 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-Enter your choice:
-Welcome to InCollege!
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account created for searcher
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-You have successfully logged in.
-Welcome, searcher
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -109,18 +88,7 @@ View My Profile
 Requests
 Enter your choice:
 Enter the full name of the person you are looking for:
----Found User Profile---
-Name: Jane Doe
-University: State University
-Major: Biology
-Graduation Year: 2028
-About Me: Hello from Jane
-Experience:
-  None
-Education:
-  None
-Send Connection Request? (Yes/No)
-Connection request cancelled.
+No one by that name could be found.
 --------------------
 Returning to Main Menu...
 Search for a job

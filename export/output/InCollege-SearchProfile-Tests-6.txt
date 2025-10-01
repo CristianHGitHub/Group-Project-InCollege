@@ -110,6 +110,7 @@ Requests
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
+Name: Jane Doe
 University: State University
 Major: Biology
 Graduation Year: 2028

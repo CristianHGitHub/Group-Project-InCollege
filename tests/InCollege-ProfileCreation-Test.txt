@@ -117,7 +117,7 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -444,7 +444,7 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -453,7 +453,7 @@ View My Profile
 Requests
 Enter your choice:
 End
-Profile saved successfully!
+Profile saved successfully.
 Enter your choice:
 End
 End
@@ -778,7 +778,7 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -787,7 +787,7 @@ View My Profile
 Requests
 Enter your choice:
 End
-Profile saved successfully!
+Profile saved successfully.
 Enter your choice:
 End
 End
@@ -1075,7 +1075,7 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -1084,7 +1084,7 @@ View My Profile
 Requests
 Enter your choice:
 End
-Profile saved successfully!
+Profile saved successfully.
 Enter your choice:
 End
 End
@@ -1207,7 +1207,7 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -1216,7 +1216,7 @@ View My Profile
 Requests
 Enter your choice:
 End
-Profile saved successfully!
+Profile saved successfully.
 Enter your choice:
 End
 End
@@ -1339,7 +1339,7 @@ Education #2 - Years Attended:
 Education #3 - Degree:
 Education #3 - University/College:
 Education #3 - Years Attended:
-Profile saved successfully!
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -1348,7 +1348,7 @@ View My Profile
 Requests
 Enter your choice:
 End
-Profile saved successfully!
+Profile saved successfully.
 Enter your choice:
 End
 End

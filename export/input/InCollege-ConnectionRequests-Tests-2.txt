@@ -1,0 +1,76 @@
+Create New Account
+sender
+Send123!
+Log In
+sender
+Send123!
+Profile
+Alice
+Smith
+Tech University
+Computer Science
+2025
+Software enthusiast
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+receiver
+Recv123!
+Log In
+receiver
+Recv123!
+Profile
+Bob
+Johnson
+State College
+Engineering
+2026
+Loves robotics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Log In
+sender
+Send123!
+Find
+Bob Johnson
+Yes

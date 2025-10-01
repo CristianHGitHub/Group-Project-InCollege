@@ -1,0 +1,81 @@
+Create New Account
+alice
+Alice123!
+Log In
+alice
+Alice123!
+Profile
+Alice
+Wonder
+Dream University
+Arts
+2024
+Creative mind
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+bob
+Bob1234!
+Log In
+bob
+Bob1234!
+Profile
+Bob
+Builder
+Tech State
+Engineering
+2025
+Builder at heart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Log In
+alice
+Alice123!
+Find
+Bob Builder
+Yes
+Log Out
+Log In
+bob
+Bob1234!
+Requests

@@ -1,0 +1,79 @@
+Create New Account
+userA
+UserA123!
+Log In
+userA
+UserA123!
+Profile
+Alex
+Brown
+University A
+Math
+2024
+Math lover
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+userB
+UserB123!
+Log In
+userB
+UserB123!
+Profile
+Betty
+Green
+University B
+Physics
+2025
+Physics enthusiast
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Log In
+userA
+UserA123!
+Find
+Betty Green
+Yes
+Find
+Betty Green
+Yes
