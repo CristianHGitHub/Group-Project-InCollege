@@ -423,6 +423,7 @@ Log In
 bob
 Bob1234!
 Requests
+Skip
 Expected:
 Welcome to InCollege!
 Log In
@@ -657,6 +658,8 @@ Enter your choice:
 Pending connection requests for bob
 From: alice
 End of connection requests.
+Enter 'Accept <username>' to connect or 'Skip' to keep requests pending.
+No connection requests were accepted.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -1794,6 +1797,7 @@ Log In
 receiver
 Recv123!
 Requests
+Skip
 Expected:
 Welcome to InCollege!
 Log In
@@ -2282,6 +2286,8 @@ From: sender1
 From: sender2
 From: sender3
 End of connection requests.
+Enter 'Accept <username>' to connect or 'Skip' to keep requests pending.
+No connection requests were accepted.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -2432,4 +2438,3 @@ View My Profile
 Requests
 Enter your choice:
 End
-
