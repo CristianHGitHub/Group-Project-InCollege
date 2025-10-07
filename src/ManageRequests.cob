@@ -78,7 +78,7 @@ PROCEDURE DIVISION USING L-USERNAME L-COMMAND L-NEEDS-COMMAND
     MOVE FUNCTION TRIM(WS-COMMAND-TRIM LEADING) TO WS-COMMAND-TRIM
 
     IF WS-COMMAND-TRIM = SPACES
-        MOVE "Enter 'Accept <username>' to connect or 'Skip' to keep requests pending." TO L-RESPONSE1
+        MOVE "Enter 'Accept <username>' or 'Reject <username>' to manage requests, or 'Skip' to keep requests pending." TO L-RESPONSE1
         MOVE "P" TO L-STATUS
         GOBACK
     END-IF
@@ -164,6 +164,65 @@ PROCEDURE DIVISION USING L-USERNAME L-COMMAND L-NEEDS-COMMAND
         END-STRING
 
         MOVE "A" TO L-STATUS
+        MOVE "N" TO L-NEEDS-COMMAND
+        GOBACK
+    END-IF
+
+    IF COMMAND-LEN >= 6 AND WS-COMMAND-UPPER(1:6) = "REJECT"
+        IF COMMAND-LEN = 6
+            MOVE "Please specify which request to reject." TO L-RESPONSE1
+            MOVE "E" TO L-STATUS
+            MOVE "N" TO L-NEEDS-COMMAND
+            GOBACK
+        END-IF
+
+        MOVE COMMAND-LEN TO REMAINDER-LEN
+        SUBTRACT 6 FROM REMAINDER-LEN
+        MOVE WS-COMMAND-TRIM(7:REMAINDER-LEN) TO WS-REMAINDER
+        MOVE FUNCTION TRIM(WS-REMAINDER) TO WS-REMAINDER
+        MOVE FUNCTION TRIM(WS-REMAINDER LEADING) TO WS-REMAINDER
+
+        IF WS-REMAINDER = SPACES
+            MOVE "Please specify which request to reject." TO L-RESPONSE1
+            MOVE "E" TO L-STATUS
+            MOVE "N" TO L-NEEDS-COMMAND
+            GOBACK
+        END-IF
+
+        MOVE WS-REMAINDER TO WS-ACCEPT-USERNAME
+        MOVE FUNCTION TRIM(WS-ACCEPT-USERNAME) TO WS-ACCEPT-USERNAME
+        MOVE FUNCTION TRIM(WS-ACCEPT-USERNAME LEADING) TO WS-ACCEPT-USERNAME
+
+        PERFORM FIND-REQUEST-BY-SENDER
+
+        IF ACCEPT-INDEX = 0
+            MOVE "No pending request from that user." TO L-RESPONSE1
+            MOVE "E" TO L-STATUS
+            MOVE "N" TO L-NEEDS-COMMAND
+            GOBACK
+        END-IF
+
+        MOVE PF-SENDER(ACCEPT-INDEX) TO WS-SENDER-TRIM
+        MOVE FUNCTION TRIM(WS-SENDER-TRIM) TO WS-SENDER-TRIM
+        MOVE FUNCTION TRIM(WS-SENDER-TRIM LEADING) TO WS-SENDER-TRIM
+
+        PERFORM REWRITE-PENDING-FILE
+        IF WS-ERROR = "Y"
+            MOVE "Error: unable to update pending requests." TO L-RESPONSE1
+            MOVE "E" TO L-STATUS
+            MOVE "N" TO L-NEEDS-COMMAND
+            GOBACK
+        END-IF
+
+        STRING "Connection request from "
+               FUNCTION TRIM(WS-SENDER-TRIM)
+               " rejected."
+            DELIMITED BY SIZE
+            INTO L-RESPONSE1
+        END-STRING
+
+        MOVE SPACES TO L-RESPONSE2
+        MOVE "R" TO L-STATUS
         MOVE "N" TO L-NEEDS-COMMAND
         GOBACK
     END-IF
