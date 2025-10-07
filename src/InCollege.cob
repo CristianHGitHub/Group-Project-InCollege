@@ -49,12 +49,17 @@ COPY "AccountRecord.cpy".
 01  IDX                PIC 9 VALUE 0.
 01  CONN-ACTION         PIC X(20).
 01  CONN-RESPONSE       PIC X(200).
-01  SEND_BOOL               PIC X(10).
-01  SAVED-USERNAME     PIC X(50).
-01  WS-EXISTS   PIC X VALUE "N".
-01  WS-TEMP-FIRST      PIC X(50).
-01  WS-TEMP-LAST       PIC X(50).
-01  VIEW-MODE          PIC X(10).
+01  SEND_BOOL           PIC X(10).
+01  SAVED-USERNAME      PIC X(50).
+01  WS-EXISTS           PIC X VALUE "N".
+01  WS-TEMP-FIRST       PIC X(50).
+01  WS-TEMP-LAST        PIC X(50).
+01  VIEW-MODE           PIC X(10).
+01  REQUEST-COMMAND     PIC X(100).
+01  REQUEST-NEEDS-COMMAND PIC X VALUE "N".
+01  REQUEST-STATUS      PIC X VALUE "N".
+01  REQUEST-RESPONSE1   PIC X(200).
+01  REQUEST-RESPONSE2   PIC X(200).
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -342,10 +347,69 @@ PROCEDURE DIVISION.
                    WHEN "Requests"
                        IF LOGIN-STATUS = "Y"
                            CALL 'VIEWREQUESTS' USING AR-USERNAME
-                       ELSE
-                           MOVE "Invalid option" TO OUTPUT-BUFFER
-                           PERFORM DUAL-OUTPUT
-                       END-IF
+                           MOVE SPACES TO REQUEST-COMMAND
+                           MOVE SPACES TO REQUEST-RESPONSE1
+                           MOVE SPACES TO REQUEST-RESPONSE2
+                           MOVE "N"    TO REQUEST-NEEDS-COMMAND
+                           MOVE "N"    TO REQUEST-STATUS
+
+                           CALL 'MANAGEREQUESTS' USING
+                                AR-USERNAME
+                                REQUEST-COMMAND
+                                REQUEST-NEEDS-COMMAND
+                                REQUEST-STATUS
+                                REQUEST-RESPONSE1
+                                REQUEST-RESPONSE2
+
+                           IF REQUEST-NEEDS-COMMAND = "Y"
+                               IF REQUEST-RESPONSE1 NOT = SPACES
+                                   MOVE REQUEST-RESPONSE1 TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
+                               END-IF
+
+                               READ INFILE
+                                   AT END
+                                       MOVE "Y" TO EOF
+                                   NOT AT END
+                                       MOVE IN-REC TO REQUEST-COMMAND
+                               END-READ
+
+                               IF EOF NOT = "Y"
+                                   MOVE SPACES TO REQUEST-RESPONSE1 REQUEST-RESPONSE2
+                                   MOVE "N" TO REQUEST-NEEDS-COMMAND
+                                   MOVE "N" TO REQUEST-STATUS
+
+                                   CALL 'MANAGEREQUESTS' USING
+                                        AR-USERNAME
+                                        REQUEST-COMMAND
+                                        REQUEST-NEEDS-COMMAND
+                                        REQUEST-STATUS
+                                        REQUEST-RESPONSE1
+                                        REQUEST-RESPONSE2
+
+                                   IF REQUEST-RESPONSE1 NOT = SPACES
+                                       MOVE REQUEST-RESPONSE1 TO OUTPUT-BUFFER
+                                       PERFORM DUAL-OUTPUT
+                                   END-IF
+                                   IF REQUEST-RESPONSE2 NOT = SPACES
+                                       MOVE REQUEST-RESPONSE2 TO OUTPUT-BUFFER
+                                       PERFORM DUAL-OUTPUT
+                                   END-IF
+                               END-IF
+                           ELSE
+                               IF REQUEST-RESPONSE1 NOT = SPACES
+                                   MOVE REQUEST-RESPONSE1 TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
+                               END-IF
+                               IF REQUEST-RESPONSE2 NOT = SPACES
+                                   MOVE REQUEST-RESPONSE2 TO OUTPUT-BUFFER
+                                   PERFORM DUAL-OUTPUT
+                               END-IF
+                           END-IF
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
                        MOVE 0            TO NAV-INDEX
                        MOVE "SHOW-MENU"  TO NAV-ACTION
                        PERFORM NAV-PRINT-LOOP

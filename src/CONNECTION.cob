@@ -8,6 +8,10 @@
                ASSIGN TO "../data/ConnectionRecords.txt"
                ORGANIZATION IS LINE SEQUENTIAL
                FILE STATUS IS CONN-STAT.
+           SELECT ESTABLISHED-FILE
+               ASSIGN TO "../data/EstablishedConnections.txt"
+               ORGANIZATION IS LINE SEQUENTIAL
+               FILE STATUS IS EST-STAT.
 
        DATA DIVISION.
        FILE SECTION.
@@ -16,8 +20,14 @@
            05  CR-SENDER           PIC X(40).
            05  CR-RECEIVER         PIC X(40).
 
+       FD  ESTABLISHED-FILE.
+       01  ESTABLISHED-RECORD.
+           05  ER-USER-A          PIC X(40).
+           05  ER-USER-B          PIC X(40).
+
        WORKING-STORAGE SECTION.
        01  CONN-STAT               PIC XX   VALUE SPACES.
+       01  EST-STAT                PIC XX   VALUE SPACES.
        01  WS-MSG                  PIC X(120) VALUE SPACES.
        01  WS-ACTION               PIC X(3)  VALUE SPACES.
 
@@ -103,15 +113,22 @@
 
        CHECK-REQUEST-EXISTS.
            MOVE "N" TO WS-EXISTS
+           PERFORM CHECK-PENDING-DUPLICATES
+           IF WS-EXISTS = "Y"
+              EXIT PARAGRAPH
+           END-IF
+
+           PERFORM CHECK-ESTABLISHED-DUPLICATES
+           EXIT PARAGRAPH.
+
+       CHECK-PENDING-DUPLICATES.
            MOVE "N" TO EOF-FLAG
 
            OPEN INPUT CONNECTION-FILE
            IF CONN-STAT = "35"
-              *>> file missing => no prior requests
               EXIT PARAGRAPH
            END-IF
            IF CONN-STAT NOT = "00"
-              *>> treat as no duplicates (same as in your uploaded file)
               EXIT PARAGRAPH
            END-IF
 
@@ -120,28 +137,74 @@
                  AT END
                     MOVE "Y" TO EOF-FLAG
                  NOT AT END
-                    *>> Compare A->B
-                    IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-SENDER)) =
-                       FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
-                       AND
-                       FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER)) =
-                       FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
-                       MOVE "Y" TO WS-EXISTS
-                       MOVE "Y" TO EOF-FLAG
-                    ELSE
-                       *>> Compare B->A (reverse) as duplicate too
-                       IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-SENDER)) =
-                          FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
-                          AND
-                          FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER)) =
-                          FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
-                          MOVE "Y" TO WS-EXISTS
-                          MOVE "Y" TO EOF-FLAG
-                       END-IF
-                    END-IF
+                    PERFORM COMPARE-PAIR
               END-READ
            END-PERFORM
 
            CLOSE CONNECTION-FILE
            MOVE "N" TO EOF-FLAG
+           EXIT PARAGRAPH.
+
+       CHECK-ESTABLISHED-DUPLICATES.
+           MOVE "N" TO EOF-FLAG
+
+           OPEN INPUT ESTABLISHED-FILE
+           IF EST-STAT = "35"
+              EXIT PARAGRAPH
+           END-IF
+           IF EST-STAT NOT = "00"
+              EXIT PARAGRAPH
+           END-IF
+
+           PERFORM UNTIL EOF-FLAG = "Y"
+              READ ESTABLISHED-FILE INTO ESTABLISHED-RECORD
+                 AT END
+                    MOVE "Y" TO EOF-FLAG
+                 NOT AT END
+                    PERFORM COMPARE-ESTABLISHED
+              END-READ
+           END-PERFORM
+
+           CLOSE ESTABLISHED-FILE
+           MOVE "N" TO EOF-FLAG
+           EXIT PARAGRAPH.
+
+       COMPARE-PAIR.
+           IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-SENDER)) =
+              FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
+              AND
+              FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER)) =
+              FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
+              MOVE "Y" TO WS-EXISTS
+              MOVE "Y" TO EOF-FLAG
+           ELSE
+              IF FUNCTION UPPER-CASE(FUNCTION TRIM(CR-SENDER)) =
+                 FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
+                 AND
+                 FUNCTION UPPER-CASE(FUNCTION TRIM(CR-RECEIVER)) =
+                 FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
+                 MOVE "Y" TO WS-EXISTS
+                 MOVE "Y" TO EOF-FLAG
+              END-IF
+           END-IF
+           EXIT PARAGRAPH.
+
+       COMPARE-ESTABLISHED.
+           IF FUNCTION UPPER-CASE(FUNCTION TRIM(ER-USER-A)) =
+              FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
+              AND
+              FUNCTION UPPER-CASE(FUNCTION TRIM(ER-USER-B)) =
+              FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
+              MOVE "Y" TO WS-EXISTS
+              MOVE "Y" TO EOF-FLAG
+           ELSE
+              IF FUNCTION UPPER-CASE(FUNCTION TRIM(ER-USER-A)) =
+                 FUNCTION UPPER-CASE(FUNCTION TRIM(L-RECEIVER))
+                 AND
+                 FUNCTION UPPER-CASE(FUNCTION TRIM(ER-USER-B)) =
+                 FUNCTION UPPER-CASE(FUNCTION TRIM(L-SENDER))
+                 MOVE "Y" TO WS-EXISTS
+                 MOVE "Y" TO EOF-FLAG
+              END-IF
+           END-IF
            EXIT PARAGRAPH.
