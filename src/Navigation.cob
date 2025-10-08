@@ -100,7 +100,8 @@ SHOW-MENU.
         WHEN 3  MOVE "Create/Edit Profile"   TO L-OUT
         WHEN 4  MOVE "View My Profile"       TO L-OUT
         WHEN 5  MOVE "Requests" TO L-OUT
-        WHEN 6  MOVE "Enter your choice:"    TO L-OUT
+        WHEN 6  MOVE "View My Network"       TO L-OUT
+        WHEN 7  MOVE "Enter your choice:"    TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
@@ -108,7 +109,7 @@ SHOW-MENU.
     END-EVALUATE
     ADD 1 TO L-INDEX
         END-ADD
-    IF L-INDEX > 6
+    IF L-INDEX > 7
         MOVE "Y" TO L-DONE
     END-IF
     EXIT PARAGRAPH.

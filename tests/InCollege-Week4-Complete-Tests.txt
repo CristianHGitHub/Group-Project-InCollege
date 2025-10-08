@@ -29,6 +29,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Pending connection requests for testuser
 No pending requests.
@@ -39,6 +40,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -110,6 +112,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -178,6 +181,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -199,6 +203,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -221,6 +226,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -256,6 +262,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Enter the full name of the person you are looking for:
 No one by that name could be found.
@@ -267,6 +274,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 

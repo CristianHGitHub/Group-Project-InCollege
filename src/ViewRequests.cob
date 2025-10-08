@@ -34,22 +34,29 @@ PROCEDURE DIVISION USING L-USERNAME.
     MOVE "N" TO EOF
     MOVE "N" TO FOUND-ANY
 
-    OPEN INPUT CONNECTION-FILE
-    IF CONN-STAT = "35"
-        MOVE "No connection requests." TO WS-MESSAGE
-        PERFORM DUAL-OUTPUT
-    END-IF
-    IF CONN-STAT NOT = "00"
-        MOVE "Error: cannot open connection file." TO WS-MESSAGE
-        PERFORM DUAL-OUTPUT
-    END-IF
-
+    *> Always output the header first
+    MOVE SPACES TO WS-MESSAGE
     STRING "Pending connection requests for "
            FUNCTION TRIM(L-USERNAME)
         DELIMITED BY SIZE
         INTO WS-MESSAGE
     END-STRING
+    MOVE FUNCTION TRIM(WS-MESSAGE) TO WS-MESSAGE
     PERFORM DUAL-OUTPUT
+
+    OPEN INPUT CONNECTION-FILE
+    IF CONN-STAT = "35"
+        MOVE "No pending requests." TO WS-MESSAGE
+        PERFORM DUAL-OUTPUT
+        MOVE "End of connection requests." TO WS-MESSAGE
+        PERFORM DUAL-OUTPUT
+        GOBACK
+    END-IF
+    IF CONN-STAT NOT = "00"
+        MOVE "Error: cannot open connection file." TO WS-MESSAGE
+        PERFORM DUAL-OUTPUT
+        GOBACK
+    END-IF
 
     PERFORM UNTIL EOF = "Y"
         READ CONNECTION-FILE

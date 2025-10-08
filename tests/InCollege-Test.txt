@@ -60,6 +60,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -98,6 +99,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -216,6 +218,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Job search/internship is under construction.
 Search for a job
@@ -224,6 +227,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -260,6 +264,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Learn a New Skill:
 Skill 1
@@ -284,6 +289,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -318,6 +324,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Welcome to InCollege!
 End

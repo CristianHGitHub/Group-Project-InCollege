@@ -60,6 +60,8 @@ COPY "AccountRecord.cpy".
 01  REQUEST-STATUS      PIC X VALUE "N".
 01  REQUEST-RESPONSE1   PIC X(200).
 01  REQUEST-RESPONSE2   PIC X(200).
+01  WS-COMMAND          PIC X(100).
+01  MENU-DISPLAYED      PIC X VALUE "N".
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -89,19 +91,25 @@ PROCEDURE DIVISION.
             AT END
                 MOVE "Y" TO EOF
             NOT AT END
-                IF LOGIN-STATUS NOT = "Y"
-                   MOVE 'Log In' TO OUTPUT-BUFFER
-                   PERFORM DUAL-OUTPUT
-                   MOVE 'Create New Account' TO OUTPUT-BUFFER
-                   PERFORM DUAL-OUTPUT
-                   MOVE 'Enter your choice:' TO OUTPUT-BUFFER
-                   PERFORM DUAL-OUTPUT
-                END-IF
+                MOVE IN-REC TO WS-COMMAND
+        END-READ
 
-                EVALUATE IN-REC
+        IF EOF NOT = "Y"
+            IF LOGIN-STATUS NOT = "Y"
+               MOVE 'Log In' TO OUTPUT-BUFFER
+               PERFORM DUAL-OUTPUT
+               MOVE 'Create New Account' TO OUTPUT-BUFFER
+               PERFORM DUAL-OUTPUT
+               MOVE 'Enter your choice:' TO OUTPUT-BUFFER
+               PERFORM DUAL-OUTPUT
+            END-IF
+
+        IF EOF NOT = "Y"
+            EVALUATE WS-COMMAND
                     WHEN "Log Out"
                         IF LOGIN-STATUS = "Y"
                             MOVE "N" TO LOGIN-STATUS
+                            MOVE "N" TO MENU-DISPLAYED
                             MOVE "MAIN" TO CURRENT-MENU
                             MOVE 0 TO NAV-INDEX
                             MOVE SPACES TO NAV-ACTION
@@ -347,6 +355,7 @@ PROCEDURE DIVISION.
                    WHEN "Requests"
                        IF LOGIN-STATUS = "Y"
                            CALL 'VIEWREQUESTS' USING AR-USERNAME
+                           END-CALL
                            MOVE SPACES TO REQUEST-COMMAND
                            MOVE SPACES TO REQUEST-RESPONSE1
                            MOVE SPACES TO REQUEST-RESPONSE2
@@ -414,6 +423,16 @@ PROCEDURE DIVISION.
                        MOVE "SHOW-MENU"  TO NAV-ACTION
                        PERFORM NAV-PRINT-LOOP
 
+                   WHEN "View My Network"
+                       IF LOGIN-STATUS = "Y"
+                           CALL 'DISPLAYNETWORK' USING AR-USERNAME
+                           MOVE 0            TO NAV-INDEX
+                           MOVE "SHOW-MENU"  TO NAV-ACTION
+                           PERFORM NAV-PRINT-LOOP
+                       ELSE
+                           MOVE "Invalid option" TO OUTPUT-BUFFER
+                           PERFORM DUAL-OUTPUT
+                       END-IF
 
                     WHEN "Skill-1"
                         IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "SKILLS"
@@ -526,7 +545,7 @@ PROCEDURE DIVISION.
                         MOVE "Invalid option" TO OUTPUT-BUFFER
                         PERFORM DUAL-OUTPUT
                 END-EVALUATE
-        END-READ
+        END-IF
     END-PERFORM
 
     CLOSE INFILE.
@@ -551,6 +570,7 @@ NAV-PRINT-LOOP.
              BY REFERENCE NAV-LINE
              BY REFERENCE NAV-DONE
              BY REFERENCE CURRENT-MENU
+        END-CALL
         IF NAV-LINE NOT = SPACES
             MOVE NAV-LINE TO OUTPUT-BUFFER
             PERFORM DUAL-OUTPUT

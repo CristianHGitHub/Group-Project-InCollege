@@ -57,6 +57,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -125,6 +126,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: John Doe
@@ -163,6 +165,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -225,6 +228,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -293,6 +297,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: Alice Smith
@@ -312,6 +317,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 Test: View profile before creating any profile
@@ -345,6 +351,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 You have not created a profile yet.
 Search for a job
@@ -353,6 +360,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -432,6 +440,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -500,6 +509,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -519,6 +529,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -534,6 +545,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -553,6 +565,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -655,6 +668,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -723,6 +737,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -744,6 +759,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -812,6 +828,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: B Two
@@ -831,6 +848,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -846,6 +864,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: A One
@@ -865,6 +884,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -927,6 +947,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -995,6 +1016,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: Amy Lee
@@ -1014,6 +1036,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -1077,6 +1100,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1145,6 +1169,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: Dan Stone
@@ -1164,6 +1189,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: Dan Stone
@@ -1183,5 +1209,6 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End

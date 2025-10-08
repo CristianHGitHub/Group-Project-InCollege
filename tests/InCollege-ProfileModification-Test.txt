@@ -85,6 +85,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -153,6 +154,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -221,6 +223,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: Johnathan Doe
@@ -240,6 +243,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -330,6 +334,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -398,6 +403,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -466,6 +472,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: Alice Brown
@@ -485,6 +492,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 
@@ -575,6 +583,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -643,6 +652,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -711,6 +721,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: Bob Smith
@@ -730,5 +741,6 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End

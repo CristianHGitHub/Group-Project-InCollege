@@ -56,6 +56,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -124,6 +125,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 Test: Missing last name should be rejected
@@ -185,6 +187,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -284,6 +287,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -383,6 +387,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -451,6 +456,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 Profile saved successfully.
@@ -515,6 +521,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -616,6 +623,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -717,6 +725,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -785,6 +794,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 Profile saved successfully.
@@ -857,6 +867,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -956,6 +967,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1014,6 +1026,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1082,6 +1095,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 Profile saved successfully.
@@ -1146,6 +1160,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1214,6 +1229,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 Profile saved successfully.
@@ -1278,6 +1294,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1346,6 +1363,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 End
 Profile saved successfully.
