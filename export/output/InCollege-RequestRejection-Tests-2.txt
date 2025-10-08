@@ -380,11 +380,11 @@ View My Network
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
-Name: Robert Target
+Name: TargetFirst TargetLast
 University: Main University
 Major: Economics
 Graduation Year: 2024
-About Me: Economics student
+About Me:
 Experience:
   None
 Education:
@@ -419,11 +419,11 @@ View My Network
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
-Name: Robert Target
+Name: TargetFirst TargetLast
 University: Main University
 Major: Economics
 Graduation Year: 2024
-About Me: Economics student
+About Me:
 Experience:
   None
 Education:
@@ -458,11 +458,11 @@ View My Network
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
-Name: Robert Target
+Name: TargetFirst TargetLast
 University: Main University
 Major: Economics
 Graduation Year: 2024
-About Me: Economics student
+About Me:
 Experience:
   None
 Education:
@@ -501,7 +501,7 @@ From: sender2
 From: sender3
 End of connection requests.
 Enter 'Accept <username>' or 'Reject <username>' to manage requests, or 'Skip' to keep requests pending.
-No connection requests were accepted.
+Connection request from sender1 rejected.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -510,3 +510,69 @@ View My Profile
 Requests
 View My Network
 Enter your choice:
+Pending connection requests for receiver
+From: sender2
+From: sender3
+End of connection requests.
+Enter 'Accept <username>' or 'Reject <username>' to manage requests, or 'Skip' to keep requests pending.
+Connection request from sender2 rejected.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Pending connection requests for receiver
+From: sender3
+End of connection requests.
+Enter 'Accept <username>' or 'Reject <username>' to manage requests, or 'Skip' to keep requests pending.
+Connection request from sender3 rejected.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Pending connection requests for receiver
+No pending requests.
+End of connection requests.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, receiver
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Pending connection requests for receiver
+No pending requests.
+End of connection requests.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Welcome to InCollege!

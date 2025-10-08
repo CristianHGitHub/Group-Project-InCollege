@@ -18,6 +18,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -86,6 +87,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -105,6 +107,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -120,6 +123,7 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -139,4 +143,5 @@ Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
 Enter your choice:

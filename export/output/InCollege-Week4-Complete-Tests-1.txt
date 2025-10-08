@@ -20,6 +20,7 @@ View My Profile
 Requests
 View My Network
 Enter your choice:
+Pending connection requests for testuser
 No pending requests.
 End of connection requests.
 Search for a job

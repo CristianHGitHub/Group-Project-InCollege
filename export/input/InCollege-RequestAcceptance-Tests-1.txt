@@ -1,0 +1,57 @@
+Create New Account
+sender
+Send123!
+Create New Account
+receiver
+Recv123!
+Log In
+receiver
+Recv123!
+Profile
+ReceiverFirst
+ReceiverLast
+State University
+Engineering
+2025
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Log In
+sender
+Send123!
+Find
+ReceiverFirst ReceiverLast
+Yes
+Log Out
+Log In
+receiver
+Recv123!
+Requests
+Accept sender
+Requests
+Log Out
+Log In
+receiver
+Recv123!
+Requests
+Log Out

@@ -5,12 +5,12 @@ Log In
 receiver
 Recv123!
 Profile
-Robert
-Target
+TargetFirst
+TargetLast
 Main University
 Economics
 2024
-Economics student
+
 
 
 
@@ -40,12 +40,12 @@ Log In
 sender1
 Send1Pass!
 Profile
-Sarah
+Alice
 First
 College One
 Art
 2025
-Artist
+
 
 
 
@@ -75,12 +75,12 @@ Log In
 sender2
 Send2Pass!
 Profile
-Steve
+Brian
 Second
 College Two
 Music
 2026
-Musician
+
 
 
 
@@ -110,12 +110,12 @@ Log In
 sender3
 Send3Pass!
 Profile
-Susan
+Clara
 Third
 College Three
 Drama
 2027
-Actor
+
 
 
 
@@ -142,25 +142,36 @@ Log In
 sender1
 Send1Pass!
 Find
-Robert Target
+TargetFirst TargetLast
 Yes
 Log Out
 Log In
 sender2
 Send2Pass!
 Find
-Robert Target
+TargetFirst TargetLast
 Yes
 Log Out
 Log In
 sender3
 Send3Pass!
 Find
-Robert Target
+TargetFirst TargetLast
 Yes
 Log Out
 Log In
 receiver
 Recv123!
 Requests
-Skip
+Reject sender1
+Requests
+Reject sender2
+Requests
+Reject sender3
+Requests
+Log Out
+Log In
+receiver
+Recv123!
+Requests
+Log Out

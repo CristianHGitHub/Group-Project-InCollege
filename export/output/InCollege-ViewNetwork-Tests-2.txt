@@ -4,14 +4,20 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for editone
+Account created for alpha
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for bravo
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, editone
+Welcome, bravo
 Search for a job
 Find someone you know
 Learn a new skill
@@ -89,67 +95,14 @@ View My Profile
 Requests
 View My Network
 Enter your choice:
-=== EDIT/CREATE PROFILE ===
-Required Fields:
-First Name:
-Last Name:
-University/College:
-Major:
-Graduation Year (4 digits):
-Optional Fields:
-About Me:
-Experience (up to 3 entries):
-Experience #1 - Title (e.g., Software Intern):
-Experience #1 - Company/Organization:
-Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
-Experience #1 - Description:
-Experience #2 - Title:
-Experience #2 - Company/Organization:
-Experience #2 - Dates:
-Experience #2 - Description:
-Experience #3 - Title:
-Experience #3 - Company/Organization:
-Experience #3 - Dates:
-Experience #3 - Description:
-Education (up to 3 entries):
-Education #1 - Degree (e.g., Bachelor of Science):
-Education #1 - University/College:
-Education #1 - Years Attended (e.g., 2020-2024):
-Education #2 - Degree:
-Education #2 - University/College:
-Education #2 - Years Attended:
-Education #3 - Degree:
-Education #3 - University/College:
-Education #3 - Years Attended:
+Welcome to InCollege!
+Log In
+Create New Account
 Enter your choice:
-Please enter your first name:
-Please enter your last name:
-Please enter your university:
-Please enter your major:
-Please enter your graduation year (4 digits):
-Please enter about me (optional):
-Experience #1 - Title (e.g., Software Intern):
-Experience #1 - Company/Organization:
-Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
-Experience #1 - Description:
-Experience #2 - Title:
-Experience #2 - Company/Organization:
-Experience #2 - Dates:
-Experience #2 - Description:
-Experience #3 - Title:
-Experience #3 - Company/Organization:
-Experience #3 - Dates:
-Experience #3 - Description:
-Education #1 - Degree (e.g., Bachelor of Science):
-Education #1 - University/College:
-Education #1 - Years Attended (e.g., 2020-2024):
-Education #2 - Degree:
-Education #2 - University/College:
-Education #2 - Years Attended:
-Education #3 - Degree:
-Education #3 - University/College:
-Education #3 - Years Attended:
-Profile saved successfully.
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, alpha
 Search for a job
 Find someone you know
 Learn a new skill
@@ -158,18 +111,62 @@ View My Profile
 Requests
 View My Network
 Enter your choice:
---- Your Profile ---
-Name: Alice Brown
-University: State University
-Major: Mathematics
-Graduation Year: 2025
-About Me: Hello world profile.
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: BravoFirst BravoLast
+University: Central University
+Major: Business
+Graduation Year: 2026
+About Me:
 Experience:
   None
 Education:
   None
+Send Connection Request? (Yes/No)
+Connection Request Sent to New Student
 --------------------
 Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, bravo
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Pending connection requests for bravo
+From: alpha
+End of connection requests.
+Enter 'Accept <username>' or 'Reject <username>' to manage requests, or 'Skip' to keep requests pending.
+Connection request from alpha accepted.
+You are now connected with alpha
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+--- Your Network ---
+Connected with: alpha (University: Unknown, Major: Unknown)
+--------------------
 Search for a job
 Find someone you know
 Learn a new skill
