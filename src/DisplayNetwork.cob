@@ -21,9 +21,7 @@ FD  ESTABLISHED-FILE.
     05  ER-USER-B        PIC X(40).
 
 FD  PROFILE-FILE.
-01  PROFILE-RECORD.
-    05  PR-USERNAME      PIC X(50).
-    05  PR-DATA          PIC X(5000).
+01  PROFILE-RECORD       PIC X(5000).
 
 FD  OUTFILE EXTERNAL.
 01  OUT-REC             PIC X(200).
@@ -36,9 +34,14 @@ WORKING-STORAGE SECTION.
 01  WS-MESSAGE          PIC X(200).
 01  WS-OTHER-USER       PIC X(50).
 01  WS-PROFILE-DATA     PIC X(5000).
+01  PROFILE-EOF         PIC X  VALUE "N".
+01  WS-PR-USERNAME      PIC X(50).
+01  WS-PR-DATA          PIC X(5000).
 01  WS-FULL-NAME        PIC X(100).
 01  WS-UNIVERSITY       PIC X(100).
 01  WS-MAJOR            PIC X(100).
+01  WS-FIRST-NAME       PIC X(100).
+01  WS-LAST-NAME        PIC X(100).
 01  WS-TEMP-FIELD       PIC X(100).
 01  WS-DELIMITER        PIC X VALUE "|".
 01  WS-FIELD-COUNT      PIC 99 VALUE 0.
@@ -140,16 +143,20 @@ GET-AND-DISPLAY-PROFILE.
         GOBACK
     END-IF
 
-    MOVE "N" TO EOF-FLAG
-    PERFORM UNTIL EOF-FLAG = "Y"
+    MOVE "N" TO PROFILE-EOF
+    PERFORM UNTIL PROFILE-EOF = "Y"
         READ PROFILE-FILE
             AT END
-                MOVE "Y" TO EOF-FLAG
+                MOVE "Y" TO PROFILE-EOF
             NOT AT END
-                IF FUNCTION UPPER-CASE(FUNCTION TRIM(PR-USERNAME)) =
+                MOVE SPACES TO WS-PR-USERNAME WS-PR-DATA
+                UNSTRING PROFILE-RECORD DELIMITED BY "|"
+                    INTO WS-PR-USERNAME WS-PR-DATA
+                END-UNSTRING
+                IF FUNCTION UPPER-CASE(FUNCTION TRIM(WS-PR-USERNAME)) =
                    FUNCTION UPPER-CASE(FUNCTION TRIM(WS-OTHER-USER))
-                    MOVE PR-DATA TO WS-PROFILE-DATA
-                    MOVE "Y" TO EOF-FLAG
+                    MOVE WS-PR-DATA TO WS-PROFILE-DATA
+                    MOVE "Y" TO PROFILE-EOF
                 END-IF
         END-READ
     END-PERFORM
@@ -170,83 +177,22 @@ GET-AND-DISPLAY-PROFILE.
     EXIT PARAGRAPH.
 
 PARSE-PROFILE-DATA.
-    *> Profile data format: Username|FirstName|LastName|University|Major|...
-    *> We need to extract fields 2,3,4,5 (FirstName, LastName, University, Major)
-    
-    MOVE SPACES TO WS-FULL-NAME
-    MOVE SPACES TO WS-UNIVERSITY
-    MOVE SPACES TO WS-MAJOR
-    
-    *> Find first pipe (after Username)
-    MOVE 1 TO WS-PIPE-POS
-    PERFORM VARYING WS-PIPE-POS FROM 1 BY 1 
-        UNTIL WS-PIPE-POS > 4999 OR WS-DELIMITER = WS-PROFILE-DATA(WS-PIPE-POS:1)
-        CONTINUE
-    END-PERFORM
-    
-    IF WS-PIPE-POS <= 4999
-        *> Find second pipe (after FirstName)
-        ADD 1 TO WS-PIPE-POS
-        MOVE WS-PIPE-POS TO WS-FIELD-COUNT
-        PERFORM VARYING WS-PIPE-POS FROM WS-FIELD-COUNT BY 1 
-            UNTIL WS-PIPE-POS > 4999 OR WS-DELIMITER = WS-PROFILE-DATA(WS-PIPE-POS:1)
-            CONTINUE
-        END-PERFORM
-        
-        IF WS-PIPE-POS <= 4999
-            *> Extract FirstName
-            MOVE WS-PROFILE-DATA(WS-FIELD-COUNT:WS-PIPE-POS - WS-FIELD-COUNT) TO WS-TEMP-FIELD
-            MOVE FUNCTION TRIM(WS-TEMP-FIELD) TO WS-FULL-NAME
-            
-            *> Find third pipe (after LastName)
-            ADD 1 TO WS-PIPE-POS
-            MOVE WS-PIPE-POS TO WS-FIELD-COUNT
-            PERFORM VARYING WS-PIPE-POS FROM WS-FIELD-COUNT BY 1 
-                UNTIL WS-PIPE-POS > 4999 OR WS-DELIMITER = WS-PROFILE-DATA(WS-PIPE-POS:1)
-                CONTINUE
-            END-PERFORM
-            
-            IF WS-PIPE-POS <= 4999
-                *> Extract LastName and append to FirstName
-                MOVE WS-PROFILE-DATA(WS-FIELD-COUNT:WS-PIPE-POS - WS-FIELD-COUNT) TO WS-TEMP-FIELD
-                MOVE FUNCTION TRIM(WS-TEMP-FIELD) TO WS-TEMP-FIELD
-                STRING FUNCTION TRIM(WS-FULL-NAME) " " FUNCTION TRIM(WS-TEMP-FIELD)
-                    DELIMITED BY SIZE
-                    INTO WS-FULL-NAME
-                END-STRING
-                
-                *> Find fourth pipe (after University)
-                ADD 1 TO WS-PIPE-POS
-                MOVE WS-PIPE-POS TO WS-FIELD-COUNT
-                PERFORM VARYING WS-PIPE-POS FROM WS-FIELD-COUNT BY 1 
-                    UNTIL WS-PIPE-POS > 4999 OR WS-DELIMITER = WS-PROFILE-DATA(WS-PIPE-POS:1)
-                    CONTINUE
-                END-PERFORM
-                
-                IF WS-PIPE-POS <= 4999
-                    *> Extract University
-                    MOVE WS-PROFILE-DATA(WS-FIELD-COUNT:WS-PIPE-POS - WS-FIELD-COUNT) TO WS-TEMP-FIELD
-                    MOVE FUNCTION TRIM(WS-TEMP-FIELD) TO WS-UNIVERSITY
-                    
-                    *> Find fifth pipe (after Major)
-                    ADD 1 TO WS-PIPE-POS
-                    MOVE WS-PIPE-POS TO WS-FIELD-COUNT
-                    PERFORM VARYING WS-PIPE-POS FROM WS-FIELD-COUNT BY 1 
-                        UNTIL WS-PIPE-POS > 4999 OR WS-DELIMITER = WS-PROFILE-DATA(WS-PIPE-POS:1)
-                        CONTINUE
-                    END-PERFORM
-                    
-                    IF WS-PIPE-POS <= 4999
-                        *> Extract Major
-                        MOVE WS-PROFILE-DATA(WS-FIELD-COUNT:WS-PIPE-POS - WS-FIELD-COUNT) TO WS-TEMP-FIELD
-                        MOVE FUNCTION TRIM(WS-TEMP-FIELD) TO WS-MAJOR
-                    END-IF
-                END-IF
-            END-IF
-        END-IF
+    *> Profile data format in WS-PROFILE-DATA: FirstName|LastName|University|Major|...
+    MOVE SPACES TO WS-FULL-NAME WS-UNIVERSITY WS-MAJOR
+    MOVE SPACES TO WS-FIRST-NAME WS-LAST-NAME
+
+    UNSTRING WS-PROFILE-DATA DELIMITED BY "|"
+        INTO WS-FIRST-NAME WS-LAST-NAME WS-UNIVERSITY WS-MAJOR
+    END-UNSTRING
+
+    IF FUNCTION TRIM(WS-FIRST-NAME) NOT = SPACES
+        STRING FUNCTION TRIM(WS-FIRST-NAME) " " FUNCTION TRIM(WS-LAST-NAME)
+            DELIMITED BY SIZE
+            INTO WS-FULL-NAME
+        END-STRING
     END-IF
-    
-    *> If we couldn't parse properly, just use username
+
+    *> If we couldn't parse properly, just use username and defaults
     IF WS-FULL-NAME = SPACES
         MOVE FUNCTION TRIM(WS-OTHER-USER) TO WS-FULL-NAME
     END-IF
@@ -256,7 +202,7 @@ PARSE-PROFILE-DATA.
     IF WS-MAJOR = SPACES
         MOVE "Unknown" TO WS-MAJOR
     END-IF
-    
+
     EXIT PARAGRAPH.
 
 DUAL-OUTPUT.
