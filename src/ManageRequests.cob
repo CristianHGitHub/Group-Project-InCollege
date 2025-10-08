@@ -9,7 +9,8 @@ FILE-CONTROL.
         FILE STATUS IS PENDING-STATUS.
     SELECT ESTABLISHED-FILE ASSIGN TO "../data/EstablishedConnections.txt"
         ORGANIZATION IS LINE SEQUENTIAL
-        FILE STATUS IS EST-STATUS.
+        FILE STATUS IS EST-STATUS
+        SHARING WITH ALL.
 
 DATA DIVISION.
 FILE SECTION.
@@ -303,6 +304,21 @@ APPEND-TO-ESTABLISHED.
         WHEN "00"
             CONTINUE
         WHEN "35"
+            *> If file is missing or not in a usable state for EXTEND,
+            *> create/truncate it, then reopen in EXTEND mode
+            OPEN OUTPUT ESTABLISHED-FILE
+            IF EST-STATUS NOT = "00"
+                MOVE "Y" TO WS-ERROR
+            ELSE
+                CLOSE ESTABLISHED-FILE
+                OPEN EXTEND ESTABLISHED-FILE
+                IF EST-STATUS NOT = "00"
+                    MOVE "Y" TO WS-ERROR
+                END-IF
+            END-IF
+        WHEN "61"
+            *> If file is missing or not in a usable state for EXTEND,
+            *> create/truncate it, then reopen in EXTEND mode
             OPEN OUTPUT ESTABLISHED-FILE
             IF EST-STATUS NOT = "00"
                 MOVE "Y" TO WS-ERROR
