@@ -12,6 +12,7 @@ class TestCase:
     reset_accounts: bool = False
     input_lines: List[str] = field(default_factory=list)
     expected_lines: List[str] = field(default_factory=list)
+    file_asserts: List[tuple] = field(default_factory=list)  # list of (path, expected_lines)
 
 
 def rtrim(s: str) -> str:
@@ -25,7 +26,9 @@ def parse_tests(path: str) -> List[TestCase]:
     with open(path, "r", encoding="utf-8") as f:
         lines = [rtrim(l) for l in f.readlines()]
 
-    state = "OUT"  # OUT, TEST, INPUT, EXPECTED
+    state = "OUT"  # OUT, TEST, INPUT, EXPECTED, FILE
+    file_path = None
+    file_lines: List[str] = []
     cur = TestCase()
     for line in lines:
         if state in ("OUT", "TEST"):
@@ -58,12 +61,25 @@ def parse_tests(path: str) -> List[TestCase]:
             else:
                 cur.input_lines.append(line)
         elif state == "EXPECTED":
+            if line.lower().startswith("expectfile:"):
+                file_path = line.split(":",1)[1].strip()
+                file_lines = []
+                state = "FILE"
+                continue
             if line.lower() in ("end", "endtest"):
                 tests.append(cur)
                 cur = TestCase()
                 state = "OUT"
             else:
                 cur.expected_lines.append(line)
+        elif state == "FILE":
+            if line.lower() == "endfile":
+                cur.file_asserts.append((file_path, file_lines))
+                file_path = None
+                file_lines = []
+                state = "EXPECTED"
+            else:
+                file_lines.append(line)
 
     if state == "EXPECTED" and cur.expected_lines:
         tests.append(cur)
@@ -159,6 +175,30 @@ def run_tests(test_file: str, export: bool = False) -> int:
                 ok = False
                 mismatch_idx = i
                 break
+        # If console output matched, also check file assertions
+        if ok:
+            for (fpath, flines) in tc.file_asserts:
+                actual_file = read_lines(fpath)
+                max_len_f = max(len(flines), len(actual_file))
+                ok_file = True
+                mismatch_idx_f = -1
+                for i in range(max_len_f):
+                    e = flines[i] if i < len(flines) else ""
+                    a = actual_file[i] if i < len(actual_file) else ""
+                    if e != a:
+                        ok_file = False
+                        mismatch_idx_f = i
+                        break
+                if not ok_file:
+                    print(f"  FAIL file {fpath} at line {mismatch_idx_f+1}")
+                    e = flines[mismatch_idx_f] if mismatch_idx_f < len(flines) else ""
+                    a = actual_file[mismatch_idx_f] if mismatch_idx_f < len(actual_file) else ""
+                    print(f"    expected: {e}")
+                    print(f"    actual  : {a}")
+                    print("  (Tip: check file contents)")
+                    failed += 1
+                    ok = False
+                    break
         if ok:
             print(f"  PASS ({len(actual)} lines)")
             passed += 1

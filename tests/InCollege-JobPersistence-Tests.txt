@@ -1,0 +1,114 @@
+Test: Persistence after restart and JobID increments
+ResetAccounts: yes
+Input:
+Create New Account
+userA
+Abcdef1!
+Log In
+userA
+Abcdef1!
+Job
+Post a Job/Internship
+First Title
+First Description
+FirstCo
+Remote
+NONE
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for userA
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, userA
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+End
+
+Test: Verify persisted file and next JobID
+ResetAccounts: no
+Input:
+Log In
+userA
+Abcdef1!
+Job
+Post a Job/Internship
+Second Title
+Second Description
+SecondCo
+New York, NY
+
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, userA
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+ExpectFile: ../data/JobPostings.txt
+1|userA|First Title|First Description|FirstCo|Remote|Salary: NONE
+2|userA|Second Title|Second Description|SecondCo|New York, NY|Salary: NONE
+EndFile
+End
