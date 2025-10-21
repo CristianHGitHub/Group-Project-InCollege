@@ -148,3 +148,110 @@ Enter your choice:
 Please enter job title:
 Error: Job Title is required and cannot be empty.
 End
+
+Test: Missing job description should be rejected
+ResetAccounts: yes
+Input:
+Create New Account
+u4
+Abcdef1!
+Log In
+u4
+Abcdef1!
+Job
+Post a Job/Internship
+Data Analyst
+
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u4
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u4
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Error: Description is required and cannot be empty.
+End
+
+Test: Long job description is truncated to 200 characters
+ResetAccounts: yes
+Input:
+Create New Account
+u5
+Abcdef1!
+Log In
+u5
+Abcdef1!
+Job
+Post a Job/Internship
+QA Engineer
+This is a very long description that exceeds two hundred characters. It should be truncated to ensure the stored description does not overflow the field and the application remains stable and predictable for testing and users alike.
+Quality Co
+New York, NY
+$50,000/year
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u5
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u5
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Note: Description truncated to 200 characters.
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+End
