@@ -12,6 +12,9 @@ FILE-CONTROL.
         FILE STATUS IS OUT-STATUS.
     SELECT ACCOUNT-FILE ASSIGN TO "../data/AccountRecords.txt"
         ORGANIZATION IS LINE SEQUENTIAL.
+    SELECT JOB-FILE ASSIGN TO "../data/JobPostings.txt"
+        ORGANIZATION IS LINE SEQUENTIAL
+        FILE STATUS IS JOB-STATUS.
 
 DATA DIVISION.
 FILE SECTION.
@@ -21,11 +24,14 @@ FD  OUTFILE EXTERNAL.
 01  OUT-REC            PIC X(200).
 FD  ACCOUNT-FILE.
 01  ACCOUNT-REC        PIC X(100).
+FD  JOB-FILE.
+01  JOB-REC            PIC X(500).
 
 WORKING-STORAGE SECTION.
 COPY "AccountRecord.cpy".
 01  EOF                PIC X(1) VALUE "N".
 01  OUT-STATUS         PIC XX.
+01  JOB-STATUS         PIC XX.
 01  CREATE-RESPONSE    PIC X(100).
 01  SEARCH-NAME        PIC X(205).
 01  FOUND-FLAG         PIC X    VALUE "N".
@@ -62,6 +68,12 @@ COPY "AccountRecord.cpy".
 01  REQUEST-RESPONSE2   PIC X(200).
 01  WS-COMMAND          PIC X(100).
 01  MENU-DISPLAYED      PIC X VALUE "N".
+01  JOB-TITLE           PIC X(100).
+01  JOB-DESCRIPTION     PIC X(200).
+01  JOB-EMPLOYER        PIC X(100).
+01  JOB-LOCATION        PIC X(100).
+01  JOB-SALARY          PIC X(50).
+01  JOB-STRING          PIC X(500).
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -219,12 +231,9 @@ PROCEDURE DIVISION.
 
                     WHEN "Job"
                         IF LOGIN-STATUS = "Y"
-                            MOVE 0        TO NAV-INDEX
-                            MOVE "JOB"    TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
-                            *> re-display main menu
+                            MOVE "JOBS" TO CURRENT-MENU
                             MOVE 0            TO NAV-INDEX
-                            MOVE "SHOW-MENU"  TO NAV-ACTION
+                            MOVE "SHOW-JOBS"  TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
@@ -319,6 +328,27 @@ PROCEDURE DIVISION.
                             MOVE "SKILLS" TO CURRENT-MENU
                             MOVE 0              TO NAV-INDEX
                             MOVE "SHOW-SKILLS"  TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
+
+                    WHEN "Post a Job/Internship"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "JOBS"
+                            PERFORM POST-JOB-FLOW
+                        ELSE
+                            MOVE "Invalid option" TO OUTPUT-BUFFER
+                            PERFORM DUAL-OUTPUT
+                        END-IF
+
+                    WHEN "Browse Jobs/Internships"
+                        IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "JOBS"
+                            MOVE 0             TO NAV-INDEX
+                            MOVE "BROWSE-JOBS" TO NAV-ACTION
+                            PERFORM NAV-PRINT-LOOP
+                            MOVE 0            TO NAV-INDEX
+                            MOVE "SHOW-JOBS"  TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
@@ -440,7 +470,7 @@ PROCEDURE DIVISION.
                             MOVE "SKILL-1" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
                             *> re-display skills menu
-                            MOVE 0              TO NAV-INDEX
+                            MOVE 0             TO NAV-INDEX
                             MOVE "SHOW-SKILLS" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
                         ELSE
@@ -466,7 +496,7 @@ PROCEDURE DIVISION.
                             MOVE 0         TO NAV-INDEX
                             MOVE "SKILL-3" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
-                            MOVE 0              TO NAV-INDEX
+                            MOVE 0             TO NAV-INDEX
                             MOVE "SHOW-SKILLS" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
                         ELSE
@@ -479,7 +509,7 @@ PROCEDURE DIVISION.
                             MOVE 0         TO NAV-INDEX
                             MOVE "SKILL-4" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
-                            MOVE 0              TO NAV-INDEX
+                            MOVE 0             TO NAV-INDEX
                             MOVE "SHOW-SKILLS" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
                         ELSE
@@ -492,7 +522,7 @@ PROCEDURE DIVISION.
                             MOVE 0         TO NAV-INDEX
                             MOVE "SKILL-5" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
-                            MOVE 0              TO NAV-INDEX
+                            MOVE 0             TO NAV-INDEX
                             MOVE "SHOW-SKILLS" TO NAV-ACTION
                             PERFORM NAV-PRINT-LOOP
                         ELSE
@@ -576,6 +606,113 @@ NAV-PRINT-LOOP.
             PERFORM DUAL-OUTPUT
         END-IF
     END-PERFORM
+    EXIT PARAGRAPH.
+
+POST-JOB-FLOW.
+    *> Prompt for job details
+    MOVE "Please enter job title:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO JOB-TITLE
+    END-READ
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
+
+    IF JOB-TITLE = SPACES
+        MOVE "Error: Job Title is required and cannot be empty." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE "Y" TO EOF
+        EXIT PARAGRAPH
+    END-IF
+
+    MOVE "Please enter job description:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO JOB-DESCRIPTION
+    END-READ
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
+
+    IF JOB-DESCRIPTION = SPACES
+        MOVE "Error: Description is required and cannot be empty." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE "Y" TO EOF
+        EXIT PARAGRAPH
+    END-IF
+
+    MOVE "Please enter employer:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO JOB-EMPLOYER
+    END-READ
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
+
+    IF JOB-EMPLOYER = SPACES
+        MOVE "Error: Employer is required and cannot be empty." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE "Y" TO EOF
+        EXIT PARAGRAPH
+    END-IF
+
+    MOVE "Please enter location:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO JOB-LOCATION
+    END-READ
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
+
+    IF JOB-LOCATION = SPACES
+        MOVE "Error: Location is required and cannot be empty." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE "Y" TO EOF
+        EXIT PARAGRAPH
+    END-IF
+
+    MOVE "Please enter salary (optional):" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO JOB-SALARY
+    END-READ
+    IF EOF = "Y" EXIT PARAGRAPH END-IF
+
+    *> Persist posting
+    PERFORM SAVE-JOB-POSTING
+
+    *> Confirmation and return to main menu
+    MOVE "Job posted successfully!" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    MOVE "MAIN" TO CURRENT-MENU
+    MOVE 0            TO NAV-INDEX
+    MOVE "SHOW-MENU"  TO NAV-ACTION
+    PERFORM NAV-PRINT-LOOP
+    EXIT PARAGRAPH.
+
+SAVE-JOB-POSTING.
+    MOVE SPACES TO JOB-STRING
+    STRING
+        FUNCTION TRIM(AR-USERNAME)   DELIMITED BY SIZE "|"
+        FUNCTION TRIM(JOB-TITLE)     DELIMITED BY SIZE "|"
+        FUNCTION TRIM(JOB-DESCRIPTION) DELIMITED BY SIZE "|"
+        FUNCTION TRIM(JOB-EMPLOYER)  DELIMITED BY SIZE "|"
+        FUNCTION TRIM(JOB-LOCATION)  DELIMITED BY SIZE "|"
+        FUNCTION TRIM(JOB-SALARY)    DELIMITED BY SIZE
+        INTO JOB-STRING
+    END-STRING
+
+    OPEN EXTEND JOB-FILE
+    IF JOB-STATUS = "35"
+        *> File doesn't exist yet: create it and write first record
+        OPEN OUTPUT JOB-FILE
+        WRITE JOB-REC FROM JOB-STRING
+        CLOSE JOB-FILE
+    ELSE
+        WRITE JOB-REC FROM JOB-STRING
+        CLOSE JOB-FILE
+    END-IF
     EXIT PARAGRAPH.
 
 PROFILE-INPUT-PROCESS.
