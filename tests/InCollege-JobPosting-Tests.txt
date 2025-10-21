@@ -1,0 +1,150 @@
+Test: Post a job successfully
+ResetAccounts: yes
+Input:
+Create New Account
+u1
+Abcdef1!
+Log In
+u1
+Abcdef1!
+Job
+Post a Job/Internship
+Software Intern
+Work on core features
+InCollege Inc
+Remote
+$25/hour
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u1
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u1
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+End
+
+Test: Browse jobs is under construction and redisplays submenu
+ResetAccounts: yes
+Input:
+Create New Account
+u2
+Abcdef1!
+Log In
+u2
+Abcdef1!
+Job
+Browse Jobs/Internships
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u2
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+This feature is under construction.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+End
+
+Test: Missing job title should be rejected
+ResetAccounts: yes
+Input:
+Create New Account
+u3
+Abcdef1!
+Log In
+u3
+Abcdef1!
+Job
+Post a Job/Internship
+
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u3
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u3
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Error: Job Title is required and cannot be empty.
+End

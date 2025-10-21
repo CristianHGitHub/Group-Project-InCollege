@@ -24,6 +24,18 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             MOVE "MAIN" TO L-MENU
             PERFORM SHOW-MENU
 
+        WHEN "SHOW-JOBS"
+            MOVE "JOBS" TO L-MENU
+            PERFORM SHOW-JOBS
+
+        WHEN "BROWSE-JOBS"
+            IF L-MENU = "JOBS"
+                MOVE "This feature is under construction." TO L-OUT
+            ELSE
+                MOVE "Invalid option" TO L-OUT
+            END-IF
+            MOVE "Y" TO L-DONE
+
         WHEN "SHOW-SKILLS"
             MOVE "SKILLS" TO L-MENU
             PERFORM SHOW-SKILLS
@@ -38,7 +50,8 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
 
         WHEN "JOB"
             IF L-MENU = "MAIN"
-                MOVE "Job search/internship is under construction." TO L-OUT
+                MOVE "JOBS" TO L-MENU
+                PERFORM SHOW-JOBS
             ELSE
                 MOVE "Invalid option" TO L-OUT
             END-IF
@@ -133,6 +146,26 @@ SHOW-SKILLS.
     ADD 1 TO L-INDEX
         END-ADD
     IF L-INDEX > 7
+        MOVE "Y" TO L-DONE
+    END-IF
+    EXIT PARAGRAPH.
+
+SHOW-JOBS.
+    MOVE "N" TO L-DONE
+    EVALUATE L-INDEX
+        WHEN 0  MOVE "Job search/internship:"  TO L-OUT
+        WHEN 1  MOVE "Post a Job/Internship"   TO L-OUT
+        WHEN 2  MOVE "Browse Jobs/Internships" TO L-OUT
+        WHEN 3  MOVE "Go Back"                  TO L-OUT
+        WHEN 4  MOVE "Enter your choice:"       TO L-OUT
+        WHEN OTHER
+            MOVE "Y" TO L-DONE
+            MOVE SPACES TO L-OUT
+            EXIT PARAGRAPH
+    END-EVALUATE
+    ADD 1 TO L-INDEX
+        END-ADD
+    IF L-INDEX > 4
         MOVE "Y" TO L-DONE
     END-IF
     EXIT PARAGRAPH.
