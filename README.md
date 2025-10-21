@@ -148,7 +148,8 @@ workspace/
     ├── InCollege-Input.txt
     ├── InCollege-Output.txt
     ├── AccountRecords.txt
-    └── ProfileRecords.txt
+    ├── ProfileRecords.txt
+    └── JobPostings.txt
 ```
 
 ### ⚡ Single Line Commands
@@ -163,6 +164,72 @@ make clean && make
 # Windows equivalent
 build.bat
 ```
+
+## Job Posting
+
+### Overview
+
+- Adds a functional `Job search/internship` menu with:
+  - `Post a Job/Internship` (implemented)
+  - `Browse Jobs/Internships` (under construction)
+- Prompts for Title, Description, Employer, Location (required) and Salary (optional).
+- Long Description input is accepted and truncated to 200 characters (a notice is displayed).
+- Posts are persisted to `data/JobPostings.txt` with a sequential `JobID`.
+
+### Record Format
+
+```
+JobID|username|title|description|employer|location|salary
+```
+
+Examples:
+
+```
+1|userA|Software Intern|API work|InCollege Inc|Remote|Salary: $25/hour
+2|userA|Data Analyst|Analyze datasets|DataCo|New York, NY|Salary: NONE
+```
+
+### Sample Input Snippet
+
+```
+Log In
+userA
+Abcdef1!
+Job
+Post a Job/Internship
+Software Intern
+API work on core features
+InCollege Inc
+Remote
+$25/hour
+```
+
+### Sample Output Snippet
+
+```
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+```
+
+### Validation
+
+- Required: Title, Description, Employer, Location.
+- Missing required field → clear error and no save.
+- Salary optional; blank or `NONE` saved as `Salary: NONE`.
+
+### Test Suites
+
+- `tests/InCollege-JobPosting-Tests.txt`: success, validation, long description, salary cases.
+- `tests/InCollege-JobPersistence-Tests.txt`: verifies persistence across restarts and JobID sequence (uses `ExpectFile`).
 
 ## Testing Framework
 
@@ -221,6 +288,7 @@ The `tools/test_runner.py` script automates test execution and validation:
 - **Output Comparison:** Compares actual program output with expected results line-by-line
 - **Account Reset:** Optionally clears account data between tests
 - **Detailed Reporting:** Shows pass/fail status and highlights mismatches
+- **File Assertions:** Optionally asserts exact contents of data files (e.g., JobPostings.txt)
 
 #### Usage:
 
@@ -240,6 +308,23 @@ python3 tools/test_runner.py --export tests/InCollege-ViewProfile-Tests.txt
 # Run ALL test files and export inputs/outputs (quote the asterisk)
 python3 tools/test_runner.py --export "*"
 ```
+
+#### File Assertions (ExpectFile)
+
+Add file checks inside the Expected: block to validate persistent files:
+
+```
+Expected:
+... normal expected output lines ...
+ExpectFile: ../data/JobPostings.txt
+1|userA|First Title|First Description|FirstCo|Remote|Salary: NONE
+2|userA|Second Title|Second Description|SecondCo|New York, NY|Salary: NONE
+EndFile
+End
+```
+
+Notes:
+- When `ResetAccounts: yes` is set, the runner also truncates `../data/JobPostings.txt` to avoid leftover entries.
 
 #### Example Output:
 
