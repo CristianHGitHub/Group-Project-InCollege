@@ -220,14 +220,10 @@ View My Profile
 Requests
 View My Network
 Enter your choice:
-Job search/internship is under construction.
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
 Enter your choice:
 End
 
