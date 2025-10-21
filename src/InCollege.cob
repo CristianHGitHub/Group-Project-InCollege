@@ -19,7 +19,7 @@ FILE-CONTROL.
 DATA DIVISION.
 FILE SECTION.
 FD  INFILE.
-01  IN-REC             PIC X(100).
+01  IN-REC             PIC X(500).
 FD  OUTFILE EXTERNAL.
 01  OUT-REC            PIC X(200).
 FD  ACCOUNT-FILE.
@@ -74,6 +74,9 @@ COPY "AccountRecord.cpy".
 01  JOB-LOCATION        PIC X(100).
 01  JOB-SALARY          PIC X(50).
 01  JOB-STRING          PIC X(500).
+01  JOB-DESC-LONG       PIC X(500).
+01  JOB-DESC-TRUNC      PIC X VALUE "N".
+01  JOB-IDX             PIC 9(3) VALUE 0.
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -629,15 +632,29 @@ POST-JOB-FLOW.
     PERFORM DUAL-OUTPUT
     READ INFILE
         AT END MOVE "Y" TO EOF
-        NOT AT END MOVE IN-REC TO JOB-DESCRIPTION
+        NOT AT END MOVE IN-REC TO JOB-DESC-LONG
     END-READ
     IF EOF = "Y" EXIT PARAGRAPH END-IF
 
-    IF JOB-DESCRIPTION = SPACES
+    IF JOB-DESC-LONG = SPACES
         MOVE "Error: Description is required and cannot be empty." TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
         MOVE "Y" TO EOF
         EXIT PARAGRAPH
+    END-IF
+
+    *> Handle long description (truncate to 200 chars if needed)
+    MOVE "N" TO JOB-DESC-TRUNC
+    PERFORM VARYING JOB-IDX FROM 201 BY 1 UNTIL JOB-IDX > 500
+        IF JOB-DESC-LONG(JOB-IDX:1) NOT = SPACE
+            MOVE "Y" TO JOB-DESC-TRUNC
+            EXIT PERFORM
+        END-IF
+    END-PERFORM
+    MOVE JOB-DESC-LONG(1:200) TO JOB-DESCRIPTION
+    IF JOB-DESC-TRUNC = "Y"
+        MOVE "Note: Description truncated to 200 characters." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
     END-IF
 
     MOVE "Please enter employer:" TO OUTPUT-BUFFER
