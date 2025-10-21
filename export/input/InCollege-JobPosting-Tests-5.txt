@@ -1,0 +1,13 @@
+Create New Account
+u5
+Abcdef1!
+Log In
+u5
+Abcdef1!
+Job
+Post a Job/Internship
+QA Engineer
+This is a very long description that exceeds two hundred characters. It should be truncated to ensure the stored description does not overflow the field and the application remains stable and predictable for testing and users alike.
+Quality Co
+New York, NY
+$50,000/year

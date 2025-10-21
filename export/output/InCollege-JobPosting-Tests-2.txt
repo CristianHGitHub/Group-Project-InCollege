@@ -4,14 +4,14 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for tmp1
+Account created for u2
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, tmp1
+Welcome, u2
 Search for a job
 Find someone you know
 Learn a new skill
@@ -20,6 +20,12 @@ View My Profile
 Requests
 View My Network
 Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+This feature is under construction.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
