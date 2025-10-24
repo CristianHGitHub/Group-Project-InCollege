@@ -1212,7 +1212,7 @@ HANDLE-JOB-SELECTION.
 
     *> If invalid selection, show error and return to jobs menu
     IF JOB-SELECTION-VALID = "N"
-        MOVE "Invalid selection. Returning to Job Search/Internship menu." TO OUTPUT-BUFFER
+        MOVE "Invalid job number. Please select a valid job from the list." TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
         MOVE "JOBS" TO CURRENT-MENU
         MOVE 0 TO NAV-INDEX
@@ -1228,6 +1228,13 @@ SHOW-JOB-DETAILS.
     MOVE "N" TO JOB-DETAILS-FOUND
 
     OPEN INPUT JOB-FILE
+    IF JOB-STATUS = "35"
+        *> File doesn't exist - show error message
+        MOVE "Error: Unable to open job listings file." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        EXIT PARAGRAPH
+    END-IF
+
     PERFORM UNTIL JOB-EOF = "Y" OR JOB-DETAILS-FOUND = "Y"
         READ JOB-FILE
             AT END
@@ -1252,17 +1259,22 @@ SHOW-JOB-DETAILS.
     END-PERFORM
     CLOSE JOB-FILE
 
-    *> Display job details
+    *> Display job details in exact format specified
     IF JOB-DETAILS-FOUND = "Y"
-        MOVE "----------------------------" TO OUTPUT-BUFFER
-        PERFORM DUAL-OUTPUT
-
-        MOVE "Job Details:" TO OUTPUT-BUFFER
+        MOVE "--- Job Details ---" TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
 
         MOVE SPACES TO JOB-DETAILS-LINE
         STRING "Title: " DELIMITED BY SIZE
                FUNCTION TRIM(JOB-DETAILS-TITLE) DELIMITED BY SIZE
+               INTO JOB-DETAILS-LINE
+        END-STRING
+        MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        MOVE SPACES TO JOB-DETAILS-LINE
+        STRING "Description: " DELIMITED BY SIZE
+               FUNCTION TRIM(JOB-DETAILS-DESC) DELIMITED BY SIZE
                INTO JOB-DETAILS-LINE
         END-STRING
         MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
@@ -1284,32 +1296,84 @@ SHOW-JOB-DETAILS.
         MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
 
+        *> Handle salary display - show N/A if not present
         MOVE SPACES TO JOB-DETAILS-LINE
-        STRING "Description: " DELIMITED BY SIZE
-               FUNCTION TRIM(JOB-DETAILS-DESC) DELIMITED BY SIZE
-               INTO JOB-DETAILS-LINE
-        END-STRING
+        IF JOB-DETAILS-SALARY = SPACES OR JOB-DETAILS-SALARY = "Salary: NONE"
+            MOVE "Salary: N/A" TO JOB-DETAILS-LINE
+        ELSE
+            MOVE FUNCTION TRIM(JOB-DETAILS-SALARY) TO JOB-DETAILS-LINE
+        END-IF
         MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
 
-        IF JOB-DETAILS-SALARY NOT = SPACES
-            MOVE SPACES TO JOB-DETAILS-LINE
-            STRING FUNCTION TRIM(JOB-DETAILS-SALARY) DELIMITED BY SIZE
-                   INTO JOB-DETAILS-LINE
-            END-STRING
-            MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
-            PERFORM DUAL-OUTPUT
-        END-IF
-
-        MOVE "----------------------------" TO OUTPUT-BUFFER
+        MOVE "-------------------" TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
-    END-IF
 
-    *> Return to jobs menu
-    MOVE "JOBS" TO CURRENT-MENU
-    MOVE 0 TO NAV-INDEX
-    MOVE "SHOW-JOBS" TO NAV-ACTION
-    PERFORM NAV-PRINT-LOOP
+        *> Show job detail menu options
+        MOVE "Apply for this Job" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        MOVE "Back to Job List" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        MOVE "Enter your choice:" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        *> Read user's choice for job detail menu
+        READ INFILE
+            AT END MOVE "Y" TO EOF
+            NOT AT END MOVE IN-REC TO WS-COMMAND
+        END-READ
+
+        IF EOF NOT = "Y"
+            PERFORM HANDLE-JOB-DETAIL-MENU
+        END-IF
+    ELSE
+        *> Job not found - show error message
+        MOVE "Error: Job record not found for selection " TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE JOB-SELECTION-NUM TO JOB-DETAILS-LINE
+        MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        *> Return to jobs menu
+        MOVE "JOBS" TO CURRENT-MENU
+        MOVE 0 TO NAV-INDEX
+        MOVE "SHOW-JOBS" TO NAV-ACTION
+        PERFORM NAV-PRINT-LOOP
+    END-IF
+    EXIT PARAGRAPH.
+
+HANDLE-JOB-DETAIL-MENU.
+    *> Handle user choice from job detail menu
+    MOVE FUNCTION TRIM(WS-COMMAND) TO WS-COMMAND
+
+    EVALUATE WS-COMMAND
+        WHEN "Apply for this Job"
+            *> Call apply routine (placeholder for now)
+            MOVE "Application submitted successfully!" TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+
+            *> Return to jobs menu
+            MOVE "JOBS" TO CURRENT-MENU
+            MOVE 0 TO NAV-INDEX
+            MOVE "SHOW-JOBS" TO NAV-ACTION
+            PERFORM NAV-PRINT-LOOP
+
+        WHEN "Back to Job List"
+            *> Return to job list
+            PERFORM BROWSE-JOBS-SECTION
+
+        WHEN OTHER
+            *> Invalid choice - show error and return to jobs menu
+            MOVE "Invalid choice. Returning to Job Search/Internship menu." TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+
+            MOVE "JOBS" TO CURRENT-MENU
+            MOVE 0 TO NAV-INDEX
+            MOVE "SHOW-JOBS" TO NAV-ACTION
+            PERFORM NAV-PRINT-LOOP
+    END-EVALUATE
     EXIT PARAGRAPH.
 
 *> OUTPUT-LINE-TO-SCREEN-AND-FILE: Helper for job summary output
