@@ -28,14 +28,6 @@ PROCEDURE DIVISION USING L-ACTION L-INDEX L-OUT L-DONE L-MENU.
             MOVE "JOBS" TO L-MENU
             PERFORM SHOW-JOBS
 
-        WHEN "BROWSE-JOBS"
-            IF L-MENU = "JOBS"
-                MOVE "This feature is under construction." TO L-OUT
-            ELSE
-                MOVE "Invalid option" TO L-OUT
-            END-IF
-            MOVE "Y" TO L-DONE
-
         WHEN "SHOW-SKILLS"
             MOVE "SKILLS" TO L-MENU
             PERFORM SHOW-SKILLS

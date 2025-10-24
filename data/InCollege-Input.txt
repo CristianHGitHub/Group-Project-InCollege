@@ -1,4 +1,22 @@
+Create New Account
+u5
+Abcdef1!
 Log In
-testuser
-TestPass123!
-Requests
+u5
+Abcdef1!
+Job
+Browse Jobs/Internships
+0
+Job
+Post a Job/Internship
+QA Engineer
+Test software quality
+Quality Co
+Boston, MA
+$55,000/year
+Job
+Browse Jobs/Internships
+1
+Job
+Browse Jobs/Internships
+0

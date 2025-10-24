@@ -83,6 +83,30 @@ COPY "AccountRecord.cpy".
 01  JOB-LINE-COUNT      PIC 9(9) VALUE 0.
 01  JOB-EOF             PIC X VALUE "N".
 01  JOB-ID-EDIT         PIC Z(6)9.
+01  JOB-COUNT           PIC 9(3) VALUE 0.
+01  JOB-DISPLAY-NUM     PIC 9(3) VALUE 0.
+01  JOB-PARSED-TITLE    PIC X(100).
+01  JOB-PARSED-EMPLOYER PIC X(100).
+01  JOB-PARSED-LOCATION PIC X(100).
+01  JOB-PARSED-DESC     PIC X(200).
+01  JOB-PARSED-SALARY   PIC X(50).
+01  JOB-PARSED-USERNAME PIC X(50).
+01  JOB-PARSED-ID       PIC X(10).
+01  JOB-DISPLAY-LINE    PIC X(200).
+01  JOB-SELECTION       PIC X(10).
+01  JOB-SELECTION-NUM   PIC 9(3).
+01  JOB-SELECTION-VALID PIC X VALUE "N".
+01  JOB-DETAILS-FOUND   PIC X VALUE "N".
+01  JOB-DETAILS-LINE    PIC X(200).
+01  JOB-DETAILS-TITLE   PIC X(100).
+01  JOB-DETAILS-EMPLOYER PIC X(100).
+01  JOB-DETAILS-LOCATION PIC X(100).
+01  JOB-DETAILS-DESC    PIC X(200).
+01  JOB-DETAILS-SALARY  PIC X(50).
+01  JOB-DETAILS-USERNAME PIC X(50).
+01  JOB-DETAILS-ID      PIC X(10).
+01  JOB-DETAILS-NUM     PIC 9(3) VALUE 0.
+01  JOB-DETAILS-CURRENT PIC 9(3) VALUE 0.
 
 PROCEDURE DIVISION.
     *> Count existing accounts
@@ -353,12 +377,7 @@ PROCEDURE DIVISION.
 
                     WHEN "Browse Jobs/Internships"
                         IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "JOBS"
-                            MOVE 0             TO NAV-INDEX
-                            MOVE "BROWSE-JOBS" TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
-                            MOVE 0            TO NAV-INDEX
-                            MOVE "SHOW-JOBS"  TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
+                            PERFORM BROWSE-JOBS-SECTION
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
@@ -1086,4 +1105,253 @@ PROFILE-LOAD.
     MOVE SPACES TO PROFILE-DATA-STRING
     CALL 'PROFILE-STORAGE-LOAD'
          USING AR-USERNAME PROFILE-DATA-STRING
+    EXIT PARAGRAPH.
+
+BROWSE-JOBS-SECTION.
+    *> Initialize counters and flags
+    MOVE 0 TO JOB-COUNT
+    MOVE 0 TO JOB-DISPLAY-NUM
+    MOVE "N" TO JOB-EOF
+    MOVE "N" TO JOB-DETAILS-FOUND
+
+    *> Open job file for reading
+    OPEN INPUT JOB-FILE
+    IF JOB-STATUS = "35"
+        *> File doesn't exist - show empty message
+        MOVE "No job or internship listings are currently available." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE "Enter job number to view details, or 0 to go back:" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        READ INFILE
+            AT END MOVE "Y" TO EOF
+            NOT AT END MOVE IN-REC TO JOB-SELECTION
+        END-READ
+        IF EOF NOT = "Y"
+            PERFORM HANDLE-JOB-SELECTION
+        END-IF
+        EXIT PARAGRAPH
+    END-IF
+
+    *> Read all job records and count them
+    PERFORM UNTIL JOB-EOF = "Y"
+        READ JOB-FILE
+            AT END
+                MOVE "Y" TO JOB-EOF
+            NOT AT END
+                IF JOB-REC NOT = SPACES
+                    ADD 1 TO JOB-COUNT
+                END-IF
+        END-READ
+    END-PERFORM
+    CLOSE JOB-FILE
+
+    *> If no jobs found, show empty message
+    IF JOB-COUNT = 0
+        MOVE "No job or internship listings are currently available." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE "Enter job number to view details, or 0 to go back:" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        READ INFILE
+            AT END MOVE "Y" TO EOF
+            NOT AT END MOVE IN-REC TO JOB-SELECTION
+        END-READ
+        IF EOF NOT = "Y"
+            PERFORM HANDLE-JOB-SELECTION
+        END-IF
+        EXIT PARAGRAPH
+    END-IF
+
+    *> Display job listings
+    MOVE "N" TO JOB-EOF
+    MOVE 0 TO JOB-DISPLAY-NUM
+    OPEN INPUT JOB-FILE
+    PERFORM UNTIL JOB-EOF = "Y"
+        READ JOB-FILE
+            AT END
+                MOVE "Y" TO JOB-EOF
+            NOT AT END
+                IF JOB-REC NOT = SPACES
+                    ADD 1 TO JOB-DISPLAY-NUM
+                    PERFORM PARSE-JOB-RECORD
+                    PERFORM FORMAT-JOB-DISPLAY-LINE
+                    MOVE JOB-DISPLAY-LINE TO OUTPUT-BUFFER
+                    PERFORM DUAL-OUTPUT
+                END-IF
+        END-READ
+    END-PERFORM
+    CLOSE JOB-FILE
+
+    *> Show navigation prompt
+    MOVE "Enter job number to view details, or 0 to go back:" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    *> Read user selection
+    READ INFILE
+        AT END MOVE "Y" TO EOF
+        NOT AT END MOVE IN-REC TO JOB-SELECTION
+    END-READ
+
+    IF EOF NOT = "Y"
+        PERFORM HANDLE-JOB-SELECTION
+    END-IF
+    EXIT PARAGRAPH.
+
+PARSE-JOB-RECORD.
+    *> Parse pipe-separated job record: ID|USERNAME|TITLE|DESC|EMPLOYER|LOCATION|SALARY
+    MOVE SPACES TO JOB-PARSED-ID
+    MOVE SPACES TO JOB-PARSED-USERNAME
+    MOVE SPACES TO JOB-PARSED-TITLE
+    MOVE SPACES TO JOB-PARSED-DESC
+    MOVE SPACES TO JOB-PARSED-EMPLOYER
+    MOVE SPACES TO JOB-PARSED-LOCATION
+    MOVE SPACES TO JOB-PARSED-SALARY
+
+    *> Find first pipe delimiter
+    UNSTRING JOB-REC DELIMITED BY "|"
+        INTO JOB-PARSED-ID
+             JOB-PARSED-USERNAME
+             JOB-PARSED-TITLE
+             JOB-PARSED-DESC
+             JOB-PARSED-EMPLOYER
+             JOB-PARSED-LOCATION
+             JOB-PARSED-SALARY
+    END-UNSTRING
+    EXIT PARAGRAPH.
+
+FORMAT-JOB-DISPLAY-LINE.
+    *> Format: n. <Job Title> at <Employer> (<Location>)
+    MOVE SPACES TO JOB-DISPLAY-LINE
+    STRING
+        FUNCTION TRIM(JOB-DISPLAY-NUM) DELIMITED BY SIZE ". "
+        FUNCTION TRIM(JOB-PARSED-TITLE) DELIMITED BY SIZE " at "
+        FUNCTION TRIM(JOB-PARSED-EMPLOYER) DELIMITED BY SIZE " ("
+        FUNCTION TRIM(JOB-PARSED-LOCATION) DELIMITED BY SIZE ")"
+        INTO JOB-DISPLAY-LINE
+    END-STRING
+    EXIT PARAGRAPH.
+
+HANDLE-JOB-SELECTION.
+    *> Validate and process job selection
+    MOVE FUNCTION TRIM(JOB-SELECTION) TO JOB-SELECTION
+    MOVE "N" TO JOB-SELECTION-VALID
+
+    *> Check if selection is numeric (after trimming)
+    IF FUNCTION TRIM(JOB-SELECTION) IS NUMERIC
+        MOVE FUNCTION TRIM(JOB-SELECTION) TO JOB-SELECTION-NUM
+        IF JOB-SELECTION-NUM = 0
+            *> Go back to main menu
+            MOVE "MAIN" TO CURRENT-MENU
+            MOVE 0 TO NAV-INDEX
+            MOVE "SHOW-MENU" TO NAV-ACTION
+            PERFORM NAV-PRINT-LOOP
+            MOVE "Y" TO JOB-SELECTION-VALID
+        ELSE
+            IF JOB-SELECTION-NUM > 0 AND JOB-SELECTION-NUM <= JOB-COUNT
+                *> Valid job number - show details
+                PERFORM SHOW-JOB-DETAILS
+                MOVE "Y" TO JOB-SELECTION-VALID
+            END-IF
+        END-IF
+    END-IF
+
+    *> If invalid selection, show error and return to jobs menu
+    IF JOB-SELECTION-VALID = "N"
+        MOVE "Invalid selection. Returning to Job Search/Internship menu." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        MOVE "JOBS" TO CURRENT-MENU
+        MOVE 0 TO NAV-INDEX
+        MOVE "SHOW-JOBS" TO NAV-ACTION
+        PERFORM NAV-PRINT-LOOP
+    END-IF
+    EXIT PARAGRAPH.
+
+SHOW-JOB-DETAILS.
+    *> Find and display the selected job details
+    MOVE "N" TO JOB-EOF
+    MOVE 0 TO JOB-DETAILS-CURRENT
+    MOVE "N" TO JOB-DETAILS-FOUND
+
+    OPEN INPUT JOB-FILE
+    PERFORM UNTIL JOB-EOF = "Y" OR JOB-DETAILS-FOUND = "Y"
+        READ JOB-FILE
+            AT END
+                MOVE "Y" TO JOB-EOF
+            NOT AT END
+                IF JOB-REC NOT = SPACES
+                    ADD 1 TO JOB-DETAILS-CURRENT
+                    IF JOB-DETAILS-CURRENT = JOB-SELECTION-NUM
+                        *> Found the selected job
+                        PERFORM PARSE-JOB-RECORD
+                        MOVE JOB-PARSED-ID TO JOB-DETAILS-ID
+                        MOVE JOB-PARSED-USERNAME TO JOB-DETAILS-USERNAME
+                        MOVE JOB-PARSED-TITLE TO JOB-DETAILS-TITLE
+                        MOVE JOB-PARSED-DESC TO JOB-DETAILS-DESC
+                        MOVE JOB-PARSED-EMPLOYER TO JOB-DETAILS-EMPLOYER
+                        MOVE JOB-PARSED-LOCATION TO JOB-DETAILS-LOCATION
+                        MOVE JOB-PARSED-SALARY TO JOB-DETAILS-SALARY
+                        MOVE "Y" TO JOB-DETAILS-FOUND
+                    END-IF
+                END-IF
+        END-READ
+    END-PERFORM
+    CLOSE JOB-FILE
+
+    *> Display job details
+    IF JOB-DETAILS-FOUND = "Y"
+        MOVE "----------------------------" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        MOVE "Job Details:" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        MOVE SPACES TO JOB-DETAILS-LINE
+        STRING "Title: " DELIMITED BY SIZE
+               FUNCTION TRIM(JOB-DETAILS-TITLE) DELIMITED BY SIZE
+               INTO JOB-DETAILS-LINE
+        END-STRING
+        MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        MOVE SPACES TO JOB-DETAILS-LINE
+        STRING "Employer: " DELIMITED BY SIZE
+               FUNCTION TRIM(JOB-DETAILS-EMPLOYER) DELIMITED BY SIZE
+               INTO JOB-DETAILS-LINE
+        END-STRING
+        MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        MOVE SPACES TO JOB-DETAILS-LINE
+        STRING "Location: " DELIMITED BY SIZE
+               FUNCTION TRIM(JOB-DETAILS-LOCATION) DELIMITED BY SIZE
+               INTO JOB-DETAILS-LINE
+        END-STRING
+        MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        MOVE SPACES TO JOB-DETAILS-LINE
+        STRING "Description: " DELIMITED BY SIZE
+               FUNCTION TRIM(JOB-DETAILS-DESC) DELIMITED BY SIZE
+               INTO JOB-DETAILS-LINE
+        END-STRING
+        MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+
+        IF JOB-DETAILS-SALARY NOT = SPACES
+            MOVE SPACES TO JOB-DETAILS-LINE
+            STRING FUNCTION TRIM(JOB-DETAILS-SALARY) DELIMITED BY SIZE
+                   INTO JOB-DETAILS-LINE
+            END-STRING
+            MOVE JOB-DETAILS-LINE TO OUTPUT-BUFFER
+            PERFORM DUAL-OUTPUT
+        END-IF
+
+        MOVE "----------------------------" TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+    END-IF
+
+    *> Return to jobs menu
+    MOVE "JOBS" TO CURRENT-MENU
+    MOVE 0 TO NAV-INDEX
+    MOVE "SHOW-JOBS" TO NAV-ACTION
+    PERFORM NAV-PRINT-LOOP
     EXIT PARAGRAPH.

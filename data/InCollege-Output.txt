@@ -1,25 +1,513 @@
+
 Welcome to InCollege!
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-You have successfully logged in.
-Welcome, testuser
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
+Account created for u1
+Log In
+Create New Account
 Enter your choice:
-Pending connection requests for testuser
-From: janesmith
-End of connection requests.
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u1
 Search for a job
 Find someone you know
 Learn a new skill
 Create/Edit Profile
 View My Profile
 Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+No job or internship listings are currently available.
+Enter job number to view details, or 0 to go back:
+Invalid selection. Returning to Job Search/Internship menu.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Invalid option
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Username u1 already exists.
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u1
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+No job or internship listings are currently available.
+Enter job number to view details, or 0 to go back:
+Invalid selection. Returning to Job Search/Internship menu.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u2
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+No job or internship listings are currently available.
+Enter job number to view details, or 0 to go back:
+Invalid selection. Returning to Job Search/Internship menu.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Cannot create more than 5 accounts.
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+No job or internship listings are currently available.
+Enter job number to view details, or 0 to go back:
+DEBUG: Read selection: '0         '
+Invalid selection. Returning to Job Search/Internship menu.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Cannot create more than 5 accounts.
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+No job or internship listings are currently available.
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Cannot create more than 5 accounts.
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Invalid password for u3
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Log In
+Create New Account
+Enter your choice:
+Invalid option
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u3
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u3
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+001. Software Intern at InCollege Inc (Remote)
+Enter job number to view details, or 0 to go back:
+----------------------------
+Job Details:
+Title: Software Intern
+Employer: InCollege Inc
+Location: Remote
+Description: Work on core features
+Salary: $25/hour
+----------------------------
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+001. Software Intern at InCollege Inc (Remote)
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u4
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u4
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+001. Software Intern at InCollege Inc (Remote)
+002. Data Analyst at TechCorp (New York, NY)
+003. Frontend Developer at StartupXYZ (San Francisco, CA)
+Enter job number to view details, or 0 to go back:
+----------------------------
+Job Details:
+Title: Data Analyst
+Employer: TechCorp
+Location: New York, NY
+Description: Analyze data trends
+Salary: $60,000/year
+----------------------------
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+001. Software Intern at InCollege Inc (Remote)
+002. Data Analyst at TechCorp (New York, NY)
+003. Frontend Developer at StartupXYZ (San Francisco, CA)
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u5
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u5
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+001. Software Intern at InCollege Inc (Remote)
+002. Data Analyst at TechCorp (New York, NY)
+003. Frontend Developer at StartupXYZ (San Francisco, CA)
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+001. Software Intern at InCollege Inc (Remote)
+002. Data Analyst at TechCorp (New York, NY)
+003. Frontend Developer at StartupXYZ (San Francisco, CA)
+004. QA Engineer at Quality Co (Boston, MA)
+Enter job number to view details, or 0 to go back:
+----------------------------
+Job Details:
+Title: Software Intern
+Employer: InCollege Inc
+Location: Remote
+Description: Work on core features
+Salary: $25/hour
+----------------------------
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+001. Software Intern at InCollege Inc (Remote)
+002. Data Analyst at TechCorp (New York, NY)
+003. Frontend Developer at StartupXYZ (San Francisco, CA)
+004. QA Engineer at Quality Co (Boston, MA)
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
 Enter your choice:
