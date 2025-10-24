@@ -108,6 +108,36 @@ COPY "AccountRecord.cpy".
 01  JOB-DETAILS-NUM     PIC 9(3) VALUE 0.
 01  JOB-DETAILS-CURRENT PIC 9(3) VALUE 0.
 
+*> Job Summary Display Constants and Variables
+01  JOB-SUMMARY-TEMPLATE PIC X(50) VALUE "n. <Job Title> at <Employer> (<Location>)".
+01  JOB-DIVIDER PIC X(30) VALUE "----------------------------".
+01  JOB-PROMPT PIC X(50) VALUE "Enter job number to view details, or 0 to go back:".
+01  JOB-EMPTY-MESSAGE PIC X(60) VALUE "No job or internship listings are currently available.".
+01  JOB-ERROR-MESSAGE PIC X(60) VALUE "Error: Unable to open job listings file.".
+01  JOB-SKIP-MESSAGE PIC X(50) VALUE "Skipping invalid job record at JOB-ID ".
+01  JOB-SUMMARY-LINE PIC X(200).
+01  JOB-SUMMARY-BUFFER PIC X(200).
+01  JOB-FIELD-TITLE PIC X(100).
+01  JOB-FIELD-EMPLOYER PIC X(100).
+01  JOB-FIELD-LOCATION PIC X(100).
+01  JOB-FIELD-TITLE-TRIMMED PIC X(100).
+01  JOB-FIELD-EMPLOYER-TRIMMED PIC X(100).
+01  JOB-FIELD-LOCATION-TRIMMED PIC X(100).
+01  JOB-SUMMARY-NUM PIC 9(3) VALUE 0.
+01  JOB-SUMMARY-COUNT PIC 9(3) VALUE 0.
+01  JOB-SUMMARY-EOF PIC X VALUE "N".
+01  JOB-SUMMARY-STATUS PIC XX.
+01  JOB-SUMMARY-REC PIC X(500).
+01  JOB-SUMMARY-PARSED-ID PIC X(10).
+01  JOB-SUMMARY-PARSED-USERNAME PIC X(50).
+01  JOB-SUMMARY-PARSED-TITLE PIC X(100).
+01  JOB-SUMMARY-PARSED-DESC PIC X(200).
+01  JOB-SUMMARY-PARSED-EMPLOYER PIC X(100).
+01  JOB-SUMMARY-PARSED-LOCATION PIC X(100).
+01  JOB-SUMMARY-PARSED-SALARY PIC X(50).
+01  JOB-SUMMARY-VALID-RECORD PIC X VALUE "Y".
+01  JOB-SUMMARY-SKIP-ID PIC X(10).
+
 PROCEDURE DIVISION.
     *> Count existing accounts
     MOVE 0 TO NUM-ACCOUNTS.
@@ -1108,82 +1138,8 @@ PROFILE-LOAD.
     EXIT PARAGRAPH.
 
 BROWSE-JOBS-SECTION.
-    *> Initialize counters and flags
-    MOVE 0 TO JOB-COUNT
-    MOVE 0 TO JOB-DISPLAY-NUM
-    MOVE "N" TO JOB-EOF
-    MOVE "N" TO JOB-DETAILS-FOUND
-
-    *> Open job file for reading
-    OPEN INPUT JOB-FILE
-    IF JOB-STATUS = "35"
-        *> File doesn't exist - show empty message
-        MOVE "No job or internship listings are currently available." TO OUTPUT-BUFFER
-        PERFORM DUAL-OUTPUT
-        MOVE "Enter job number to view details, or 0 to go back:" TO OUTPUT-BUFFER
-        PERFORM DUAL-OUTPUT
-        READ INFILE
-            AT END MOVE "Y" TO EOF
-            NOT AT END MOVE IN-REC TO JOB-SELECTION
-        END-READ
-        IF EOF NOT = "Y"
-            PERFORM HANDLE-JOB-SELECTION
-        END-IF
-        EXIT PARAGRAPH
-    END-IF
-
-    *> Read all job records and count them
-    PERFORM UNTIL JOB-EOF = "Y"
-        READ JOB-FILE
-            AT END
-                MOVE "Y" TO JOB-EOF
-            NOT AT END
-                IF JOB-REC NOT = SPACES
-                    ADD 1 TO JOB-COUNT
-                END-IF
-        END-READ
-    END-PERFORM
-    CLOSE JOB-FILE
-
-    *> If no jobs found, show empty message
-    IF JOB-COUNT = 0
-        MOVE "No job or internship listings are currently available." TO OUTPUT-BUFFER
-        PERFORM DUAL-OUTPUT
-        MOVE "Enter job number to view details, or 0 to go back:" TO OUTPUT-BUFFER
-        PERFORM DUAL-OUTPUT
-        READ INFILE
-            AT END MOVE "Y" TO EOF
-            NOT AT END MOVE IN-REC TO JOB-SELECTION
-        END-READ
-        IF EOF NOT = "Y"
-            PERFORM HANDLE-JOB-SELECTION
-        END-IF
-        EXIT PARAGRAPH
-    END-IF
-
-    *> Display job listings
-    MOVE "N" TO JOB-EOF
-    MOVE 0 TO JOB-DISPLAY-NUM
-    OPEN INPUT JOB-FILE
-    PERFORM UNTIL JOB-EOF = "Y"
-        READ JOB-FILE
-            AT END
-                MOVE "Y" TO JOB-EOF
-            NOT AT END
-                IF JOB-REC NOT = SPACES
-                    ADD 1 TO JOB-DISPLAY-NUM
-                    PERFORM PARSE-JOB-RECORD
-                    PERFORM FORMAT-JOB-DISPLAY-LINE
-                    MOVE JOB-DISPLAY-LINE TO OUTPUT-BUFFER
-                    PERFORM DUAL-OUTPUT
-                END-IF
-        END-READ
-    END-PERFORM
-    CLOSE JOB-FILE
-
-    *> Show navigation prompt
-    MOVE "Enter job number to view details, or 0 to go back:" TO OUTPUT-BUFFER
-    PERFORM DUAL-OUTPUT
+    *> Use the new BUILD-JOB-SUMMARIES routine
+    PERFORM BUILD-JOB-SUMMARIES
 
     *> Read user selection
     READ INFILE
@@ -1246,7 +1202,7 @@ HANDLE-JOB-SELECTION.
             PERFORM NAV-PRINT-LOOP
             MOVE "Y" TO JOB-SELECTION-VALID
         ELSE
-            IF JOB-SELECTION-NUM > 0 AND JOB-SELECTION-NUM <= JOB-COUNT
+            IF JOB-SELECTION-NUM > 0 AND JOB-SELECTION-NUM <= JOB-SUMMARY-COUNT
                 *> Valid job number - show details
                 PERFORM SHOW-JOB-DETAILS
                 MOVE "Y" TO JOB-SELECTION-VALID
@@ -1354,4 +1310,157 @@ SHOW-JOB-DETAILS.
     MOVE 0 TO NAV-INDEX
     MOVE "SHOW-JOBS" TO NAV-ACTION
     PERFORM NAV-PRINT-LOOP
+    EXIT PARAGRAPH.
+
+*> OUTPUT-LINE-TO-SCREEN-AND-FILE: Helper for job summary output
+*> Ensures identical output to both screen and file
+OUTPUT-LINE-TO-SCREEN-AND-FILE.
+    DISPLAY JOB-SUMMARY-BUFFER
+    WRITE OUT-REC FROM JOB-SUMMARY-BUFFER
+    MOVE SPACES TO JOB-SUMMARY-BUFFER
+    EXIT PARAGRAPH.
+
+*> BUILD-JOB-SUMMARIES: Main routine for displaying job summaries
+BUILD-JOB-SUMMARIES.
+    *> Initialize counters and flags
+    MOVE 0 TO JOB-SUMMARY-COUNT
+    MOVE 0 TO JOB-SUMMARY-NUM
+    MOVE "N" TO JOB-SUMMARY-EOF
+    MOVE "Y" TO JOB-SUMMARY-VALID-RECORD
+
+    *> Open JOB-FILE for input
+    OPEN INPUT JOB-FILE
+    IF JOB-STATUS = "35"
+        *> File doesn't exist - show error message
+        MOVE JOB-ERROR-MESSAGE TO JOB-SUMMARY-BUFFER
+        PERFORM OUTPUT-LINE-TO-SCREEN-AND-FILE
+        EXIT PARAGRAPH
+    END-IF
+
+    *> Read and process job records
+    PERFORM UNTIL JOB-SUMMARY-EOF = "Y"
+        READ JOB-FILE
+            AT END
+                MOVE "Y" TO JOB-SUMMARY-EOF
+            NOT AT END
+                IF JOB-REC NOT = SPACES
+                    ADD 1 TO JOB-SUMMARY-COUNT
+                    ADD 1 TO JOB-SUMMARY-NUM
+                    PERFORM PARSE-JOB-SUMMARY-RECORD
+                    IF JOB-SUMMARY-VALID-RECORD = "Y"
+                        PERFORM FORMAT-JOB-SUMMARY-LINE
+                        MOVE JOB-SUMMARY-LINE TO JOB-SUMMARY-BUFFER
+                        PERFORM OUTPUT-LINE-TO-SCREEN-AND-FILE
+                    ELSE
+                        *> Skip invalid record and show message
+                        MOVE SPACES TO JOB-SUMMARY-BUFFER
+                        STRING JOB-SKIP-MESSAGE DELIMITED BY SIZE
+                               FUNCTION TRIM(JOB-SUMMARY-SKIP-ID) DELIMITED BY SIZE
+                               INTO JOB-SUMMARY-BUFFER
+                        END-STRING
+                        PERFORM OUTPUT-LINE-TO-SCREEN-AND-FILE
+                    END-IF
+                END-IF
+        END-READ
+    END-PERFORM
+    CLOSE JOB-FILE
+
+    *> Handle empty list case
+    IF JOB-SUMMARY-COUNT = 0
+        MOVE JOB-EMPTY-MESSAGE TO JOB-SUMMARY-BUFFER
+        PERFORM OUTPUT-LINE-TO-SCREEN-AND-FILE
+    END-IF
+
+    *> Output divider and prompt
+    MOVE JOB-DIVIDER TO JOB-SUMMARY-BUFFER
+    PERFORM OUTPUT-LINE-TO-SCREEN-AND-FILE
+    MOVE JOB-PROMPT TO JOB-SUMMARY-BUFFER
+    PERFORM OUTPUT-LINE-TO-SCREEN-AND-FILE
+    EXIT PARAGRAPH.
+
+*> PARSE-JOB-SUMMARY-RECORD: Parse pipe-separated job record
+PARSE-JOB-SUMMARY-RECORD.
+    *> Initialize parsed fields
+    MOVE SPACES TO JOB-SUMMARY-PARSED-ID
+    MOVE SPACES TO JOB-SUMMARY-PARSED-USERNAME
+    MOVE SPACES TO JOB-SUMMARY-PARSED-TITLE
+    MOVE SPACES TO JOB-SUMMARY-PARSED-DESC
+    MOVE SPACES TO JOB-SUMMARY-PARSED-EMPLOYER
+    MOVE SPACES TO JOB-SUMMARY-PARSED-LOCATION
+    MOVE SPACES TO JOB-SUMMARY-PARSED-SALARY
+    MOVE "Y" TO JOB-SUMMARY-VALID-RECORD
+
+    *> Parse pipe-separated record: ID|USERNAME|TITLE|DESC|EMPLOYER|LOCATION|SALARY
+    UNSTRING JOB-REC DELIMITED BY "|"
+        INTO JOB-SUMMARY-PARSED-ID
+             JOB-SUMMARY-PARSED-USERNAME
+             JOB-SUMMARY-PARSED-TITLE
+             JOB-SUMMARY-PARSED-DESC
+             JOB-SUMMARY-PARSED-EMPLOYER
+             JOB-SUMMARY-PARSED-LOCATION
+             JOB-SUMMARY-PARSED-SALARY
+    END-UNSTRING
+
+    *> Validate required fields
+    IF FUNCTION TRIM(JOB-SUMMARY-PARSED-TITLE) = SPACES OR FUNCTION TRIM(JOB-SUMMARY-PARSED-EMPLOYER) = SPACES OR FUNCTION TRIM(JOB-SUMMARY-PARSED-LOCATION) = SPACES
+        MOVE "N" TO JOB-SUMMARY-VALID-RECORD
+        MOVE JOB-SUMMARY-PARSED-ID TO JOB-SUMMARY-SKIP-ID
+    END-IF
+    EXIT PARAGRAPH.
+
+*> FORMAT-JOB-SUMMARY-LINE: Format job summary line with proper truncation
+FORMAT-JOB-SUMMARY-LINE.
+    *> Trim and truncate fields
+    MOVE FUNCTION TRIM(JOB-SUMMARY-PARSED-TITLE) TO JOB-FIELD-TITLE-TRIMMED
+    MOVE FUNCTION TRIM(JOB-SUMMARY-PARSED-EMPLOYER) TO JOB-FIELD-EMPLOYER-TRIMMED
+    MOVE FUNCTION TRIM(JOB-SUMMARY-PARSED-LOCATION) TO JOB-FIELD-LOCATION-TRIMMED
+
+    *> Truncate fields if too long (with ellipsis for display)
+    PERFORM TRUNCATE-FIELD-TITLE
+    PERFORM TRUNCATE-FIELD-EMPLOYER
+    PERFORM TRUNCATE-FIELD-LOCATION
+
+    *> Format: n. <Job Title> at <Employer> (<Location>)
+    MOVE SPACES TO JOB-SUMMARY-LINE
+    STRING
+        FUNCTION TRIM(JOB-SUMMARY-NUM) DELIMITED BY SIZE ". "
+        FUNCTION TRIM(JOB-FIELD-TITLE-TRIMMED) DELIMITED BY SIZE " at "
+        FUNCTION TRIM(JOB-FIELD-EMPLOYER-TRIMMED) DELIMITED BY SIZE " ("
+        FUNCTION TRIM(JOB-FIELD-LOCATION-TRIMMED) DELIMITED BY SIZE ")"
+        INTO JOB-SUMMARY-LINE
+    END-STRING
+    EXIT PARAGRAPH.
+
+*> TRUNCATE-FIELD-TITLE: Truncate title field with ellipsis if too long
+TRUNCATE-FIELD-TITLE.
+    *> Check if title is longer than 50 characters
+    IF FUNCTION LENGTH(FUNCTION TRIM(JOB-FIELD-TITLE-TRIMMED)) > 50
+        MOVE JOB-FIELD-TITLE-TRIMMED(1:47) TO JOB-FIELD-TITLE-TRIMMED
+        MOVE "..." TO JOB-FIELD-TITLE-TRIMMED(48:3)
+    END-IF
+    EXIT PARAGRAPH.
+
+*> TRUNCATE-FIELD-EMPLOYER: Truncate employer field with ellipsis if too long
+TRUNCATE-FIELD-EMPLOYER.
+    *> Check if employer is longer than 30 characters
+    IF FUNCTION LENGTH(FUNCTION TRIM(JOB-FIELD-EMPLOYER-TRIMMED)) > 30
+        MOVE JOB-FIELD-EMPLOYER-TRIMMED(1:27) TO JOB-FIELD-EMPLOYER-TRIMMED
+        MOVE "..." TO JOB-FIELD-EMPLOYER-TRIMMED(28:3)
+    END-IF
+    EXIT PARAGRAPH.
+
+*> TRUNCATE-FIELD-LOCATION: Truncate location field with ellipsis if too long
+TRUNCATE-FIELD-LOCATION.
+    *> Check if location is longer than 30 characters
+    IF FUNCTION LENGTH(FUNCTION TRIM(JOB-FIELD-LOCATION-TRIMMED)) > 30
+        MOVE JOB-FIELD-LOCATION-TRIMMED(1:27) TO JOB-FIELD-LOCATION-TRIMMED
+        MOVE "..." TO JOB-FIELD-LOCATION-TRIMMED(28:3)
+    END-IF
+    EXIT PARAGRAPH.
+
+*> TRUNCATE-FIELD: Truncate field with ellipsis if too long
+TRUNCATE-FIELD.
+    *> This is a placeholder - COBOL doesn't support dynamic field truncation easily
+    *> For now, we'll rely on the STRING operation to handle truncation
+    *> In a real implementation, you'd need to check field lengths and add ellipsis
     EXIT PARAGRAPH.
