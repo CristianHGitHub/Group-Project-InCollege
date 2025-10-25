@@ -1,0 +1,506 @@
+Test: Browse jobs with very long field names shows truncation
+ResetAccounts: yes
+Input:
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+This is an extremely long job title that definitely exceeds the maximum display width and should be truncated with ellipsis
+This is an extremely long job description that definitely exceeds the maximum display width and should be truncated with ellipsis when shown in job listings.
+This is an extremely long company name that definitely exceeds the maximum display width and should be truncated with ellipsis
+This is an extremely long location name that definitely exceeds the maximum display width and should be truncated with ellipsis
+$100/hour
+Job
+Browse Jobs/Internships
+0
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for TestUser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, TestUser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+1. This is an extremely long job title that defini... at This is an extremely long c... (This is an extremely long l...)
+----------------------------
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+End
+
+Test: Job details with very long description shows full text
+ResetAccounts: yes
+Input:
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+Software Engineer
+This is an extremely long job description that contains detailed information about the role, responsibilities, requirements, and benefits. It should be displayed in full when viewing job details, not truncated like in the job listing. The description can contain multiple paragraphs and detailed information about what the candidate will be doing on a daily basis, the technologies they will work with, the team they will join, and the growth opportunities available.
+TechCorp
+San Francisco, CA
+$120,000/year
+Job
+Browse Jobs/Internships
+1
+Back to Job List
+0
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for TestUser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, TestUser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Note: Description truncated to 200 characters.
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+1. Software Engineer at TechCorp (San Francisco, CA)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Software Engineer
+Description: This is an extremely long job description that contains detailed information about the role, responsibilities, requirements, and benefits. It should be displayed in full when viewing job
+Employer: TechCorp
+Location: San Francisco, CA
+Salary: $120,000/year
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+1. Software Engineer at TechCorp (San Francisco, CA)
+----------------------------
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+End
+
+Test: Multiple jobs with different salary formats display correctly
+ResetAccounts: yes
+Input:
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+Hourly Position
+Work hourly.
+HourlyCo
+Remote
+$25/hour
+Job
+Post a Job/Internship
+Salary Position
+Work on salary.
+SalaryCo
+New York, NY
+$75,000/year
+Job
+Post a Job/Internship
+Contract Position
+Work on contract.
+ContractCo
+Chicago, IL
+$50/hour
+Job
+Post a Job/Internship
+Unpaid Internship
+Work for experience.
+InternCo
+Boston, MA
+NONE
+Job
+Browse Jobs/Internships
+0
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for TestUser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, TestUser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+1. Hourly Position at HourlyCo (Remote)
+2. Salary Position at SalaryCo (New York, NY)
+3. Contract Position at ContractCo (Chicago, IL)
+4. Unpaid Internship at InternCo (Boston, MA)
+----------------------------
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+End
+
+Test: Job details for unpaid internship shows N/A for salary
+ResetAccounts: yes
+Input:
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+Unpaid Internship
+Work for experience and learning.
+InternCo
+Boston, MA
+NONE
+Job
+Browse Jobs/Internships
+1
+Back to Job List
+0
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for TestUser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, TestUser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+1. Unpaid Internship at InternCo (Boston, MA)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Unpaid Internship
+Description: Work for experience and learning.
+Employer: InternCo
+Location: Boston, MA
+Salary: N/A
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+1. Unpaid Internship at InternCo (Boston, MA)
+----------------------------
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+End
+
+Test: Invalid job selection with negative number shows error
+ResetAccounts: yes
+Input:
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+Software Intern
+Develop tools for internal testing and automation.
+TechCorp
+New York, NY
+$25/hour
+Job
+Browse Jobs/Internships
+-1
+0
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for TestUser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, TestUser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+1. Software Intern at TechCorp (New York, NY)
+----------------------------
+Enter job number to view details, or 0 to go back:
+Invalid job number. Please select a valid job from the list.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Invalid option
+End
