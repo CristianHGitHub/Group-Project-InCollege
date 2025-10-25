@@ -1,0 +1,18 @@
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+Software Engineer
+This is an extremely long job description that contains detailed information about the role, responsibilities, requirements, and benefits. It should be displayed in full when viewing job details, not truncated like in the job listing. The description can contain multiple paragraphs and detailed information about what the candidate will be doing on a daily basis, the technologies they will work with, the team they will join, and the growth opportunities available.
+TechCorp
+San Francisco, CA
+$120,000/year
+Job
+Browse Jobs/Internships
+1
+Back to Job List
+0

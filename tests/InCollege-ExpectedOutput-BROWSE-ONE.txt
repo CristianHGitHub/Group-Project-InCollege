@@ -4,14 +4,8 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for u2
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
 You have successfully logged in.
-Welcome, u2
+Welcome, TestUser
 Search for a job
 Find someone you know
 Learn a new skill
@@ -25,14 +19,11 @@ Post a Job/Internship
 Browse Jobs/Internships
 Go Back
 Enter your choice:
-No job or internship listings are currently available.
+--- Available Job Listings ---
+1. Software Intern at TechCorp (New York, NY)
 ----------------------------
 Enter job number to view details, or 0 to go back:
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
+Welcome to InCollege!
+Log In
+Create New Account
 Enter your choice:

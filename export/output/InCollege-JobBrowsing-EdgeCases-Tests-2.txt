@@ -27,6 +27,7 @@ Go Back
 Enter your choice:
 Please enter job title:
 Please enter job description:
+Note: Description truncated to 200 characters.
 Please enter employer:
 Please enter location:
 Please enter salary (optional):
@@ -44,7 +45,20 @@ Post a Job/Internship
 Browse Jobs/Internships
 Go Back
 Enter your choice:
-1. This is a very long job title that should be tr... at Very Long Company Name That... (Very Long Location Name Tha...)
+1. Software Engineer at TechCorp (San Francisco, CA)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Software Engineer
+Description: This is an extremely long job description that contains detailed information about the role, responsibilities, requirements, and benefits. It should be displayed in full when viewing job
+Employer: TechCorp
+Location: San Francisco, CA
+Salary: $120,000/year
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+1. Software Engineer at TechCorp (San Francisco, CA)
 ----------------------------
 Enter job number to view details, or 0 to go back:
 Search for a job

@@ -1,9 +1,9 @@
 Create New Account
-u2
-Abcdef1!
+TestUser
+TestPass123!
 Log In
-u2
-Abcdef1!
+TestUser
+TestPass123!
 Job
 Browse Jobs/Internships
 0

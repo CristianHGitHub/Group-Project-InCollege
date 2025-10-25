@@ -44,14 +44,22 @@ Post a Job/Internship
 Browse Jobs/Internships
 Go Back
 Enter your choice:
-1. This is a very long job title that should be tr... at Very Long Company Name That... (Very Long Location Name Tha...)
+1. Software Intern at TechCorp (New York, NY)
 ----------------------------
 Enter job number to view details, or 0 to go back:
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
+--- Job Details ---
+Title: Software Intern
+Description: Develop tools for internal testing and automation.
+Employer: TechCorp
+Location: New York, NY
+Salary: $25/hour
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+Your application for Software Intern at TechCorp has been submitted.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
 Enter your choice:

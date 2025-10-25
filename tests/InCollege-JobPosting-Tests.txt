@@ -58,7 +58,7 @@ View My Network
 Enter your choice:
 End
 
-Test: Browse jobs is under construction and redisplays submenu
+Test: Browse jobs shows no listings message and redisplays submenu
 ResetAccounts: yes
 Input:
 Create New Account
@@ -69,6 +69,7 @@ u2
 Abcdef1!
 Job
 Browse Jobs/Internships
+0
 Expected:
 Welcome to InCollege!
 Log In
@@ -97,11 +98,16 @@ Post a Job/Internship
 Browse Jobs/Internships
 Go Back
 Enter your choice:
-This feature is under construction.
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-Go Back
+No job or internship listings are currently available.
+----------------------------
+Enter job number to view details, or 0 to go back:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
 Enter your choice:
 End
 

@@ -44,7 +44,20 @@ Post a Job/Internship
 Browse Jobs/Internships
 Go Back
 Enter your choice:
-1. This is a very long job title that should be tr... at Very Long Company Name That... (Very Long Location Name Tha...)
+1. Unpaid Internship at InternCo (Boston, MA)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Unpaid Internship
+Description: Work for experience and learning.
+Employer: InternCo
+Location: Boston, MA
+Salary: N/A
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+1. Unpaid Internship at InternCo (Boston, MA)
 ----------------------------
 Enter job number to view details, or 0 to go back:
 Search for a job

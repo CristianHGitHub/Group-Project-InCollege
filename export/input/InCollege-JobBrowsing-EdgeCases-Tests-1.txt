@@ -1,0 +1,16 @@
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+This is an extremely long job title that definitely exceeds the maximum display width and should be truncated with ellipsis
+This is an extremely long job description that definitely exceeds the maximum display width and should be truncated with ellipsis when shown in job listings.
+This is an extremely long company name that definitely exceeds the maximum display width and should be truncated with ellipsis
+This is an extremely long location name that definitely exceeds the maximum display width and should be truncated with ellipsis
+$100/hour
+Job
+Browse Jobs/Internships
+0

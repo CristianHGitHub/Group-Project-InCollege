@@ -44,7 +44,20 @@ Post a Job/Internship
 Browse Jobs/Internships
 Go Back
 Enter your choice:
-1. This is a very long job title that should be tr... at Very Long Company Name That... (Very Long Location Name Tha...)
+1. Data Analyst at DataSolutions (Remote)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Data Analyst
+Description: Analyze datasets.
+Employer: DataSolutions
+Location: Remote
+Salary: N/A
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+1. Data Analyst at DataSolutions (Remote)
 ----------------------------
 Enter job number to view details, or 0 to go back:
 Search for a job

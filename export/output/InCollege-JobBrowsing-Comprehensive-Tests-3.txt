@@ -44,7 +44,47 @@ Post a Job/Internship
 Browse Jobs/Internships
 Go Back
 Enter your choice:
-1. This is a very long job title that should be tr... at Very Long Company Name That... (Very Long Location Name Tha...)
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+Go Back
+Enter your choice:
+1. Software Intern at TechCorp (New York, NY)
+2. Data Analyst at DataSolutions (Remote)
+3. Marketing Specialist at BrandInc (Chicago, IL)
 ----------------------------
 Enter job number to view details, or 0 to go back:
 Search for a job
