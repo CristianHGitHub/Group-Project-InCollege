@@ -132,6 +132,7 @@ def run_tests(test_file: str, export: bool = False) -> int:
     established_path = "../data/EstablishedConnections.txt"
     profile_path = "../data/ProfileRecords.txt"
     job_path = "../data/JobPostings.txt"
+    app_path = "../data/applications.dat"
 
     passed = 0
     failed = 0
@@ -143,8 +144,9 @@ def run_tests(test_file: str, export: bool = False) -> int:
             ensure_truncated(conn_path)
             ensure_truncated(profile_path)
             ensure_truncated(established_path)
-            # Also clear job postings between tests when resetting accounts
+            # Also clear job postings and applications between tests when resetting accounts
             ensure_truncated(job_path)
+            ensure_truncated(app_path)
         write_lines(in_path, tc.input_lines)
 
         try:
