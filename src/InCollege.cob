@@ -437,6 +437,15 @@ PROCEDURE DIVISION.
                             PERFORM DUAL-OUTPUT
                         END-IF
 
+                    WHEN "View My Applications"
+                       IF LOGIN-STATUS = "Y" AND CURRENT-MENU = "JOBS"
+                           PERFORM VIEW-MY-APPLICATIONS
+                       ELSE
+                           MOVE "Invalid option" TO OUTPUT-BUFFER
+                           PERFORM DUAL-OUTPUT
+                       END-IF
+
+
                     WHEN "Profile"
                         IF LOGIN-STATUS = "Y"
                             MOVE "CREATE-PROFILE" TO CURRENT-MENU
@@ -1640,13 +1649,11 @@ PARSE-APPLICATION-RECORD.
     MOVE SPACES TO APPLICATION-PARSED-ID
     MOVE SPACES TO APPLICATION-PARSED-USERNAME
     MOVE SPACES TO APPLICATION-PARSED-JOB-ID
-    MOVE SPACES TO APPLICATION-PARSED-DATE
 
     UNSTRING APPLICATION-REC DELIMITED BY "|"
         INTO APPLICATION-PARSED-ID
              APPLICATION-PARSED-USERNAME
              APPLICATION-PARSED-JOB-ID
-             APPLICATION-PARSED-DATE
     END-UNSTRING
     EXIT PARAGRAPH.
 
@@ -1655,20 +1662,17 @@ CREATE-APPLICATION-RECORD.
     *> Get next application ID
     PERFORM GET-NEXT-APPLICATION-ID
 
-    *> Set current date (simplified - using a fixed date for consistency)
-    MOVE "2024-01-01" TO CURRENT-DATE
-
-    *> Build application record string
+    *> Build application record string without date
     MOVE SPACES TO APPLICATION-STRING
     MOVE APPLICATION-ID-NUM TO APPLICATION-ID-EDIT
     STRING
         FUNCTION TRIM(APPLICATION-ID-EDIT) DELIMITED BY SIZE "|"
-        FUNCTION TRIM(AR-USERNAME) DELIMITED BY SIZE "|"
-        FUNCTION TRIM(JOB-DETAILS-ID) DELIMITED BY SIZE "|"
-        FUNCTION TRIM(CURRENT-DATE) DELIMITED BY SIZE
+        FUNCTION TRIM(AR-USERNAME)         DELIMITED BY SIZE "|"
+        FUNCTION TRIM(JOB-DETAILS-ID)      DELIMITED BY SIZE
         INTO APPLICATION-STRING
     END-STRING
     EXIT PARAGRAPH.
+
 
 *> GET-NEXT-APPLICATION-ID: Get next available application ID
 GET-NEXT-APPLICATION-ID.
@@ -1715,4 +1719,123 @@ SAVE-APPLICATION.
         MOVE APPLICATION-ERROR-MSG TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
     END-IF
+    EXIT PARAGRAPH.
+
+*> VIEW-MY-APPLICATIONS: Display all applications for current user
+VIEW-MY-APPLICATIONS.
+    MOVE 0 TO JOB-COUNT
+    MOVE "N" TO APPLICATION-EOF
+
+    MOVE "--- Your Job Applications ---" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    STRING "Application Summary for " DELIMITED BY SIZE
+           FUNCTION TRIM(AR-USERNAME) DELIMITED BY SIZE
+           INTO OUTPUT-BUFFER
+    END-STRING
+    PERFORM DUAL-OUTPUT
+    MOVE "------------------------------" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    OPEN INPUT APPLICATION-FILE
+    IF APPLICATION-STATUS = "35"
+        MOVE "You have not applied for any jobs yet." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        CLOSE APPLICATION-FILE
+        GO TO VIEW-MY-APPLICATIONS-EXIT
+    END-IF
+
+    PERFORM UNTIL APPLICATION-EOF = "Y"
+        READ APPLICATION-FILE
+            AT END
+                MOVE "Y" TO APPLICATION-EOF
+            NOT AT END
+                IF APPLICATION-REC NOT = SPACES
+                    PERFORM PARSE-APPLICATION-RECORD
+                    IF APPLICATION-PARSED-USERNAME = AR-USERNAME
+                        ADD 1 TO JOB-COUNT
+                        MOVE APPLICATION-PARSED-JOB-ID TO JOB-ID-NUM
+                        PERFORM DISPLAY-APPLICATION-JOB
+                    END-IF
+                END-IF
+        END-READ
+    END-PERFORM
+    CLOSE APPLICATION-FILE
+
+    MOVE JOB-COUNT TO JOB-SUMMARY-NUM-DISPLAY
+    MOVE SPACES TO OUTPUT-BUFFER
+    STRING "Total Applications: " DELIMITED BY SIZE
+       FUNCTION TRIM(JOB-SUMMARY-NUM-DISPLAY) DELIMITED BY SIZE
+       INTO OUTPUT-BUFFER
+    END-STRING
+    PERFORM DUAL-OUTPUT
+
+    MOVE "------------------------------" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+
+
+    MOVE "JOBS" TO CURRENT-MENU
+    MOVE 0 TO NAV-INDEX
+    MOVE "SHOW-JOBS" TO NAV-ACTION
+    PERFORM NAV-PRINT-LOOP
+    EXIT PARAGRAPH.
+
+
+
+VIEW-MY-APPLICATIONS-EXIT.
+    MOVE "JOBS" TO CURRENT-MENU
+    MOVE 0 TO NAV-INDEX
+    MOVE "SHOW-JOBS" TO NAV-ACTION
+    PERFORM NAV-PRINT-LOOP
+    EXIT PARAGRAPH.
+
+*> DISPLAY-APPLICATION-JOB: Find and show job title, employer, and location
+DISPLAY-APPLICATION-JOB.
+    MOVE "N" TO JOB-EOF
+    OPEN INPUT JOB-FILE
+    IF JOB-STATUS = "35"
+        MOVE "Error: Unable to open job listings file." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+        EXIT PARAGRAPH
+    END-IF
+
+    PERFORM UNTIL JOB-EOF = "Y"
+        READ JOB-FILE
+            AT END
+                MOVE "Y" TO JOB-EOF
+            NOT AT END
+                IF JOB-REC NOT = SPACES
+                    PERFORM PARSE-JOB-RECORD
+                    MOVE JOB-ID-NUM TO JOB-ID-EDIT
+                    IF FUNCTION TRIM(JOB-PARSED-ID) = FUNCTION TRIM(JOB-ID-EDIT)
+                        MOVE SPACES TO OUTPUT-BUFFER
+                        STRING "Job Title: " DELIMITED BY SIZE
+                               FUNCTION TRIM(JOB-PARSED-TITLE) DELIMITED BY SIZE
+                               INTO OUTPUT-BUFFER
+                        END-STRING
+                        PERFORM DUAL-OUTPUT
+
+                        MOVE SPACES TO OUTPUT-BUFFER
+                        STRING "Employer: " DELIMITED BY SIZE
+                               FUNCTION TRIM(JOB-PARSED-EMPLOYER) DELIMITED BY SIZE
+                               INTO OUTPUT-BUFFER
+                        END-STRING
+                        PERFORM DUAL-OUTPUT
+
+                        MOVE SPACES TO OUTPUT-BUFFER
+                        STRING "Location: " DELIMITED BY SIZE
+                               FUNCTION TRIM(JOB-PARSED-LOCATION) DELIMITED BY SIZE
+                               INTO OUTPUT-BUFFER
+                        END-STRING
+                        PERFORM DUAL-OUTPUT
+
+                        MOVE "---" TO OUTPUT-BUFFER
+                        PERFORM DUAL-OUTPUT
+
+                        MOVE "Y" TO JOB-EOF
+                    END-IF
+                END-IF
+        END-READ
+    END-PERFORM
+    CLOSE JOB-FILE
     EXIT PARAGRAPH.
