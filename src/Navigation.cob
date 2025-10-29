@@ -148,16 +148,16 @@ SHOW-JOBS.
         WHEN 0  MOVE "Job search/internship:"  TO L-OUT
         WHEN 1  MOVE "Post a Job/Internship"   TO L-OUT
         WHEN 2  MOVE "Browse Jobs/Internships" TO L-OUT
-        WHEN 3  MOVE "Go Back"                  TO L-OUT
-        WHEN 4  MOVE "Enter your choice:"       TO L-OUT
+        WHEN 3  MOVE "View My Applications"    TO L-OUT
+        WHEN 4  MOVE "Go Back"                 TO L-OUT
+        WHEN 5  MOVE "Enter your choice:"      TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
             EXIT PARAGRAPH
     END-EVALUATE
     ADD 1 TO L-INDEX
-        END-ADD
-    IF L-INDEX > 4
+    IF L-INDEX > 5
         MOVE "Y" TO L-DONE
     END-IF
     EXIT PARAGRAPH.
