@@ -1,0 +1,30 @@
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+Software Intern
+Develop tools for internal testing and automation.
+TechCorp
+New York, NY
+$25/hour
+Job
+Post a Job/Internship
+Data Analyst
+Analyze datasets.
+DataSolutions
+Remote
+NONE
+Job
+Post a Job/Internship
+Marketing Specialist
+Marketing campaigns.
+BrandInc
+Chicago, IL
+
+Job
+Browse Jobs/Internships
+0

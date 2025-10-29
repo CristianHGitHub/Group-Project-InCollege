@@ -1,0 +1,16 @@
+Create New Account
+TestUser
+TestPass123!
+Log In
+TestUser
+TestPass123!
+Job
+Post a Job/Internship
+This is a very long job title that should be truncated with ellipsis when displayed in the job listing
+This is a very long job description that should be truncated when displayed in the job listing.
+Very Long Company Name That Should Be Truncated When Displayed
+Very Long Location Name That Should Be Truncated When Displayed
+$50/hour
+Job
+Browse Jobs/Internships
+0

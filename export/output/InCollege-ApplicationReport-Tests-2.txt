@@ -1,0 +1,83 @@
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u1
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u1
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+1. Software Intern at InCollege Inc (Remote)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Software Intern
+Description: Work on core features
+Employer: InCollege Inc
+Location: Remote
+Salary: $25/hour
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+Your application for Software Intern at InCollege Inc has been submitted.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+--- Your Job Applications ---
+Application Summary for u1
+------------------------------
+Job Title: Software Intern
+Employer: InCollege Inc
+Location: Remote
+---
+Total Applications: 1
+------------------------------
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:

@@ -23,11 +23,9 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
-This feature is under construction.
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-Go Back
-Enter your choice:
+No job or internship listings are currently available.
+----------------------------
+Enter job number to view details, or 0 to go back:

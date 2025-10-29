@@ -1,0 +1,18 @@
+Create New Account
+u1
+Abcdef1!
+Log In
+u1
+Abcdef1!
+Job
+Post a Job/Internship
+Software Intern
+Work on core features
+InCollege Inc
+Remote
+$25/hour
+Job
+Browse Jobs/Internships
+1
+Apply for this Job
+View My Applications

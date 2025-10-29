@@ -1,0 +1,132 @@
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for TestUser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for OtherUser
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, TestUser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+Please enter job title:
+Please enter job description:
+Please enter employer:
+Please enter location:
+Please enter salary (optional):
+Job posted successfully!
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, OtherUser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+1. Software Intern at TechCorp (New York, NY)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Software Intern
+Description: Develop tools for internal testing and automation.
+Employer: TechCorp
+Location: New York, NY
+Salary: $25/hour
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+Your application for Software Intern at TechCorp has been submitted.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, TestUser
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+1. Software Intern at TechCorp (New York, NY)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Software Intern
+Description: Develop tools for internal testing and automation.
+Employer: TechCorp
+Location: New York, NY
+Salary: $25/hour
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+Your application for Software Intern at TechCorp has been submitted.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
