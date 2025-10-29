@@ -85,7 +85,7 @@ Browse Jobs/Internships
 Go Back
 Enter your choice:
 ExpectFile: ../data/applications.dat
-1|TestUser|1|2024-01-01
+1|TestUser|1
 EndFile
 End
 
@@ -253,8 +253,8 @@ Browse Jobs/Internships
 Go Back
 Enter your choice:
 ExpectFile: ../data/applications.dat
-1|OtherUser|1|2024-01-01
-2|TestUser|1|2024-01-01
+1|OtherUser|1
+2|TestUser|1
 EndFile
 End
 
@@ -367,6 +367,6 @@ Browse Jobs/Internships
 Go Back
 Enter your choice:
 ExpectFile: ../data/applications.dat
-1|TestUser|1|2024-01-01
+1|TestUser|1
 EndFile
 End
