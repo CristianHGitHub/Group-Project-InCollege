@@ -36,6 +36,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 No job or internship listings are currently available.
@@ -96,6 +97,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -115,6 +117,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -189,6 +192,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -208,6 +212,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -227,6 +232,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -246,6 +252,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -310,6 +317,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -329,6 +337,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -404,6 +413,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -423,6 +433,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Data Analyst at DataSolutions (Remote)
@@ -497,6 +508,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -516,6 +528,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -525,6 +538,7 @@ Invalid job number. Please select a valid job from the list.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Invalid option
@@ -576,6 +590,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -595,6 +610,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -614,6 +630,7 @@ Your application for Software Intern at TechCorp has been submitted.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 End
@@ -667,6 +684,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -686,6 +704,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -705,6 +724,7 @@ Your application for Software Intern at TechCorp has been submitted.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -724,6 +744,7 @@ You have already applied for Software Intern at TechCorp.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 End
@@ -782,6 +803,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -801,6 +823,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -820,6 +843,7 @@ Your application for Software Intern at TechCorp has been submitted.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Welcome to InCollege!
@@ -841,6 +865,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -860,6 +885,7 @@ You have already applied for Software Intern at TechCorp.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 End
@@ -909,6 +935,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -928,6 +955,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. This is a very long job title that should be tr... at Very Long Company Name That... (Very Long Location Name Tha...)

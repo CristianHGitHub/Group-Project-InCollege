@@ -1,77 +1,24 @@
-Test: Persistence after restart and JobID increments
+Test: Report with one application shows details and count
 ResetAccounts: yes
 Input:
 Create New Account
-userA
+u1
 Abcdef1!
 Log In
-userA
+u1
 Abcdef1!
 Job
 Post a Job/Internship
-First Title
-First Description
-FirstCo
+Software Intern
+Work on core features
+InCollege Inc
 Remote
-NONE
-Expected:
-Welcome to InCollege!
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account created for userA
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-You have successfully logged in.
-Welcome, userA
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Enter your choice:
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
-Go Back
-Enter your choice:
-Please enter job title:
-Please enter job description:
-Please enter employer:
-Please enter location:
-Please enter salary (optional):
-Job posted successfully!
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Enter your choice:
-End
-
-Test: Verify persisted file and next JobID
-ResetAccounts: no
-Input:
-Log In
-userA
-Abcdef1!
+$25/hour
 Job
-Post a Job/Internship
-Second Title
-Second Description
-SecondCo
-New York, NY
-
+Browse Jobs/Internships
+1
+Apply for this Job
+View My Applications
 Expected:
 Welcome to InCollege!
 Log In
@@ -79,8 +26,14 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
+Account created for u1
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
 You have successfully logged in.
-Welcome, userA
+Welcome, u1
 Search for a job
 Find someone you know
 Learn a new skill
@@ -109,8 +62,45 @@ View My Profile
 Requests
 View My Network
 Enter your choice:
-ExpectFile: ../data/JobPostings.txt
-1|userA|First Title|First Description|FirstCo|Remote|Salary: NONE
-2|userA|Second Title|Second Description|SecondCo|New York, NY|Salary: NONE
-EndFile
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+1. Software Intern at InCollege Inc (Remote)
+----------------------------
+Enter job number to view details, or 0 to go back:
+--- Job Details ---
+Title: Software Intern
+Description: Work on core features
+Employer: InCollege Inc
+Location: Remote
+Salary: $25/hour
+-------------------
+Apply for this Job
+Back to Job List
+Enter your choice:
+Your application for Software Intern at InCollege Inc has been submitted.
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+--- Your Job Applications ---
+Application Summary for u1
+------------------------------
+Job Title: Software Intern
+Employer: InCollege Inc
+Location: Remote
+---
+Total Applications: 1
+------------------------------
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
 End

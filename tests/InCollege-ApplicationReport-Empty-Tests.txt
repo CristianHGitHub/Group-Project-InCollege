@@ -1,0 +1,52 @@
+Test: Report with no applications shows total zero and returns to menu
+ResetAccounts: yes
+Input:
+Create New Account
+u1
+Abcdef1!
+Log In
+u1
+Abcdef1!
+Job
+View My Applications
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account created for u1
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, u1
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Enter your choice:
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+--- Your Job Applications ---
+Application Summary for u1
+------------------------------
+Total Applications: 0
+------------------------------
+Job search/internship:
+Post a Job/Internship
+Browse Jobs/Internships
+View My Applications
+Go Back
+Enter your choice:
+End

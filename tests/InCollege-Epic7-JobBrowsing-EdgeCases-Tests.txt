@@ -43,6 +43,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -62,6 +63,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. This is an extremely long job title that defini... at This is an extremely long c... (This is an extremely long l...)
@@ -124,6 +126,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -144,6 +147,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Engineer at TechCorp (San Francisco, CA)
@@ -238,6 +242,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -257,6 +262,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -276,6 +282,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -295,6 +302,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -314,6 +322,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Hourly Position at HourlyCo (Remote)
@@ -379,6 +388,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -398,6 +408,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Unpaid Internship at InternCo (Boston, MA)
@@ -472,6 +483,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -491,6 +503,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at TechCorp (New York, NY)
@@ -500,6 +513,7 @@ Invalid job number. Please select a valid job from the list.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Invalid option

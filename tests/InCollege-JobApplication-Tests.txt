@@ -44,6 +44,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -63,6 +64,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at InCollege Inc (Remote)
@@ -82,6 +84,7 @@ Your application for Software Intern at InCollege Inc has been submitted.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 End
@@ -135,6 +138,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -154,6 +158,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at InCollege Inc (Remote)
@@ -173,6 +178,7 @@ Your application for Software Intern at InCollege Inc has been submitted.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at InCollege Inc (Remote)
@@ -192,6 +198,7 @@ You have already applied for Software Intern at InCollege Inc.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 End
@@ -263,6 +270,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Please enter job title:
@@ -298,6 +306,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at InCollege Inc (Remote)
@@ -317,6 +326,7 @@ Your application for Software Intern at InCollege Inc has been submitted.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 Welcome to InCollege!
@@ -338,6 +348,7 @@ Enter your choice:
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 1. Software Intern at InCollege Inc (Remote)
@@ -357,6 +368,7 @@ Your application for Software Intern at InCollege Inc has been submitted.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
+View My Applications
 Go Back
 Enter your choice:
 End
