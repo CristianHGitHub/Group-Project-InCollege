@@ -149,7 +149,8 @@ workspace/
     ├── InCollege-Output.txt
     ├── AccountRecords.txt
     ├── ProfileRecords.txt
-    └── JobPostings.txt
+    ├── JobPostings.txt
+    └── applications.dat   # Persistent job applications
 ```
 
 ### ⚡ Single Line Commands
@@ -165,31 +166,41 @@ make clean && make
 build.bat
 ```
 
-## Job Posting
+## Job Board & Applications
 
 ### Overview
 
-- Adds a functional `Job search/internship` menu with:
-  - `Post a Job/Internship` (implemented)
-  - `Browse Jobs/Internships` (under construction)
-- Prompts for Title, Description, Employer, Location (required) and Salary (optional).
-- Long Description input is accepted and truncated to 200 characters (a notice is displayed).
-- Posts are persisted to `data/JobPostings.txt` with a sequential `JobID`.
+- The `Job search/internship` menu now provides a complete workflow:
+  - `Post a Job/Internship`
+  - `Browse Jobs/Internships`
+  - `View My Applications`
+  - `Go Back` to the main menu
+- Browse shows every posting with numbering, title, employer, and location.
+- Selecting a job displays full details (title, description, employer, location, salary).
+- Users can apply directly from the detail view; duplicate applications are prevented.
+- All prompts and responses still flow through file-based input and mirrored output.
 
-### Record Format
+### Data Files
 
-```
-JobID|username|title|description|employer|location|salary
-```
+- Job postings persist in `data/JobPostings.txt` using pipe-delimited records:
 
-Examples:
+  ```
+  JobID|username|title|description|employer|location|salary
+  ```
 
-```
-1|userA|Software Intern|API work|InCollege Inc|Remote|Salary: $25/hour
-2|userA|Data Analyst|Analyze datasets|DataCo|New York, NY|Salary: NONE
-```
+  Example:
 
-### Sample Input Snippet
+  ```
+  1|userA|Software Intern|API work|InCollege Inc|Remote|Salary: $25/hour
+  ```
+
+- Applications persist in `data/applications.dat`:
+
+  ```
+  ApplicationID|username|JobID
+  ```
+
+### Typical Input Snippet
 
 ```
 Log In
@@ -202,34 +213,39 @@ API work on core features
 InCollege Inc
 Remote
 $25/hour
-```
-
-### Sample Output Snippet
-
-```
-Job search/internship:
-Post a Job/Internship
+Job
 Browse Jobs/Internships
-Go Back
-Enter your choice:
-Please enter job title:
-Please enter job description:
-Please enter employer:
-Please enter location:
-Please enter salary (optional):
-Job posted successfully!
+1
+Apply for this Job
+View My Applications
 ```
 
-### Validation
+### Reports (`View My Applications`)
 
-- Required: Title, Description, Employer, Location.
-- Missing required field → clear error and no save.
-- Salary optional; blank or `NONE` saved as `Salary: NONE`.
+- Generates a screen/file report formatted as:
 
-### Test Suites
+  ```
+  --- Your Job Applications ---
+  Application Summary for userA
+  ------------------------------
+  Job Title: Software Intern
+  Employer: InCollege Inc
+  Location: Remote
+  ---
+  Total Applications: 1
+  ------------------------------
+  ```
 
-- `tests/InCollege-JobPosting-Tests.txt`: success, validation, long description, salary cases.
-- `tests/InCollege-JobPersistence-Tests.txt`: verifies persistence across restarts and JobID sequence (uses `ExpectFile`).
+- Uses the same dual-output helper to ensure console and `data/InCollege-Output.txt` stay identical.
+
+### Validation & Test Coverage
+
+- Required job fields (title, description, employer, location) are enforced; salary defaults to `Salary: NONE` when blank.
+- `tests/InCollege-JobPosting-Tests.txt` covers posting validation and salary handling.
+- `tests/InCollege-JobPersistence-Tests.txt` ensures JobID sequencing survives restarts.
+- `tests/InCollege-Epic7-JobBrowsing-Comprehensive-Tests.txt` and `tests/InCollege-Epic7-JobBrowsing-EdgeCases-Tests.txt` validate browsing, detail view, and error handling.
+- `tests/InCollege-JobApplication-Tests.txt` and `tests/InCollege-Epic7-JobApplication-Persistence-Tests.txt` cover applying, duplicate prevention, and persistence.
+- `tests/InCollege-ApplicationReport-Tests.txt` verifies the report for zero, single, and multiple applications.
 
 ## Testing Framework
 
