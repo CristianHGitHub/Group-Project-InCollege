@@ -4,14 +4,14 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Username u5 already exists.
+Account created for epic7user
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, u5
+Welcome, epic7user
 Search for a job
 Find someone you know
 Learn a new skill
@@ -66,89 +66,37 @@ Browse Jobs/Internships
 View My Applications
 Go Back
 Enter your choice:
-Please enter job title:
-Please enter job description:
-Please enter employer:
-Please enter location:
-Please enter salary (optional):
-Job posted successfully!
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Enter your choice:
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
-Go Back
-Enter your choice:
-1. QA Engineer at Quality Co (Boston, MA)
+1. Software Intern at TechCorp (New York, NY)
 2. Data Analyst at DataSolutions (Remote)
-3. Software Intern at TechCorp (New York, NY)
-4. QA Engineer at Quality Co (Boston, MA)
-5. Data Analyst at DataSolutions (Remote)
-6. Software Intern at TechCorp (New York, NY)
-7. QA Engineer at Quality Co (Boston, MA)
-8. Data Analyst at DataSolutions (Remote)
-9. Software Intern at TechCorp (New York, NY)
-10. QA Engineer at Quality Co (Boston, MA)
-11. Data Analyst at DataSolutions (Remote)
-12. Software Intern at TechCorp (New York, NY)
-13. QA Engineer at Quality Co (Boston, MA)
-14. Data Analyst at DataSolutions (Remote)
-15. Software Intern at TechCorp (New York, NY)
 ----------------------------
 Enter job number to view details, or 0 to go back:
 --- Job Details ---
-Title: QA Engineer
-Description: Test software quality
-Employer: Quality Co
-Location: Boston, MA
-Salary: $55,000/year
+Title: Software Intern
+Description: Develop tools for internal testing and automation.
+Employer: TechCorp
+Location: New York, NY
+Salary: $25/hour
 -------------------
 Apply for this Job
 Back to Job List
 Enter your choice:
-Your application for QA Engineer at Quality Co has been submitted.
+Your application for Software Intern at TechCorp has been submitted.
 Job search/internship:
 Post a Job/Internship
 Browse Jobs/Internships
 View My Applications
 Go Back
 Enter your choice:
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
-Go Back
-Enter your choice:
-1. QA Engineer at Quality Co (Boston, MA)
+1. Software Intern at TechCorp (New York, NY)
 2. Data Analyst at DataSolutions (Remote)
-3. Software Intern at TechCorp (New York, NY)
-4. QA Engineer at Quality Co (Boston, MA)
-5. Data Analyst at DataSolutions (Remote)
-6. Software Intern at TechCorp (New York, NY)
-7. QA Engineer at Quality Co (Boston, MA)
-8. Data Analyst at DataSolutions (Remote)
-9. Software Intern at TechCorp (New York, NY)
-10. QA Engineer at Quality Co (Boston, MA)
-11. Data Analyst at DataSolutions (Remote)
-12. Software Intern at TechCorp (New York, NY)
-13. QA Engineer at Quality Co (Boston, MA)
-14. Data Analyst at DataSolutions (Remote)
-15. Software Intern at TechCorp (New York, NY)
 ----------------------------
 Enter job number to view details, or 0 to go back:
 --- Job Details ---
 Title: Data Analyst
-Description: Analyze large datasets
+Description: Analyze large datasets for business insights.
 Employer: DataSolutions
 Location: Remote
-Salary: $70,000/year
+Salary: N/A
 -------------------
 Apply for this Job
 Back to Job List
@@ -160,18 +108,12 @@ Browse Jobs/Internships
 View My Applications
 Go Back
 Enter your choice:
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
-Go Back
-Enter your choice:
 --- Your Job Applications ---
-Application Summary for u5
+Application Summary for epic7user
 ------------------------------
-Job Title: QA Engineer
-Employer: Quality Co
-Location: Boston, MA
+Job Title: Software Intern
+Employer: TechCorp
+Location: New York, NY
 ---
 Job Title: Data Analyst
 Employer: DataSolutions
@@ -184,12 +126,4 @@ Post a Job/Internship
 Browse Jobs/Internships
 View My Applications
 Go Back
-Enter your choice:
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
 Enter your choice:

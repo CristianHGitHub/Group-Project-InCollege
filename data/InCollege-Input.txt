@@ -1,38 +1,28 @@
 Create New Account
-u5
-Abcdef1!
+epic7user
+Epic7Pass!
 Log In
-u5
-Abcdef1!
-Job
-Post a Job/Internship
-QA Engineer
-Test software quality
-Quality Co
-Boston, MA
-$55,000/year
-Job
-Post a Job/Internship
-Data Analyst
-Analyze large datasets
-DataSolutions
-Remote
-$70,000/year
+epic7user
+Epic7Pass!
 Job
 Post a Job/Internship
 Software Intern
-Develop internal tools
+Develop tools for internal testing and automation.
 TechCorp
 New York, NY
 $25/hour
 Job
+Post a Job/Internship
+Data Analyst
+Analyze large datasets for business insights.
+DataSolutions
+Remote
+NONE
+Job
 Browse Jobs/Internships
 1
 Apply for this Job
-Job
 Browse Jobs/Internships
 2
 Apply for this Job
-Job
 View My Applications
-Back
