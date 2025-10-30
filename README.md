@@ -175,6 +175,7 @@ build.bat
 - A new `Messages` option appears in the post-login main menu.
 - `Send a New Message` lets you send a private message to a connected user only.
 - All prompts and responses are mirrored to `data/InCollege-Output.txt` via the same dual-output helper.
+ - Messages are limited to 200 characters; longer inputs are truncated to 200 with a note: `Note: Message truncated to 200 characters.`
 
 ### Typical Input Snippet
 
@@ -191,6 +192,25 @@ Hello!
 Expected confirmation:
 
 ```
+Message sent to userB successfully!
+```
+
+Long message example (over 200 characters triggers truncation note):
+
+```
+Log In
+userA
+Abcdef1!
+Messages
+Send a New Message
+userB
+This is a very long message that exceeds two hundred characters to demonstrate truncation behavior in the messaging system. It should be shortened and a note displayed to the user indicating truncation has occurred.
+```
+
+Expected additional output before confirmation:
+
+```
+Note: Message truncated to 200 characters.
 Message sent to userB successfully!
 ```
 

@@ -1,0 +1,56 @@
+Create New Account
+userA
+Abcdef1!
+Create New Account
+userB
+Abcdef1!
+Log In
+userB
+Abcdef1!
+Profile
+Bob
+Bee
+USF
+CS
+2025
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Log In
+userA
+Abcdef1!
+Find
+Bob Bee
+Yes
+Log Out
+Log In
+userB
+Abcdef1!
+Requests
+Accept userA
+Log Out
+Log In
+userA
+Abcdef1!
+Messages
+Send a New Message
+userB
+This message is intentionally crafted to exceed two hundred characters so that we can verify the truncation behavior in the system works as expected. When this message is processed, it should be cut at exactly two hundred characters.

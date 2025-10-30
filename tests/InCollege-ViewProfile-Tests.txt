@@ -43,7 +43,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for viewfull
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -58,6 +58,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -127,6 +128,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: John Doe
@@ -166,6 +168,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -214,7 +217,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for viewreq
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -229,6 +232,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -298,6 +302,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: Alice Smith
@@ -318,6 +323,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 Test: View profile before creating any profile
@@ -337,7 +343,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for noview
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -352,6 +358,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 You have not created a profile yet.
 Search for a job
@@ -361,6 +368,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -426,7 +434,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for persist
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -441,6 +449,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -510,6 +519,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -530,6 +540,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -546,6 +557,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -566,6 +578,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -654,7 +667,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for isolateA
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -669,6 +682,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -738,6 +752,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -745,7 +760,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for isolateB
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -760,6 +775,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -829,6 +845,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: B Two
@@ -849,6 +866,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -865,6 +883,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: A One
@@ -885,6 +904,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -933,7 +953,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for aboutonly
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -948,6 +968,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1017,6 +1038,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: Amy Lee
@@ -1037,6 +1059,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -1086,7 +1109,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for doubleview
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1101,6 +1124,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1170,6 +1194,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: Dan Stone
@@ -1190,6 +1215,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: Dan Stone
@@ -1210,5 +1236,6 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End

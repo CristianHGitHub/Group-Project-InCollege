@@ -4,7 +4,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for searcher
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -19,6 +19,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 No one by that name could be found.
@@ -31,4 +32,5 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:

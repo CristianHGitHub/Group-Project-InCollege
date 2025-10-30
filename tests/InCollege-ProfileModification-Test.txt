@@ -71,7 +71,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for edituser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -86,6 +86,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -155,6 +156,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -224,6 +226,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: Johnathan Doe
@@ -244,6 +247,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -320,7 +324,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for editone
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -335,6 +339,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -404,6 +409,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -473,6 +479,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: Alice Brown
@@ -493,6 +500,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -569,7 +577,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for clearopt
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -584,6 +592,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -653,6 +662,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -722,6 +732,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: Bob Smith
@@ -742,5 +753,6 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End

@@ -8,6 +8,7 @@ Log In
 solo
 Solo123!
 View My Network
+Messages
 Expected:
 Welcome to InCollege!
 Log In
@@ -15,7 +16,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for solo
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -30,6 +31,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Network ---
 You have no established connections.
@@ -41,6 +43,20 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
+Enter your choice:
+Messages:
+Send a New Message
+Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
 Enter your choice:
 End
 
@@ -98,6 +114,7 @@ Bravo123!
 Requests
 Accept alpha
 View My Network
+Messages
 Expected:
 Welcome to InCollege!
 Log In
@@ -105,13 +122,13 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for alpha
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for bravo
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -126,6 +143,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -195,6 +213,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -211,6 +230,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -234,6 +254,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -250,6 +271,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Pending connection requests for bravo
 From: alpha
@@ -264,6 +286,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Network ---
 Connected with: alpha (University: Unknown, Major: Unknown)
@@ -275,6 +298,20 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
+Enter your choice:
+Messages:
+Send a New Message
+Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
 Enter your choice:
 End
 
@@ -344,6 +381,7 @@ Accept alpha
 Requests
 Accept charlie
 View My Network
+Messages
 Expected:
 Welcome to InCollege!
 Log In
@@ -351,19 +389,19 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for alpha
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for bravo
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for charlie
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -378,6 +416,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -447,6 +486,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -463,6 +503,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -486,6 +527,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -502,6 +544,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -525,6 +568,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -541,6 +585,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Pending connection requests for bravo
 From: alpha
@@ -556,6 +601,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Pending connection requests for bravo
 From: charlie
@@ -570,6 +616,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Network ---
 Connected with: alpha (University: Unknown, Major: Unknown)
@@ -582,5 +629,19 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
+Enter your choice:
+Messages:
+Send a New Message
+Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
 Enter your choice:
 End

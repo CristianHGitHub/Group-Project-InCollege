@@ -4,31 +4,31 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for u1
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for u2
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for u3
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for u4
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for u5
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:

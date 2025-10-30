@@ -4,7 +4,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for tmp3
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -23,4 +23,5 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:

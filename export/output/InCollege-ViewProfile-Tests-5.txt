@@ -4,7 +4,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for persist
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -19,6 +19,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -88,6 +89,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -108,6 +110,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -124,6 +127,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 --- Your Profile ---
 Name: First Last
@@ -144,4 +148,5 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:

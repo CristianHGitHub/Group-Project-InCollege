@@ -15,7 +15,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -30,6 +30,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Pending connection requests for testuser
 No pending requests.
@@ -41,6 +42,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -130,7 +132,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for sender
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -145,6 +147,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -214,6 +217,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -221,7 +225,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for receiver
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -236,6 +240,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -305,6 +310,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -321,6 +327,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -344,6 +351,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -439,7 +447,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for alice
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -454,6 +462,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -523,6 +532,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -530,7 +540,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for bob
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -545,6 +555,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -614,6 +625,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -630,6 +642,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -653,6 +666,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -669,6 +683,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Pending connection requests for bob
 From: alice
@@ -682,6 +697,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -771,7 +787,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for user1
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -786,6 +802,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -855,6 +872,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -862,7 +880,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for user2
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -877,6 +895,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -946,6 +965,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -962,6 +982,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -985,6 +1006,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -1077,7 +1099,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for userA
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1092,6 +1114,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1161,6 +1184,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -1168,7 +1192,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for userB
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1183,6 +1207,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1252,6 +1277,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -1268,6 +1294,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -1291,6 +1318,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -1314,6 +1342,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -1410,7 +1439,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for tom
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1425,6 +1454,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1494,6 +1524,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -1501,7 +1532,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for jerry
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1516,6 +1547,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1585,6 +1617,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -1601,6 +1634,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -1624,6 +1658,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -1640,6 +1675,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -1663,6 +1699,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -1842,7 +1879,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for receiver
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1857,6 +1894,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1926,6 +1964,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -1933,7 +1972,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for sender1
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1948,6 +1987,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -2017,6 +2057,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -2024,7 +2065,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for sender2
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -2039,6 +2080,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -2108,6 +2150,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -2115,7 +2158,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for sender3
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -2130,6 +2173,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -2199,6 +2243,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -2215,6 +2260,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -2238,6 +2284,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -2254,6 +2301,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -2277,6 +2325,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -2293,6 +2342,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
@@ -2316,6 +2366,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Welcome to InCollege!
 Log In
@@ -2332,6 +2383,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Pending connection requests for receiver
 From: sender1
@@ -2347,6 +2399,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -2396,7 +2449,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for searcher
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -2411,6 +2464,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -2480,6 +2534,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Enter the full name of the person you are looking for:
 No one by that name could be found.
@@ -2492,5 +2547,6 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End

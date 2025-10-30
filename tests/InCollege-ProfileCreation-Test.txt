@@ -42,7 +42,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -57,6 +57,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -126,6 +127,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 Test: Missing last name should be rejected
@@ -173,7 +175,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testnolast
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -188,6 +190,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -273,7 +276,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testnouni
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -288,6 +291,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -373,7 +377,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser7
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -388,6 +392,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -457,6 +462,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 Profile saved successfully.
@@ -507,7 +513,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser3
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -522,6 +528,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -609,7 +616,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser4
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -624,6 +631,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -711,7 +719,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser5
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -726,6 +734,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -795,6 +804,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 Profile saved successfully.
@@ -853,7 +863,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser6
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -868,6 +878,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -953,7 +964,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser2
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -968,6 +979,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1012,7 +1024,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser2
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1027,6 +1039,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1096,6 +1109,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 Profile saved successfully.
@@ -1146,7 +1160,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser8
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1161,6 +1175,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1230,6 +1245,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 Profile saved successfully.
@@ -1280,7 +1296,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for testuser9
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -1295,6 +1311,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 === EDIT/CREATE PROFILE ===
 Required Fields:
@@ -1364,6 +1381,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 Profile saved successfully.

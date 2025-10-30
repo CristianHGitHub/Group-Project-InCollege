@@ -17,7 +17,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -32,6 +32,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -49,6 +50,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -78,7 +80,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -93,6 +95,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -113,6 +116,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -130,6 +134,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -173,7 +178,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -188,6 +193,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -208,6 +214,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -228,6 +235,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -248,6 +256,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -267,6 +276,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -298,7 +308,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -313,6 +323,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -333,6 +344,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -363,6 +375,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -394,7 +407,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -409,6 +422,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -429,6 +443,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -459,6 +474,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End
 
@@ -489,7 +505,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -504,6 +520,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -524,6 +541,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -571,7 +589,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -586,6 +604,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -606,6 +625,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -665,7 +685,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -680,6 +700,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -700,6 +721,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -784,7 +806,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -799,6 +821,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -819,6 +842,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -861,6 +885,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -916,7 +941,7 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for TestUser
+Account successfully created.
 Log In
 Create New Account
 Enter your choice:
@@ -931,6 +956,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -951,6 +977,7 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 Job search/internship:
 Post a Job/Internship
@@ -968,5 +995,6 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
 End

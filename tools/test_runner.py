@@ -13,6 +13,7 @@ class TestCase:
     input_lines: List[str] = field(default_factory=list)
     expected_lines: List[str] = field(default_factory=list)
     file_asserts: List[tuple] = field(default_factory=list)  # list of (path, expected_lines)
+    file_count_asserts: List[tuple] = field(default_factory=list)  # list of (path, expected_count)
 
 
 def rtrim(s: str) -> str:
@@ -29,6 +30,8 @@ def parse_tests(path: str) -> List[TestCase]:
     state = "OUT"  # OUT, TEST, INPUT, EXPECTED, FILE
     file_path = None
     file_lines: List[str] = []
+    file_count_path = None
+    file_count_value = None
     cur = TestCase()
     for line in lines:
         if state in ("OUT", "TEST"):
@@ -65,6 +68,14 @@ def parse_tests(path: str) -> List[TestCase]:
                 file_path = line.split(":",1)[1].strip()
                 file_lines = []
                 state = "FILE"
+                continue
+            if line.lower().startswith("expectfilecount:"):
+                # Format: ExpectFileCount: <path> <count>
+                parts = line.split(":", 1)[1].strip().split()
+                if len(parts) == 2 and parts[1].isdigit():
+                    cur.file_count_asserts.append((parts[0], int(parts[1])))
+                else:
+                    raise ValueError(f"Invalid ExpectFileCount directive: {line}")
                 continue
             if line.lower() in ("end", "endtest"):
                 tests.append(cur)
@@ -133,6 +144,7 @@ def run_tests(test_file: str, export: bool = False) -> int:
     profile_path = "../data/ProfileRecords.txt"
     job_path = "../data/JobPostings.txt"
     app_path = "../data/applications.dat"
+    messages_path = "../data/Messages.txt"
 
     passed = 0
     failed = 0
@@ -147,6 +159,8 @@ def run_tests(test_file: str, export: bool = False) -> int:
             # Also clear job postings and applications between tests when resetting accounts
             ensure_truncated(job_path)
             ensure_truncated(app_path)
+            # Also clear messages to isolate messaging tests
+            ensure_truncated(messages_path)
         write_lines(in_path, tc.input_lines)
 
         try:
@@ -197,6 +211,19 @@ def run_tests(test_file: str, export: bool = False) -> int:
                     a = actual_file[mismatch_idx_f] if mismatch_idx_f < len(actual_file) else ""
                     print(f"    expected: {e}")
                     print(f"    actual  : {a}")
+                    print("  (Tip: check file contents)")
+                    failed += 1
+                    ok = False
+                    break
+        # If still ok, check file count assertions
+        if ok:
+            for (fpath, fcount) in tc.file_count_asserts:
+                actual_file = read_lines(fpath)
+                actual_nonempty = [ln for ln in actual_file if ln != ""]
+                if len(actual_nonempty) != fcount:
+                    print(f"  FAIL file {fpath} line count")
+                    print(f"    expected: {fcount} non-empty lines")
+                    print(f"    actual  : {len(actual_nonempty)}")
                     print("  (Tip: check file contents)")
                     failed += 1
                     ok = False

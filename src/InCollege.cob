@@ -47,6 +47,8 @@ FD  ESTABLISHED-FILE.
 WORKING-STORAGE SECTION.
 COPY "AccountRecord.cpy".
 COPY "ApplicationRecord.cpy".
+01  FILE-USERNAME     PIC X(50).
+01  FILE-PASSWORD     PIC X(50).
 01  EOF                PIC X(1) VALUE "N".
 01  OUT-STATUS         PIC XX.
 01  JOB-STATUS         PIC XX.
@@ -141,6 +143,8 @@ COPY "ApplicationRecord.cpy".
 01  RECIPIENT-STATUS    PIC X VALUE SPACE.
 01  RECIPIENT-FOUND     PIC X VALUE "N".
 01  VALIDATION-MESSAGE  PIC X(100).
+01  MSG-IDX             PIC 9(3) VALUE 0.
+01  MSG-TRUNC           PIC X VALUE "N".
 
 *> Job Summary Display Constants and Variables
 01  JOB-SUMMARY-TEMPLATE PIC X(50) VALUE "n. <Job Title> at <Employer> (<Location>)".
@@ -771,6 +775,21 @@ SEND-MESSAGE-FLOW.
         NOT AT END MOVE IN-REC TO MESSAGE-CONTENT
     END-READ
     IF EOF = "Y" EXIT PARAGRAPH END-IF
+
+    *> Enforce 200-character limit with truncation notice
+    MOVE "N" TO MSG-TRUNC
+    PERFORM VARYING MSG-IDX FROM 201 BY 1 UNTIL MSG-IDX > 500
+        IF MESSAGE-CONTENT(MSG-IDX:1) NOT = SPACE
+            MOVE "Y" TO MSG-TRUNC
+            EXIT PERFORM
+        END-IF
+    END-PERFORM
+    MOVE MESSAGE-CONTENT(1:200) TO MESSAGE-CONTENT(1:200)
+    MOVE SPACES TO MESSAGE-CONTENT(201:300)
+    IF MSG-TRUNC = "Y"
+        MOVE "Note: Message truncated to 200 characters." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+    END-IF
 
     PERFORM GET-CURRENT-TIMESTAMP
     PERFORM SAVE-MESSAGE
