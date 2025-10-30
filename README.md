@@ -150,7 +150,8 @@ workspace/
     ├── AccountRecords.txt
     ├── ProfileRecords.txt
     ├── JobPostings.txt
-    └── applications.dat   # Persistent job applications
+    ├── applications.dat   # Persistent job applications
+    └── Messages.txt       # Persistent private messages
 ```
 
 ### ⚡ Single Line Commands
@@ -167,6 +168,31 @@ build.bat
 ```
 
 ## Job Board & Applications
+## Messages
+
+### Overview
+
+- A new `Messages` option appears in the post-login main menu.
+- `Send a New Message` lets you send a private message to a connected user only.
+- All prompts and responses are mirrored to `data/InCollege-Output.txt` via the same dual-output helper.
+
+### Typical Input Snippet
+
+```
+Log In
+userA
+Abcdef1!
+Messages
+Send a New Message
+userB
+Hello!
+```
+
+Expected confirmation:
+
+```
+Message sent to userB successfully!
+```
 
 ### Overview
 
@@ -198,6 +224,18 @@ build.bat
 
   ```
   ApplicationID|username|JobID
+  ```
+
+- Private messages persist in `data/Messages.txt`:
+
+  ```
+  sender|recipient|message|timestamp
+  ```
+
+  Example:
+
+  ```
+  userA|userB|Hello, congrats!|2025-10-30 14:05:33
   ```
 
 ### Typical Input Snippet
