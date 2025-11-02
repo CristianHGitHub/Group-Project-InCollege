@@ -145,6 +145,7 @@ COPY "ApplicationRecord.cpy".
 01  VALIDATION-MESSAGE  PIC X(100).
 01  MSG-IDX             PIC 9(3) VALUE 0.
 01  MSG-TRUNC           PIC X VALUE "N".
+01  MSG-MENU-DONE      PIC X VALUE "N".
 
 *> Job Summary Display Constants and Variables
 01  JOB-SUMMARY-TEMPLATE PIC X(50) VALUE "n. <Job Title> at <Employer> (<Location>)".
@@ -475,33 +476,52 @@ PROCEDURE DIVISION.
                            PERFORM DUAL-OUTPUT
                        END-IF
 
-                    WHEN "Messages"
-                        IF LOGIN-STATUS = "Y"
-                            PERFORM SHOW-MESSAGES-MENU
-                            READ INFILE
-                                AT END MOVE "Y" TO EOF
-                                NOT AT END MOVE IN-REC TO WS-COMMAND
-                            END-READ
-                            IF EOF NOT = "Y"
-                                EVALUATE WS-COMMAND
-                                    WHEN "Send a New Message"
-                                        PERFORM SEND-MESSAGE-FLOW
-                                    WHEN "Go Back"
-                                        CONTINUE
-                                    WHEN OTHER
-                                        MOVE "Invalid option" TO OUTPUT-BUFFER
-                                        PERFORM DUAL-OUTPUT
-                                END-EVALUATE
-                            END-IF
+                   WHEN "Messages"
+                       IF LOGIN-STATUS = "Y"
+                           MOVE "N" TO MSG-MENU-DONE
+                           PERFORM UNTIL MSG-MENU-DONE = "Y" OR EOF = "Y"
+                               PERFORM SHOW-MESSAGES-MENU
+                               READ INFILE
+                                   AT END MOVE "Y" TO EOF
+                                   NOT AT END MOVE IN-REC TO WS-COMMAND
+                               END-READ
+                               IF EOF = "Y"
+                                   EXIT PERFORM
+                               END-IF
 
-                            MOVE "MAIN" TO CURRENT-MENU
-                            MOVE 0            TO NAV-INDEX
-                            MOVE "SHOW-MENU"  TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
-                        ELSE
-                            MOVE "Invalid option" TO OUTPUT-BUFFER
-                            PERFORM DUAL-OUTPUT
-                        END-IF
+                               MOVE FUNCTION TRIM(WS-COMMAND) TO WS-COMMAND
+
+                               EVALUATE WS-COMMAND
+                                   WHEN "Send a New Message"
+                                       PERFORM SEND-MESSAGE-FLOW
+                                       *> loop continues; menu will show again
+
+                                   WHEN "View My Messages"
+                                       PERFORM VIEW-MESSAGES-FLOW
+                                       *> loop continues; menu will show again
+
+                                   WHEN "Go Back"
+                                       MOVE "Y" TO MSG-MENU-DONE
+                                       *> loop will end
+
+                                   WHEN OTHER
+                                       MOVE "Invalid option" TO OUTPUT-BUFFER
+                                       PERFORM DUAL-OUTPUT
+                                       *> loop continues
+                               END-EVALUATE
+                           END-PERFORM
+
+                           IF MSG-MENU-DONE = "Y" AND EOF NOT = "Y"
+                               MOVE "MAIN" TO CURRENT-MENU
+                               MOVE 0            TO NAV-INDEX
+                               MOVE "SHOW-MENU"  TO NAV-ACTION
+                               PERFORM NAV-PRINT-LOOP
+                           END-IF
+                       ELSE
+                           MOVE "Invalid option" TO OUTPUT-BUFFER
+                           PERFORM DUAL-OUTPUT
+                       END-IF
+
 
 
                     WHEN "Profile"
@@ -742,18 +762,23 @@ DUAL-OUTPUT.
 
 *> ================= MESSAGING PARAGRAPHS =================
 SHOW-MESSAGES-MENU.
-    MOVE "Messages:" TO OUTPUT-BUFFER
+    MOVE "---Messages Menu---" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
     MOVE "Send a New Message" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    MOVE "View My Messages" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
     MOVE "Go Back" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
     MOVE "Enter your choice:" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
     EXIT PARAGRAPH.
-
+VIEW-MESSAGES-FLOW.
+      MOVE "View my Messages is under construction." TO OUTPUT-BUFFER
+        PERFORM DUAL-OUTPUT
+    EXIT PARAGRAPH.
 SEND-MESSAGE-FLOW.
-    MOVE "Enter recipient's username:" TO OUTPUT-BUFFER
+    MOVE "Enter recipient's username (must be a connection):" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
     READ INFILE
         AT END MOVE "Y" TO EOF
@@ -768,7 +793,7 @@ SEND-MESSAGE-FLOW.
         EXIT PARAGRAPH
     END-IF
 
-    MOVE "Enter message:" TO OUTPUT-BUFFER
+    MOVE "Enter your message (max 200 chars):" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
     READ INFILE
         AT END MOVE "Y" TO EOF
@@ -800,6 +825,8 @@ SEND-MESSAGE-FLOW.
            " successfully!" DELIMITED BY SIZE
            INTO OUTPUT-BUFFER
     END-STRING
+    PERFORM DUAL-OUTPUT
+    MOVE "----------------" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
     EXIT PARAGRAPH.
 
