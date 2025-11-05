@@ -44,24 +44,26 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Messages:
+---Messages Menu---
 Send a New Message
+View My Messages
 Go Back
 Enter your choice:
-Enter recipient's username:
+Enter recipient's username (must be a connection):
 You can only send messages to connected users.
-ExpectFile: ../data/Messages.txt
-EndFile
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
 Enter your choice:
 Invalid option
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+ExpectFile: ../data/Messages.txt
+EndFile
 End
 
 
@@ -101,23 +103,20 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Messages:
+---Messages Menu---
 Send a New Message
+View My Messages
 Go Back
 Enter your choice:
-Enter recipient's username:
+Enter recipient's username (must be a connection):
 User not found in your network.
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
 ExpectFile: ../data/Messages.txt
 EndFile
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
-Enter your choice:
 End
 
 
@@ -353,22 +352,24 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Messages:
+---Messages Menu---
 Send a New Message
+View My Messages
 Go Back
 Enter your choice:
-Enter recipient's username:
+Enter recipient's username (must be a connection):
 You can only send messages to connected users.
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
 Enter your choice:
 Invalid option
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
 End
 
 
@@ -546,20 +547,17 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Messages:
+---Messages Menu---
 Send a New Message
+View My Messages
 Go Back
 Enter your choice:
-Enter recipient's username:
+Enter recipient's username (must be a connection):
 You can only send messages to connected users.
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
 Enter your choice:
 ExpectFile: ../data/Messages.txt
 EndFile
@@ -796,22 +794,24 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Messages:
+---Messages Menu---
 Send a New Message
+View My Messages
 Go Back
 Enter your choice:
-Enter recipient's username:
+Enter recipient's username (must be a connection):
 You can only send messages to connected users.
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
 Enter your choice:
 Invalid option
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
 ExpectFile: ../data/Messages.txt
 EndFile
 End

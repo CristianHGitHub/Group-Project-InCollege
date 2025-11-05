@@ -80,6 +80,7 @@ COPY "ApplicationRecord.cpy".
 01  CONN-RESPONSE       PIC X(200).
 01  SEND_BOOL           PIC X(10).
 01  SAVED-USERNAME      PIC X(50).
+01  LOGGED-IN-USER      PIC X(50).
 01  WS-EXISTS           PIC X VALUE "N".
 01  WS-TEMP-FIRST       PIC X(50).
 01  WS-TEMP-LAST        PIC X(50).
@@ -239,6 +240,7 @@ PROCEDURE DIVISION.
                     WHEN "Log Out"
                         IF LOGIN-STATUS = "Y"
                             MOVE "N" TO LOGIN-STATUS
+                            MOVE SPACES TO LOGGED-IN-USER
                             MOVE "N" TO MENU-DISPLAYED
                             MOVE "MAIN" TO CURRENT-MENU
                             MOVE 0 TO NAV-INDEX
@@ -321,6 +323,7 @@ PROCEDURE DIVISION.
                             PERFORM DUAL-OUTPUT
 
                             IF LOGIN-STATUS = "Y"
+                                MOVE AR-USERNAME TO LOGGED-IN-USER
                                 STRING 'Welcome, ' DELIMITED BY SIZE
                                        AR-USERNAME DELIMITED BY SIZE
                                        INTO OUTPUT-BUFFER
@@ -395,7 +398,7 @@ PROCEDURE DIVISION.
                                    EVALUATE FUNCTION UPPER-CASE(FUNCTION TRIM(SEND_BOOL))
                                        WHEN "YES"
                                              MOVE "YES" TO CONN-ACTION
-                                           CALL "CONNECTION" USING SAVED-USERNAME FOUND-USERNAME CONN-ACTION CONN-RESPONSE
+                                           CALL "CONNECTION" USING LOGGED-IN-USER FOUND-USERNAME CONN-ACTION CONN-RESPONSE
                                            MOVE CONN-RESPONSE TO OUTPUT-BUFFER
                                            PERFORM DUAL-OUTPUT
                                        WHEN "NO"
