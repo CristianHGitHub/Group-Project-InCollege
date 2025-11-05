@@ -167,18 +167,39 @@ make clean && make
 build.bat
 ```
 
-## Job Board & Applications
-## Messages
+## Messages (Week 8 - Private Messaging System)
 
 ### Overview
 
-- A new `Messages` option appears in the post-login main menu.
-- `Send a New Message` lets you send a private message to a connected user only.
-- All prompts and responses are mirrored to `data/InCollege-Output.txt` via the same dual-output helper.
- - Messages are limited to 200 characters; longer inputs are truncated to 200 with a note: `Note: Message truncated to 200 characters.`
+The messaging system enables connected users to send private messages to each other within the InCollege application. Messages are persistently stored and can only be sent between users who have established connections.
 
-### Typical Input Snippet
+### Features
 
+- **Messages Menu**: Accessible from the main post-login menu
+  - `Send a New Message`: Send a message to a connected user
+  - `View My Messages`: View received messages (currently under construction)
+  - `Go Back`: Return to main menu
+
+- **Connection Validation**: Users can only send messages to established connections
+  - Validates recipient exists in the system
+  - Verifies sender and recipient have an established connection
+  - Provides clear error messages for invalid recipients
+
+- **Message Persistence**: All sent messages are stored in `data/Messages.txt` with:
+  - Sender's username
+  - Recipient's username
+  - Message content
+  - Timestamp (YYYY-MM-DD HH:MM:SS format)
+
+- **Character Limit**: Messages are automatically truncated to 200 characters
+  - Users are notified when truncation occurs
+  - Original message beyond 200 characters is discarded
+
+- **Dual Output**: All prompts and responses are mirrored to `data/InCollege-Output.txt`
+
+### Typical Input Sequence
+
+Basic message sending:
 ```
 Log In
 userA
@@ -186,17 +207,32 @@ Abcdef1!
 Messages
 Send a New Message
 userB
-Hello!
+Hello! How are you doing?
+Go Back
 ```
 
-Expected confirmation:
-
+Expected output:
 ```
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+Enter recipient's username (must be a connection):
+Enter your message (max 200 chars):
 Message sent to userB successfully!
+----------------
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+Returning to Main Menu...
 ```
 
-Long message example (over 200 characters triggers truncation note):
+### Message Truncation Example
 
+Long message (over 200 characters):
 ```
 Log In
 userA
@@ -204,15 +240,41 @@ Abcdef1!
 Messages
 Send a New Message
 userB
-This is a very long message that exceeds two hundred characters to demonstrate truncation behavior in the messaging system. It should be shortened and a note displayed to the user indicating truncation has occurred.
+This is a very long message that exceeds two hundred characters to demonstrate truncation behavior in the messaging system. It should be shortened and a note displayed to the user indicating truncation has occurred for proper handling.
+Go Back
 ```
 
-Expected additional output before confirmation:
-
+Expected output includes truncation notice:
 ```
+Enter your message (max 200 chars):
 Note: Message truncated to 200 characters.
 Message sent to userB successfully!
 ```
+
+### Error Handling
+
+**Non-existent user:**
+```
+Enter recipient's username (must be a connection):
+ghostUser
+User not found in your network.
+```
+
+**Non-connected user:**
+```
+Enter recipient's username (must be a connection):
+someUser
+You can only send messages to connected users.
+```
+
+**Pending connection (not yet accepted):**
+```
+Enter recipient's username (must be a connection):
+pendingUser
+You can only send messages to connected users.
+```
+
+## Job Board & Applications (Week 7)
 
 ### Overview
 
@@ -298,6 +360,20 @@ View My Applications
 
 ### Validation & Test Coverage
 
+#### Messaging System Tests
+- `tests/InCollege-Messaging-Tests.txt` - Comprehensive negative test cases covering:
+  - Restriction of messages to non-connected users
+  - Recipient username not found validation
+  - Pending connection restrictions (not yet accepted)
+  - Message truncation to 200 characters
+  - Empty Messages.txt persistence verification
+- `tests/InCollege-Messaging-Success.txt` - Positive test case covering:
+  - Successful connection establishment between users
+  - Successful message sending to connected user
+  - Message persistence verification with all required fields (sender, recipient, message, timestamp)
+  - ExpectFileCount validation ensuring message is saved to `data/Messages.txt`
+
+#### Job Board Tests
 - Required job fields (title, description, employer, location) are enforced; salary defaults to `Salary: NONE` when blank.
 - `tests/InCollege-JobPosting-Tests.txt` covers posting validation and salary handling.
 - `tests/InCollege-JobPersistence-Tests.txt` ensures JobID sequencing survives restarts.
