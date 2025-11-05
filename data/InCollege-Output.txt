@@ -4,14 +4,14 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account created for epic7user
+Username sender already exists.
 Log In
 Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, epic7user
+Welcome, sender
 Search for a job
 Find someone you know
 Learn a new skill
@@ -19,19 +19,69 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
-Go Back
+=== EDIT/CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Bachelor of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2020-2024):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
 Enter your choice:
-Please enter job title:
-Please enter job description:
-Please enter employer:
-Please enter location:
-Please enter salary (optional):
-Job posted successfully!
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Please enter about me (optional):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education #1 - Degree (e.g., Bachelor of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2020-2024):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Profile saved successfully.
 Search for a job
 Find someone you know
 Learn a new skill
@@ -39,19 +89,22 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
-Go Back
+Welcome to InCollege!
+Log In
+Create New Account
 Enter your choice:
-Please enter job title:
-Please enter job description:
-Please enter employer:
-Please enter location:
-Please enter salary (optional):
-Job posted successfully!
+Please enter your username:
+Please enter your password:
+Username receiver already exists.
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, receiver
 Search for a job
 Find someone you know
 Learn a new skill
@@ -59,71 +112,187 @@ Create/Edit Profile
 View My Profile
 Requests
 View My Network
+Messages
 Enter your choice:
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
+=== EDIT/CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Bachelor of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2020-2024):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Please enter about me (optional):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education #1 - Degree (e.g., Bachelor of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2020-2024):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Profile saved successfully.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, sender
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Enter the full name of the person you are looking for:
+---Found User Profile---
+Name: Bob Johnson
+University: State College
+Major: Engineering
+Graduation Year: 2026
+About Me: Loves robotics
+Experience:
+  None
+Education:
+  None
+Send Connection Request? (Yes/No)
+You are already connected with this user.
+--------------------
+Returning to Main Menu...
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, receiver
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Pending connection requests for receiver
+No pending requests.
+End of connection requests.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Invalid option
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, sender
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+---Messages Menu---
+Send a New Message
+View My Messages
 Go Back
 Enter your choice:
-1. Software Intern at TechCorp (New York, NY)
-2. Data Analyst at DataSolutions (Remote)
-----------------------------
-Enter job number to view details, or 0 to go back:
---- Job Details ---
-Title: Software Intern
-Description: Develop tools for internal testing and automation.
-Employer: TechCorp
-Location: New York, NY
-Salary: $25/hour
--------------------
-Apply for this Job
-Back to Job List
-Enter your choice:
-Your application for Software Intern at TechCorp has been submitted.
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
+Enter recipient's username (must be a connection):
+Enter your message (max 200 chars):
+Message sent to receiver successfully!
+----------------
+---Messages Menu---
+Send a New Message
+View My Messages
 Go Back
 Enter your choice:
-1. Software Intern at TechCorp (New York, NY)
-2. Data Analyst at DataSolutions (Remote)
-----------------------------
-Enter job number to view details, or 0 to go back:
---- Job Details ---
-Title: Data Analyst
-Description: Analyze large datasets for business insights.
-Employer: DataSolutions
-Location: Remote
-Salary: N/A
--------------------
-Apply for this Job
-Back to Job List
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
 Enter your choice:
-Your application for Data Analyst at DataSolutions has been submitted.
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
-Go Back
-Enter your choice:
---- Your Job Applications ---
-Application Summary for epic7user
-------------------------------
-Job Title: Software Intern
-Employer: TechCorp
-Location: New York, NY
----
-Job Title: Data Analyst
-Employer: DataSolutions
-Location: Remote
----
-Total Applications: 2
-------------------------------
-Job search/internship:
-Post a Job/Internship
-Browse Jobs/Internships
-View My Applications
-Go Back
-Enter your choice:
+Welcome to InCollege!

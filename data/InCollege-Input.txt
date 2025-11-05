@@ -1,28 +1,92 @@
 Create New Account
-epic7user
-Epic7Pass!
+sender
+Send123!
 Log In
-epic7user
-Epic7Pass!
-Job
-Post a Job/Internship
-Software Intern
-Develop tools for internal testing and automation.
-TechCorp
-New York, NY
-$25/hour
-Job
-Post a Job/Internship
-Data Analyst
-Analyze large datasets for business insights.
-DataSolutions
-Remote
-NONE
-Job
-Browse Jobs/Internships
-1
-Apply for this Job
-Browse Jobs/Internships
-2
-Apply for this Job
-View My Applications
+sender
+Send123!
+Profile
+Alice
+Smith
+Tech University
+Computer Science
+2025
+Software enthusiast
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Create New Account
+receiver
+Recv123!
+Log In
+receiver
+Recv123!
+Profile
+Bob
+Johnson
+State College
+Engineering
+2026
+Loves robotics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log Out
+Log In
+sender
+Send123!
+Find
+Bob Johnson
+Yes
+Log Out
+Log In
+receiver
+Recv123!
+Requests
+Accept sender
+Log Out
+Log In
+sender
+Send123!
+Messages
+Send a New Message
+receiver
+Hello Bob! This is a test message from Alice.
+Go Back
+Log Out
