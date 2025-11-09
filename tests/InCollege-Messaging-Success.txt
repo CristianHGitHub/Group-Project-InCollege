@@ -371,20 +371,13 @@ Requests
 View My Network
 Messages
 Enter your choice:
----Messages Menu---
+Messages:
 Send a New Message
-View My Messages
 Go Back
 Enter your choice:
-Enter recipient's username (must be a connection):
-Enter your message (max 200 chars):
+Enter recipient's username:
+Enter message:
 Message sent to receiver successfully!
-----------------
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
-Enter your choice:
 Search for a job
 Find someone you know
 Learn a new skill
@@ -394,6 +387,7 @@ Requests
 View My Network
 Messages
 Enter your choice:
+Invalid option
 Invalid option
 Invalid option
 ExpectFileCount: ../data/Messages.txt 1

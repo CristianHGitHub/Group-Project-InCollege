@@ -45,10 +45,18 @@ Requests
 View My Network
 Messages
 Enter your choice:
----Messages Menu---
+Messages:
 Send a New Message
-View My Messages
 Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
 Enter your choice:
 End
 
@@ -292,10 +300,18 @@ Requests
 View My Network
 Messages
 Enter your choice:
----Messages Menu---
+Messages:
 Send a New Message
-View My Messages
 Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
 Enter your choice:
 End
 
@@ -615,9 +631,17 @@ Requests
 View My Network
 Messages
 Enter your choice:
----Messages Menu---
+Messages:
 Send a New Message
-View My Messages
 Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
 Enter your choice:
 End
