@@ -147,6 +147,14 @@ COPY "ApplicationRecord.cpy".
 01  MSG-IDX             PIC 9(3) VALUE 0.
 01  MSG-TRUNC           PIC X VALUE "N".
 01  MSG-MENU-DONE      PIC X VALUE "N".
+01  MSG-SHOWN-FOR-USER   PIC X VALUE "N".
+
+*> Message parsing variables
+01  MSG-PARSED-SENDER   PIC X(50).
+01  MSG-PARSED-RECEIVER PIC X(50).
+01  MSG-PARSED-CONTENT  PIC X(500).
+01  MSG-PARSED-TIMESTAMP PIC X(50).
+01  MSG-EOF             PIC X VALUE "N".
 
 *> Job Summary Display Constants and Variables
 01  JOB-SUMMARY-TEMPLATE PIC X(50) VALUE "n. <Job Title> at <Employer> (<Location>)".
@@ -777,8 +785,84 @@ SHOW-MESSAGES-MENU.
     PERFORM DUAL-OUTPUT
     EXIT PARAGRAPH.
 VIEW-MESSAGES-FLOW.
-      MOVE "View my Messages is under construction." TO OUTPUT-BUFFER
+    MOVE "---Your Messages---" TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+
+    *> Initialize message EOF flag
+    MOVE "N" TO MSG-EOF
+    *> Initializing flag to check if any messages are shown.
+    MOVE "N" TO MSG-SHOWN-FOR-USER
+
+    *> Open messages file for reading
+    OPEN INPUT MESSAGES-FILE
+
+    *> Read all messages and display ones for current user
+    PERFORM UNTIL MSG-EOF = "Y"
+        READ MESSAGES-FILE
+            AT END
+                MOVE "Y" TO MSG-EOF
+            NOT AT END
+                IF MESSAGE-REC NOT = SPACES
+                    PERFORM PARSE-MESSAGE-RECORD
+                    *> Check if message is for current logged-in user
+                    IF FUNCTION TRIM(MSG-PARSED-RECEIVER) = FUNCTION TRIM(LOGGED-IN-USER)
+                        PERFORM DISPLAY-MESSAGE
+                        MOVE "Y" TO MSG-SHOWN-FOR-USER
+                    END-IF
+                END-IF
+        END-READ
+    END-PERFORM
+
+    CLOSE MESSAGES-FILE
+    IF MSG-SHOWN-FOR-USER = "N"
+        MOVE "You have no messages at that time." TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
+    END-IF
+    EXIT PARAGRAPH.
+
+PARSE-MESSAGE-RECORD.
+    *> Clear previous values
+    MOVE SPACES TO MSG-PARSED-SENDER
+    MOVE SPACES TO MSG-PARSED-RECEIVER
+    MOVE SPACES TO MSG-PARSED-CONTENT
+    MOVE SPACES TO MSG-PARSED-TIMESTAMP
+
+    *> Parse message record delimited by "|"
+    UNSTRING MESSAGE-REC DELIMITED BY "|"
+        INTO MSG-PARSED-SENDER
+             MSG-PARSED-RECEIVER
+             MSG-PARSED-CONTENT
+             MSG-PARSED-TIMESTAMP
+    END-UNSTRING
+    EXIT PARAGRAPH.
+
+DISPLAY-MESSAGE.
+    *> Display sender
+    STRING "From: " DELIMITED BY SIZE
+           FUNCTION TRIM(MSG-PARSED-SENDER) DELIMITED BY SIZE
+           INTO OUTPUT-BUFFER
+    END-STRING
+    PERFORM DUAL-OUTPUT
+
+    *> Display message content
+    STRING "Message: " DELIMITED BY SIZE
+           FUNCTION TRIM(MSG-PARSED-CONTENT) DELIMITED BY SIZE
+           INTO OUTPUT-BUFFER
+    END-STRING
+    PERFORM DUAL-OUTPUT
+
+    *> Display timestamp if available
+    IF MSG-PARSED-TIMESTAMP NOT = SPACES
+        STRING "Sent: " DELIMITED BY SIZE
+               FUNCTION TRIM(MSG-PARSED-TIMESTAMP) DELIMITED BY SIZE
+               INTO OUTPUT-BUFFER
+        END-STRING
+        PERFORM DUAL-OUTPUT
+    END-IF
+    MOVE SPACES TO OUTPUT-BUFFER
+    PERFORM DUAL-OUTPUT
+    *> Add blank line for separation
+
     EXIT PARAGRAPH.
 SEND-MESSAGE-FLOW.
     MOVE "Enter recipient's username (must be a connection):" TO OUTPUT-BUFFER
