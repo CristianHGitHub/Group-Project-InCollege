@@ -1,84 +1,16 @@
-Test: Restrict sending messages to non-connected users
+Test: View messages shows notice when inbox empty
 ResetAccounts: yes
 Input:
 Create New Account
-userA
-Abcdef1!
-Create New Account
-userB
-Abcdef1!
+viewer
+View123!
 Log In
-userA
-Abcdef1!
+viewer
+View123!
 Messages
-Send a New Message
-userB
-Hello!
-Expected:
-Welcome to InCollege!
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-You have successfully logged in.
-Welcome, userA
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
-Enter your choice:
----Messages Menu---
-Send a New Message
 View My Messages
 Go Back
-Enter your choice:
-Enter recipient's username (must be a connection):
-You can only send messages to connected users.
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
-Enter your choice:
-Invalid option
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
-Enter your choice:
-ExpectFile: ../data/Messages.txt
-EndFile
-End
-
-
-Test: Recipient username not found
-ResetAccounts: yes
-Input:
-Create New Account
-userA
-Abcdef1!
-Log In
-userA
-Abcdef1!
-Messages
-Send a New Message
-ghostUser
+Log Out
 Expected:
 Welcome to InCollege!
 Log In
@@ -93,7 +25,7 @@ Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, userA
+Welcome, viewer
 Search for a job
 Find someone you know
 Learn a new skill
@@ -108,77 +40,185 @@ Send a New Message
 View My Messages
 Go Back
 Enter your choice:
-Enter recipient's username (must be a connection):
-User not found in your network.
+---Your Messages---
+You have no messages at this time.
 ---Messages Menu---
 Send a New Message
 View My Messages
 Go Back
 Enter your choice:
-ExpectFile: ../data/Messages.txt
-EndFile
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+ExpectFileCount: ../data/Messages.txt 0
 End
 
-
-Test: Send normal message under 200 chars
+Test: View messages displays multiple senders
 ResetAccounts: yes
 Input:
 Create New Account
-userA
-Abcdef1!
-Create New Account
-userB
-Abcdef1!
+sender1
+Send123!
 Log In
-userB
-Abcdef1!
+sender1
+Send123!
+Profile
+Alice
+Senderone
+Tech University
+Computer Science
+2025
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+Log Out
+Create New Account
+receiver
+Recv123!
+Log In
+receiver
+Recv123!
 Profile
 Bob
-Bee
-USF
-CS
-2025
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Receiver
+State University
+Information Systems
+2026
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+Log Out
+Create New Account
+sender2
+Send234!
+Log In
+sender2
+Send234!
+Profile
+Charlie
+Sendertwo
+Community College
+Business
+2024
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
 Log Out
 Log In
-userA
-Abcdef1!
+sender1
+Send123!
 Find
-Bob Bee
+Bob Receiver
 Yes
 Log Out
 Log In
-userB
-Abcdef1!
+receiver
+Recv123!
 Requests
-Accept userA
+Accept sender1
 Log Out
 Log In
-userA
-Abcdef1!
+sender2
+Send234!
+Find
+Bob Receiver
+Yes
+Log Out
+Log In
+receiver
+Recv123!
+Requests
+Accept sender2
+Log Out
+Log In
+sender1
+Send123!
 Messages
 Send a New Message
-userB
-Hello there, this is a short message.
+receiver
+Hello from sender1.
+Go Back
+Log Out
+Log In
+sender2
+Send234!
+Messages
+Send a New Message
+receiver
+Hi from sender2.
+Go Back
+Log Out
+Log In
+receiver
+Recv123!
+Messages
+View My Messages
+Go Back
+Log Out
 Expected:
 Welcome to InCollege!
 Log In
@@ -192,14 +232,8 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
 You have successfully logged in.
-Welcome, userB
+Welcome, sender1
 Search for a job
 Find someone you know
 Learn a new skill
@@ -279,21 +313,241 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Invalid option
-Invalid option
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account successfully created.
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, receiver
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+=== EDIT/CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Bachelor of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2020-2024):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Please enter about me (optional):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education #1 - Degree (e.g., Bachelor of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2020-2024):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Profile saved successfully.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+Account successfully created.
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, sender2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+=== EDIT/CREATE PROFILE ===
+Required Fields:
+First Name:
+Last Name:
+University/College:
+Major:
+Graduation Year (4 digits):
+Optional Fields:
+About Me:
+Experience (up to 3 entries):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education (up to 3 entries):
+Education #1 - Degree (e.g., Bachelor of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2020-2024):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Enter your choice:
+Please enter your first name:
+Please enter your last name:
+Please enter your university:
+Please enter your major:
+Please enter your graduation year (4 digits):
+Please enter about me (optional):
+Experience #1 - Title (e.g., Software Intern):
+Experience #1 - Company/Organization:
+Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
+Experience #1 - Description:
+Experience #2 - Title:
+Experience #2 - Company/Organization:
+Experience #2 - Dates:
+Experience #2 - Description:
+Experience #3 - Title:
+Experience #3 - Company/Organization:
+Experience #3 - Dates:
+Experience #3 - Description:
+Education #1 - Degree (e.g., Bachelor of Science):
+Education #1 - University/College:
+Education #1 - Years Attended (e.g., 2020-2024):
+Education #2 - Degree:
+Education #2 - University/College:
+Education #2 - Years Attended:
+Education #3 - Degree:
+Education #3 - University/College:
+Education #3 - Years Attended:
+Profile saved successfully.
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, sender1
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
 Enter the full name of the person you are looking for:
 ---Found User Profile---
-Name: Bob Bee
-University: USF
-Major: CS
-Graduation Year: 2025
-About Me:
+Name: Bob Receiver
+University: State University
+Major: Information Systems
+Graduation Year: 2026
+About Me: None
 Experience:
-  None
+  Title: None
+  Company: None
+  Dates: None
+  Description: None
+  Title: None
+  Company: None
+  Dates: None
+  Description: None
+  Title: None
+  Company: None
+  Dates: None
+  Description: None
 Education:
-  None
+  Degree: None
+  University: None
+  Years: None
+  Degree: None
+  University: None
+  Years: None
+  Degree: None
+  University: None
+  Years: None
 Send Connection Request? (Yes/No)
-You cannot connect with yourself.
+Connection Request Sent to New Student
 --------------------
 Returning to Main Menu...
 Search for a job
@@ -312,7 +566,7 @@ Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, userB
+Welcome, receiver
 Search for a job
 Find someone you know
 Learn a new skill
@@ -322,9 +576,12 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Pending connection requests for userB
-No pending requests.
+Pending connection requests for receiver
+From: sender1
 End of connection requests.
+Enter 'Accept <username>' or 'Reject <username>' to manage requests, or 'Skip' to keep requests pending.
+Connection request from sender1 accepted.
+You are now connected with sender1
 Search for a job
 Find someone you know
 Learn a new skill
@@ -334,7 +591,6 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Invalid option
 Welcome to InCollege!
 Log In
 Create New Account
@@ -342,7 +598,7 @@ Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, userA
+Welcome, sender2
 Search for a job
 Find someone you know
 Learn a new skill
@@ -352,390 +608,38 @@ Requests
 View My Network
 Messages
 Enter your choice:
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
-Enter your choice:
-Enter recipient's username (must be a connection):
-You can only send messages to connected users.
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
-Enter your choice:
-Invalid option
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
-Enter your choice:
-End
-
-
-Test: Pending connection cannot message recipient
-ResetAccounts: yes
-Input:
-Create New Account
-userA
-Abcdef1!
-Create New Account
-userB
-Abcdef1!
-Log In
-userB
-Abcdef1!
-Profile
-Bob
-Bee
-USF
-CS
-2025
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Log Out
-Log In
-userA
-Abcdef1!
-Find
-Bob Bee
-Yes
-Messages
-Send a New Message
-userB
-Expected:
-Welcome to InCollege!
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-You have successfully logged in.
-Welcome, userB
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
-Enter your choice:
-=== EDIT/CREATE PROFILE ===
-Required Fields:
-First Name:
-Last Name:
-University/College:
-Major:
-Graduation Year (4 digits):
-Optional Fields:
-About Me:
-Experience (up to 3 entries):
-Experience #1 - Title (e.g., Software Intern):
-Experience #1 - Company/Organization:
-Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
-Experience #1 - Description:
-Experience #2 - Title:
-Experience #2 - Company/Organization:
-Experience #2 - Dates:
-Experience #2 - Description:
-Experience #3 - Title:
-Experience #3 - Company/Organization:
-Experience #3 - Dates:
-Experience #3 - Description:
-Education (up to 3 entries):
-Education #1 - Degree (e.g., Bachelor of Science):
-Education #1 - University/College:
-Education #1 - Years Attended (e.g., 2020-2024):
-Education #2 - Degree:
-Education #2 - University/College:
-Education #2 - Years Attended:
-Education #3 - Degree:
-Education #3 - University/College:
-Education #3 - Years Attended:
-Enter your choice:
-Please enter your first name:
-Please enter your last name:
-Please enter your university:
-Please enter your major:
-Please enter your graduation year (4 digits):
-Please enter about me (optional):
-Experience #1 - Title (e.g., Software Intern):
-Experience #1 - Company/Organization:
-Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
-Experience #1 - Description:
-Experience #2 - Title:
-Experience #2 - Company/Organization:
-Experience #2 - Dates:
-Experience #2 - Description:
-Experience #3 - Title:
-Experience #3 - Company/Organization:
-Experience #3 - Dates:
-Experience #3 - Description:
-Education #1 - Degree (e.g., Bachelor of Science):
-Education #1 - University/College:
-Education #1 - Years Attended (e.g., 2020-2024):
-Education #2 - Degree:
-Education #2 - University/College:
-Education #2 - Years Attended:
-Education #3 - Degree:
-Education #3 - University/College:
-Education #3 - Years Attended:
-Profile saved successfully.
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
-Enter your choice:
-Invalid option
-Invalid option
 Enter the full name of the person you are looking for:
 ---Found User Profile---
-Name: Bob Bee
-University: USF
-Major: CS
-Graduation Year: 2025
-About Me:
+Name: Bob Receiver
+University: State University
+Major: Information Systems
+Graduation Year: 2026
+About Me: None
 Experience:
-  None
+  Title: None
+  Company: None
+  Dates: None
+  Description: None
+  Title: None
+  Company: None
+  Dates: None
+  Description: None
+  Title: None
+  Company: None
+  Dates: None
+  Description: None
 Education:
-  None
+  Degree: None
+  University: None
+  Years: None
+  Degree: None
+  University: None
+  Years: None
+  Degree: None
+  University: None
+  Years: None
 Send Connection Request? (Yes/No)
-You cannot connect with yourself.
---------------------
-Returning to Main Menu...
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
-Enter your choice:
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
-Enter your choice:
-Enter recipient's username (must be a connection):
-You can only send messages to connected users.
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
-Enter your choice:
-ExpectFile: ../data/Messages.txt
-EndFile
-End
-Test: Send long message triggers 200-char truncation
-ResetAccounts: yes
-Input:
-Create New Account
-userA
-Abcdef1!
-Create New Account
-userB
-Abcdef1!
-Log In
-userB
-Abcdef1!
-Profile
-Bob
-Bee
-USF
-CS
-2025
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Log Out
-Log In
-userA
-Abcdef1!
-Find
-Bob Bee
-Yes
-Log Out
-Log In
-userB
-Abcdef1!
-Requests
-Accept userA
-Log Out
-Log In
-userA
-Abcdef1!
-Messages
-Send a New Message
-userB
-This message is intentionally crafted to exceed two hundred characters so that we can verify the truncation behavior in the system works as expected. When this message is processed, it should be cut at exactly two hundred characters.
-Expected:
-Welcome to InCollege!
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-You have successfully logged in.
-Welcome, userB
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
-Enter your choice:
-=== EDIT/CREATE PROFILE ===
-Required Fields:
-First Name:
-Last Name:
-University/College:
-Major:
-Graduation Year (4 digits):
-Optional Fields:
-About Me:
-Experience (up to 3 entries):
-Experience #1 - Title (e.g., Software Intern):
-Experience #1 - Company/Organization:
-Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
-Experience #1 - Description:
-Experience #2 - Title:
-Experience #2 - Company/Organization:
-Experience #2 - Dates:
-Experience #2 - Description:
-Experience #3 - Title:
-Experience #3 - Company/Organization:
-Experience #3 - Dates:
-Experience #3 - Description:
-Education (up to 3 entries):
-Education #1 - Degree (e.g., Bachelor of Science):
-Education #1 - University/College:
-Education #1 - Years Attended (e.g., 2020-2024):
-Education #2 - Degree:
-Education #2 - University/College:
-Education #2 - Years Attended:
-Education #3 - Degree:
-Education #3 - University/College:
-Education #3 - Years Attended:
-Enter your choice:
-Please enter your first name:
-Please enter your last name:
-Please enter your university:
-Please enter your major:
-Please enter your graduation year (4 digits):
-Please enter about me (optional):
-Experience #1 - Title (e.g., Software Intern):
-Experience #1 - Company/Organization:
-Experience #1 - Dates (e.g., Summer 2024 or Jan 2023 - May 2024):
-Experience #1 - Description:
-Experience #2 - Title:
-Experience #2 - Company/Organization:
-Experience #2 - Dates:
-Experience #2 - Description:
-Experience #3 - Title:
-Experience #3 - Company/Organization:
-Experience #3 - Dates:
-Experience #3 - Description:
-Education #1 - Degree (e.g., Bachelor of Science):
-Education #1 - University/College:
-Education #1 - Years Attended (e.g., 2020-2024):
-Education #2 - Degree:
-Education #2 - University/College:
-Education #2 - Years Attended:
-Education #3 - Degree:
-Education #3 - University/College:
-Education #3 - Years Attended:
-Profile saved successfully.
-Search for a job
-Find someone you know
-Learn a new skill
-Create/Edit Profile
-View My Profile
-Requests
-View My Network
-Messages
-Enter your choice:
-Invalid option
-Invalid option
-Enter the full name of the person you are looking for:
----Found User Profile---
-Name: Bob Bee
-University: USF
-Major: CS
-Graduation Year: 2025
-About Me:
-Experience:
-  None
-Education:
-  None
-Send Connection Request? (Yes/No)
-You cannot connect with yourself.
+Connection Request Sent to New Student
 --------------------
 Returning to Main Menu...
 Search for a job
@@ -754,7 +658,7 @@ Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, userB
+Welcome, receiver
 Search for a job
 Find someone you know
 Learn a new skill
@@ -764,9 +668,12 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Pending connection requests for userB
-No pending requests.
+Pending connection requests for receiver
+From: sender2
 End of connection requests.
+Enter 'Accept <username>' or 'Reject <username>' to manage requests, or 'Skip' to keep requests pending.
+Connection request from sender2 accepted.
+You are now connected with sender2
 Search for a job
 Find someone you know
 Learn a new skill
@@ -776,7 +683,6 @@ Requests
 View My Network
 Messages
 Enter your choice:
-Invalid option
 Welcome to InCollege!
 Log In
 Create New Account
@@ -784,7 +690,7 @@ Enter your choice:
 Please enter your username:
 Please enter your password:
 You have successfully logged in.
-Welcome, userA
+Welcome, sender1
 Search for a job
 Find someone you know
 Learn a new skill
@@ -800,18 +706,164 @@ View My Messages
 Go Back
 Enter your choice:
 Enter recipient's username (must be a connection):
-You can only send messages to connected users.
+Enter your message (max 200 chars):
+Message sent to receiver successfully!
+----------------
 ---Messages Menu---
 Send a New Message
 View My Messages
 Go Back
 Enter your choice:
-Invalid option
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, sender2
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
 ---Messages Menu---
 Send a New Message
 View My Messages
 Go Back
 Enter your choice:
-ExpectFile: ../data/Messages.txt
-EndFile
+Enter recipient's username (must be a connection):
+Enter your message (max 200 chars):
+Message sent to receiver successfully!
+----------------
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, receiver
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+---Your Messages---
+From: sender1
+Message: Hello from sender1.
+
+From: sender2
+Message: Hi from sender2.
+
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+ExpectFileCount: ../data/Messages.txt 2
 End
+
+Test: View messages persists across sessions
+ResetAccounts: no
+Input:
+Log In
+receiver
+Recv123!
+Messages
+View My Messages
+Go Back
+Log Out
+Expected:
+Welcome to InCollege!
+Log In
+Create New Account
+Enter your choice:
+Please enter your username:
+Please enter your password:
+You have successfully logged in.
+Welcome, receiver
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+---Your Messages---
+From: sender1
+Message: Hello from sender1.
+
+From: sender2
+Message: Hi from sender2.
+
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
+Enter your choice:
+Welcome to InCollege!
+End
+

@@ -796,26 +796,36 @@ VIEW-MESSAGES-FLOW.
     *> Open messages file for reading
     OPEN INPUT MESSAGES-FILE
 
-    *> Read all messages and display ones for current user
-    PERFORM UNTIL MSG-EOF = "Y"
-        READ MESSAGES-FILE
-            AT END
-                MOVE "Y" TO MSG-EOF
-            NOT AT END
-                IF MESSAGE-REC NOT = SPACES
-                    PERFORM PARSE-MESSAGE-RECORD
-                    *> Check if message is for current logged-in user
-                    IF FUNCTION TRIM(MSG-PARSED-RECEIVER) = FUNCTION TRIM(LOGGED-IN-USER)
-                        PERFORM DISPLAY-MESSAGE
-                        MOVE "Y" TO MSG-SHOWN-FOR-USER
-                    END-IF
-                END-IF
-        END-READ
-    END-PERFORM
+    IF MSG-STATUS = "35"
+        MOVE "Y" TO MSG-EOF
+    ELSE
+        IF MSG-STATUS NOT = "00"
+            MOVE "Y" TO MSG-EOF
+        END-IF
+    END-IF
 
-    CLOSE MESSAGES-FILE
+    *> Read all messages and display ones for current user
+    IF MSG-STATUS = "00"
+        PERFORM UNTIL MSG-EOF = "Y"
+            READ MESSAGES-FILE
+                AT END
+                    MOVE "Y" TO MSG-EOF
+                NOT AT END
+                    IF MESSAGE-REC NOT = SPACES
+                        PERFORM PARSE-MESSAGE-RECORD
+                        *> Check if message is for current logged-in user
+                        IF FUNCTION TRIM(MSG-PARSED-RECEIVER) = FUNCTION TRIM(LOGGED-IN-USER)
+                            PERFORM DISPLAY-MESSAGE
+                            MOVE "Y" TO MSG-SHOWN-FOR-USER
+                        END-IF
+                    END-IF
+            END-READ
+        END-PERFORM
+        CLOSE MESSAGES-FILE
+    END-IF
+
     IF MSG-SHOWN-FOR-USER = "N"
-        MOVE "You have no messages at that time." TO OUTPUT-BUFFER
+        MOVE "You have no messages at this time." TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
     END-IF
     EXIT PARAGRAPH.
@@ -851,14 +861,6 @@ DISPLAY-MESSAGE.
     END-STRING
     PERFORM DUAL-OUTPUT
 
-    *> Display timestamp if available
-    IF MSG-PARSED-TIMESTAMP NOT = SPACES
-        STRING "Sent: " DELIMITED BY SIZE
-               FUNCTION TRIM(MSG-PARSED-TIMESTAMP) DELIMITED BY SIZE
-               INTO OUTPUT-BUFFER
-        END-STRING
-        PERFORM DUAL-OUTPUT
-    END-IF
     MOVE SPACES TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
     *> Add blank line for separation
