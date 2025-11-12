@@ -1,0 +1,156 @@
+Create New Account
+sender1
+Send123!
+Log In
+sender1
+Send123!
+Profile
+Alice
+Senderone
+Tech University
+Computer Science
+2025
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+Log Out
+Create New Account
+receiver
+Recv123!
+Log In
+receiver
+Recv123!
+Profile
+Bob
+Receiver
+State University
+Information Systems
+2026
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+Log Out
+Create New Account
+sender2
+Send234!
+Log In
+sender2
+Send234!
+Profile
+Charlie
+Sendertwo
+Community College
+Business
+2024
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+Log Out
+Log In
+sender1
+Send123!
+Find
+Bob Receiver
+Yes
+Log Out
+Log In
+receiver
+Recv123!
+Requests
+Accept sender1
+Log Out
+Log In
+sender2
+Send234!
+Find
+Bob Receiver
+Yes
+Log Out
+Log In
+receiver
+Recv123!
+Requests
+Accept sender2
+Log Out
+Log In
+sender1
+Send123!
+Messages
+Send a New Message
+receiver
+Hello from sender1.
+Go Back
+Log Out
+Log In
+sender2
+Send234!
+Messages
+Send a New Message
+receiver
+Hi from sender2.
+Go Back
+Log Out
+Log In
+receiver
+Recv123!
+Messages
+View My Messages
+Go Back
+Log Out

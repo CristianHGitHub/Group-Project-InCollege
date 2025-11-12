@@ -4,20 +4,8 @@ Create New Account
 Enter your choice:
 Please enter your username:
 Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
-Account successfully created.
-Log In
-Create New Account
-Enter your choice:
-Please enter your username:
-Please enter your password:
 You have successfully logged in.
-Welcome, userA
+Welcome, receiver
 Search for a job
 Find someone you know
 Learn a new skill
@@ -32,16 +20,25 @@ Send a New Message
 View My Messages
 Go Back
 Enter your choice:
-Enter recipient's username (must be a connection):
-You can only send messages to connected users.
+---Your Messages---
+From: sender1
+Message: Hello from sender1.
+
+From: sender2
+Message: Hi from sender2.
+
 ---Messages Menu---
 Send a New Message
 View My Messages
 Go Back
 Enter your choice:
-Invalid option
----Messages Menu---
-Send a New Message
-View My Messages
-Go Back
+Search for a job
+Find someone you know
+Learn a new skill
+Create/Edit Profile
+View My Profile
+Requests
+View My Network
+Messages
 Enter your choice:
+Welcome to InCollege!
