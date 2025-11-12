@@ -177,7 +177,7 @@ The messaging system enables connected users to send private messages to each ot
 
 - **Messages Menu**: Accessible from the main post-login menu
   - `Send a New Message`: Send a message to a connected user
-  - `View My Messages`: View received messages (currently under construction)
+  - `View My Messages`: View all messages received in your inbox
   - `Go Back`: Return to main menu
 
 - **Connection Validation**: Users can only send messages to established connections
@@ -250,6 +250,50 @@ Enter your message (max 200 chars):
 Note: Message truncated to 200 characters.
 Message sent to userB successfully!
 ```
+
+### Viewing Messages
+
+The `View My Messages` feature allows users to read all messages sent to them:
+
+**Viewing messages:**
+```
+Log In
+userB
+Bcdef12!
+Messages
+View My Messages
+Go Back
+```
+
+Expected output when messages are present:
+```
+---Messages Menu---
+Send a New Message
+View My Messages
+Go Back
+Enter your choice:
+---Your Messages---
+From: userA
+Message: Hello! How are you doing?
+
+From: userC
+Message: Congratulations on the new job!
+
+---Messages Menu---
+```
+
+Expected output when inbox is empty:
+```
+---Your Messages---
+You have no messages at this time.
+```
+
+**Key Features:**
+- Displays all messages sent to the logged-in user
+- Shows sender username and message content for each message
+- Messages are separated by blank lines for readability
+- Displays appropriate notice when no messages exist
+- Messages persist across sessions via `data/Messages.txt`
 
 ### Error Handling
 
@@ -372,6 +416,11 @@ View My Applications
   - Successful message sending to connected user
   - Message persistence verification with all required fields (sender, recipient, message, timestamp)
   - ExpectFileCount validation ensuring message is saved to `data/Messages.txt`
+- `tests/InCollege-ViewMessages-Tests.txt` - View My Messages feature tests covering:
+  - Empty inbox displays appropriate notice
+  - Multiple messages from different senders are displayed correctly
+  - Messages persist across user sessions
+  - Proper message formatting with sender and content
 
 #### Job Board Tests
 - Required job fields (title, description, employer, location) are enforced; salary defaults to `Salary: NONE` when blank.
