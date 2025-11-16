@@ -204,7 +204,8 @@ SHOW-CREATE-PROFILE.
         WHEN 29 MOVE "Education #3 - Degree:" TO L-OUT
         WHEN 30 MOVE "Education #3 - University/College:" TO L-OUT
         WHEN 31 MOVE "Education #3 - Years Attended:" TO L-OUT
-        WHEN 32 MOVE "Enter your choice:" TO L-OUT
+        WHEN 32 MOVE "Go Back" TO L-OUT
+        WHEN 33 MOVE "Enter your choice:" TO L-OUT
         WHEN OTHER
             MOVE "Y" TO L-DONE
             MOVE SPACES TO L-OUT
@@ -212,7 +213,7 @@ SHOW-CREATE-PROFILE.
     END-EVALUATE
     ADD 1 TO L-INDEX
         END-ADD
-    IF L-INDEX > 32
+    IF L-INDEX > 33
         MOVE "Y" TO L-DONE
     END-IF
     EXIT PARAGRAPH.
