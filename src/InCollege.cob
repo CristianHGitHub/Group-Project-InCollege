@@ -976,15 +976,17 @@ SAVE-MESSAGE.
         INTO MESSAGE-STRING
     END-STRING
 
+    PERFORM WRITE-MESSAGE-RECORD
+    EXIT PARAGRAPH.
+
+*> Standard file write pattern for messages
+WRITE-MESSAGE-RECORD.
     OPEN EXTEND MESSAGES-FILE
     IF MSG-STATUS = "35"
         OPEN OUTPUT MESSAGES-FILE
-        WRITE MESSAGE-REC FROM MESSAGE-STRING
-        CLOSE MESSAGES-FILE
-    ELSE
-        WRITE MESSAGE-REC FROM MESSAGE-STRING
-        CLOSE MESSAGES-FILE
     END-IF
+    WRITE MESSAGE-REC FROM MESSAGE-STRING
+    CLOSE MESSAGES-FILE
     EXIT PARAGRAPH.
 
 VALIDATE-RECIPIENT-CONNECTION.
@@ -1174,16 +1176,17 @@ SAVE-JOB-POSTING.
         INTO JOB-STRING
     END-STRING
 
+    PERFORM WRITE-JOB-RECORD
+    EXIT PARAGRAPH.
+
+*> Standard file write pattern for jobs
+WRITE-JOB-RECORD.
     OPEN EXTEND JOB-FILE
     IF JOB-STATUS = "35"
-        *> File doesn't exist yet: create it and write first record
         OPEN OUTPUT JOB-FILE
-        WRITE JOB-REC FROM JOB-STRING
-        CLOSE JOB-FILE
-    ELSE
-        WRITE JOB-REC FROM JOB-STRING
-        CLOSE JOB-FILE
     END-IF
+    WRITE JOB-REC FROM JOB-STRING
+    CLOSE JOB-FILE
     EXIT PARAGRAPH.
 
 GET-NEXT-JOB-ID.
@@ -1886,13 +1889,6 @@ TRUNCATE-FIELD-LOCATION.
     END-IF
     EXIT PARAGRAPH.
 
-*> TRUNCATE-FIELD: Truncate field with ellipsis if too long
-TRUNCATE-FIELD.
-    *> This is a placeholder - COBOL doesn't support dynamic field truncation easily
-    *> For now, we'll rely on the STRING operation to handle truncation
-    *> In a real implementation, you'd need to check field lengths and add ellipsis
-    EXIT PARAGRAPH.
-
 *> APPLY-JOB-ROUTINE: Handle job application with duplicate checking
 APPLY-JOB-ROUTINE.
     *> Validate that user is logged in
@@ -2039,16 +2035,7 @@ GET-NEXT-APPLICATION-ID.
 
 *> SAVE-APPLICATION: Save application record to file
 SAVE-APPLICATION.
-    OPEN EXTEND APPLICATION-FILE
-    IF APPLICATION-STATUS = "35"
-        *> File doesn't exist yet: create it and write first record
-        OPEN OUTPUT APPLICATION-FILE
-        WRITE APPLICATION-REC FROM APPLICATION-STRING
-        CLOSE APPLICATION-FILE
-    ELSE
-        WRITE APPLICATION-REC FROM APPLICATION-STRING
-        CLOSE APPLICATION-FILE
-    END-IF
+    PERFORM WRITE-APPLICATION-RECORD
 
     *> Check for write errors
     IF APPLICATION-STATUS NOT = "00" AND APPLICATION-STATUS NOT = "35"
@@ -2056,6 +2043,16 @@ SAVE-APPLICATION.
         MOVE APPLICATION-ERROR-MSG TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
     END-IF
+    EXIT PARAGRAPH.
+
+*> Standard file write pattern for applications
+WRITE-APPLICATION-RECORD.
+    OPEN EXTEND APPLICATION-FILE
+    IF APPLICATION-STATUS = "35"
+        OPEN OUTPUT APPLICATION-FILE
+    END-IF
+    WRITE APPLICATION-REC FROM APPLICATION-STRING
+    CLOSE APPLICATION-FILE
     EXIT PARAGRAPH.
 
 *> VIEW-MY-APPLICATIONS: Display all applications for current user
