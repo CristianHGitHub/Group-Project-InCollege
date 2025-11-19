@@ -42,13 +42,7 @@ WORKING-STORAGE SECTION.
 01  WS-MAJOR            PIC X(100).
 01  WS-FIRST-NAME       PIC X(100).
 01  WS-LAST-NAME        PIC X(100).
-01  WS-TEMP-FIELD       PIC X(100).
-01  WS-DELIMITER        PIC X VALUE "|".
-01  WS-FIELD-COUNT      PIC 99 VALUE 0.
-01  WS-CURRENT-FIELD    PIC X(200).
-01  WS-PIPE-POS         PIC 99 VALUE 0.
-01  WS-USER-A           PIC X(40).
-01  WS-USER-B           PIC X(40).
+
 
 LINKAGE SECTION.
 01  L-USERNAME          PIC X(50).
@@ -107,7 +101,7 @@ PROCEDURE DIVISION USING L-USERNAME.
             *> Check if current user is in this connection
             *> The record is already properly structured with ER-USER-A and ER-USER-B
             *> No need to parse manually - just use the record fields directly
-            
+
             IF FUNCTION UPPER-CASE(FUNCTION TRIM(ER-USER-A)) =
                FUNCTION UPPER-CASE(FUNCTION TRIM(L-USERNAME))
                 MOVE FUNCTION TRIM(ER-USER-B) TO WS-OTHER-USER
