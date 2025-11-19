@@ -249,8 +249,6 @@ PROCEDURE DIVISION.
                             MOVE "N" TO LOGIN-STATUS
                             MOVE SPACES TO LOGGED-IN-USER
                             MOVE "N" TO MENU-DISPLAYED
-                            MOVE "MAIN" TO CURRENT-MENU
-                            MOVE 0 TO NAV-INDEX
                             MOVE SPACES TO NAV-ACTION
                             MOVE 'Welcome to InCollege!' TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
@@ -336,10 +334,7 @@ PROCEDURE DIVISION.
                                        INTO OUTPUT-BUFFER
                                 END-STRING
                                 PERFORM DUAL-OUTPUT
-                                MOVE "MAIN" TO CURRENT-MENU
-                                MOVE 0            TO NAV-INDEX
-                                MOVE "SHOW-MENU"  TO NAV-ACTION
-                                PERFORM NAV-PRINT-LOOP
+                                PERFORM RETURN-TO-MAIN-MENU
                             END-IF
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
@@ -359,10 +354,7 @@ PROCEDURE DIVISION.
 
                     WHEN "Job"
                         IF LOGIN-STATUS = "Y"
-                            MOVE "JOBS" TO CURRENT-MENU
-                            MOVE 0            TO NAV-INDEX
-                            MOVE "SHOW-JOBS"  TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
+                            PERFORM RETURN-TO-JOBS-MENU
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
@@ -425,10 +417,7 @@ PROCEDURE DIVISION.
                                MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
                                PERFORM DUAL-OUTPUT
 
-                               MOVE "MAIN" TO CURRENT-MENU
-                               MOVE 0            TO NAV-INDEX
-                               MOVE "SHOW-MENU"  TO NAV-ACTION
-                               PERFORM NAV-PRINT-LOOP
+                               PERFORM RETURN-TO-MAIN-MENU
                            ELSE
                                MOVE "No one by that name could be found." TO OUTPUT-BUFFER
                                PERFORM DUAL-OUTPUT
@@ -439,10 +428,7 @@ PROCEDURE DIVISION.
                                MOVE "Returning to Main Menu..." TO OUTPUT-BUFFER
                                PERFORM DUAL-OUTPUT
 
-                               MOVE "MAIN" TO CURRENT-MENU
-                               MOVE 0            TO NAV-INDEX
-                               MOVE "SHOW-MENU"  TO NAV-ACTION
-                               PERFORM NAV-PRINT-LOOP
+                               PERFORM RETURN-TO-MAIN-MENU
                            END-IF
                        END-IF
                    ELSE
@@ -522,10 +508,7 @@ PROCEDURE DIVISION.
                            END-PERFORM
 
                            IF MSG-MENU-DONE = "Y" AND EOF NOT = "Y"
-                               MOVE "MAIN" TO CURRENT-MENU
-                               MOVE 0            TO NAV-INDEX
-                               MOVE "SHOW-MENU"  TO NAV-ACTION
-                               PERFORM NAV-PRINT-LOOP
+                               PERFORM RETURN-TO-MAIN-MENU
                            END-IF
                        ELSE
                            MOVE "Invalid option" TO OUTPUT-BUFFER
@@ -551,10 +534,7 @@ PROCEDURE DIVISION.
                             PERFORM PROFILE-LOAD
                             MOVE "SELF" TO VIEW-MODE
                             CALL 'VIEWPROFILE' USING AR-USERNAME PROFILE-DATA-STRING VIEW-MODE
-                            MOVE "MAIN" TO CURRENT-MENU
-                            MOVE 0            TO NAV-INDEX
-                            MOVE "SHOW-MENU"  TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
+                            PERFORM RETURN-TO-MAIN-MENU
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
@@ -628,16 +608,12 @@ PROCEDURE DIVISION.
                             MOVE "Invalid option" TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
                         END-IF
-                       MOVE 0            TO NAV-INDEX
-                       MOVE "SHOW-MENU"  TO NAV-ACTION
-                       PERFORM NAV-PRINT-LOOP
+                       PERFORM RETURN-TO-MAIN-MENU
 
                    WHEN "View My Network"
                        IF LOGIN-STATUS = "Y"
                            CALL 'DISPLAYNETWORK' USING AR-USERNAME
-                           MOVE 0            TO NAV-INDEX
-                           MOVE "SHOW-MENU"  TO NAV-ACTION
-                           PERFORM NAV-PRINT-LOOP
+                           PERFORM RETURN-TO-MAIN-MENU
                        ELSE
                            MOVE "Invalid option" TO OUTPUT-BUFFER
                            PERFORM DUAL-OUTPUT
@@ -741,10 +717,7 @@ PROCEDURE DIVISION.
 
                     WHEN "Back"
                         IF LOGIN-STATUS = "Y"
-                            MOVE "MAIN" TO CURRENT-MENU
-                            MOVE 0            TO NAV-INDEX
-                            MOVE "SHOW-MENU"  TO NAV-ACTION
-                            PERFORM NAV-PRINT-LOOP
+                            PERFORM RETURN-TO-MAIN-MENU
                         ELSE
                             MOVE "Invalid option" TO OUTPUT-BUFFER
                             PERFORM DUAL-OUTPUT
@@ -768,6 +741,21 @@ DUAL-OUTPUT.
     DISPLAY OUTPUT-BUFFER
     WRITE OUT-REC FROM OUTPUT-BUFFER
     MOVE SPACES TO OUTPUT-BUFFER
+    EXIT PARAGRAPH.
+
+*> Navigation helpers to reduce code duplication
+RETURN-TO-MAIN-MENU.
+    MOVE "MAIN" TO CURRENT-MENU
+    MOVE 0 TO NAV-INDEX
+    MOVE "SHOW-MENU" TO NAV-ACTION
+    PERFORM NAV-PRINT-LOOP
+    EXIT PARAGRAPH.
+
+RETURN-TO-JOBS-MENU.
+    MOVE "JOBS" TO CURRENT-MENU
+    MOVE 0 TO NAV-INDEX
+    MOVE "SHOW-JOBS" TO NAV-ACTION
+    PERFORM NAV-PRINT-LOOP
     EXIT PARAGRAPH.
 
 *> ================= MESSAGING PARAGRAPHS =================
@@ -1154,10 +1142,7 @@ POST-JOB-FLOW.
     MOVE "Job posted successfully!" TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
 
-    MOVE "MAIN" TO CURRENT-MENU
-    MOVE 0            TO NAV-INDEX
-    MOVE "SHOW-MENU"  TO NAV-ACTION
-    PERFORM NAV-PRINT-LOOP
+    PERFORM RETURN-TO-MAIN-MENU
     EXIT PARAGRAPH.
 
 SAVE-JOB-POSTING.
@@ -1268,10 +1253,7 @@ SHOW-PROFILE-COMPLETION-MENU.
     MOVE "Profile saved successfully." TO OUTPUT-BUFFER
     PERFORM DUAL-OUTPUT
 
-    MOVE "MAIN" TO CURRENT-MENU
-    MOVE 0            TO NAV-INDEX
-    MOVE "SHOW-MENU"  TO NAV-ACTION
-    PERFORM NAV-PRINT-LOOP
+    PERFORM RETURN-TO-MAIN-MENU
     EXIT PARAGRAPH.
 
 COLLECT-EXPERIENCE-DATA.
@@ -1569,10 +1551,7 @@ HANDLE-JOB-SELECTION.
         MOVE FUNCTION TRIM(JOB-SELECTION) TO JOB-SELECTION-NUM
         IF JOB-SELECTION-NUM = 0
             *> Go back to main menu
-            MOVE "MAIN" TO CURRENT-MENU
-            MOVE 0 TO NAV-INDEX
-            MOVE "SHOW-MENU" TO NAV-ACTION
-            PERFORM NAV-PRINT-LOOP
+            PERFORM RETURN-TO-MAIN-MENU
             MOVE "Y" TO JOB-SELECTION-VALID
         ELSE
             IF JOB-SELECTION-NUM > 0 AND JOB-SELECTION-NUM <= JOB-SUMMARY-COUNT
@@ -1587,10 +1566,7 @@ HANDLE-JOB-SELECTION.
     IF JOB-SELECTION-VALID = "N"
         MOVE "Invalid job number. Please select a valid job from the list." TO OUTPUT-BUFFER
         PERFORM DUAL-OUTPUT
-        MOVE "JOBS" TO CURRENT-MENU
-        MOVE 0 TO NAV-INDEX
-        MOVE "SHOW-JOBS" TO NAV-ACTION
-        PERFORM NAV-PRINT-LOOP
+        PERFORM RETURN-TO-JOBS-MENU
     END-IF
     EXIT PARAGRAPH.
 
@@ -1710,10 +1686,7 @@ SHOW-JOB-DETAILS.
         PERFORM DUAL-OUTPUT
 
         *> Return to jobs menu
-        MOVE "JOBS" TO CURRENT-MENU
-        MOVE 0 TO NAV-INDEX
-        MOVE "SHOW-JOBS" TO NAV-ACTION
-        PERFORM NAV-PRINT-LOOP
+        PERFORM RETURN-TO-JOBS-MENU
     END-IF
     EXIT PARAGRAPH.
 
@@ -1915,10 +1888,7 @@ APPLY-JOB-ROUTINE.
         PERFORM DUAL-OUTPUT
 
         *> Return to job details menu
-        MOVE "JOBS" TO CURRENT-MENU
-        MOVE 0 TO NAV-INDEX
-        MOVE "SHOW-JOBS" TO NAV-ACTION
-        PERFORM NAV-PRINT-LOOP
+        PERFORM RETURN-TO-JOBS-MENU
         EXIT PARAGRAPH
     END-IF
 
@@ -1941,10 +1911,7 @@ APPLY-JOB-ROUTINE.
     PERFORM DUAL-OUTPUT
 
     *> Return to job details menu
-    MOVE "JOBS" TO CURRENT-MENU
-    MOVE 0 TO NAV-INDEX
-    MOVE "SHOW-JOBS" TO NAV-ACTION
-    PERFORM NAV-PRINT-LOOP
+    PERFORM RETURN-TO-JOBS-MENU
     EXIT PARAGRAPH.
 
 *> CHECK-DUPLICATE-APPLICATION: Check if user has already applied for this job
@@ -2108,19 +2075,13 @@ VIEW-MY-APPLICATIONS.
 
 
 
-    MOVE "JOBS" TO CURRENT-MENU
-    MOVE 0 TO NAV-INDEX
-    MOVE "SHOW-JOBS" TO NAV-ACTION
-    PERFORM NAV-PRINT-LOOP
+    PERFORM RETURN-TO-JOBS-MENU
     EXIT PARAGRAPH.
 
 
 
 VIEW-MY-APPLICATIONS-EXIT.
-    MOVE "JOBS" TO CURRENT-MENU
-    MOVE 0 TO NAV-INDEX
-    MOVE "SHOW-JOBS" TO NAV-ACTION
-    PERFORM NAV-PRINT-LOOP
+    PERFORM RETURN-TO-JOBS-MENU
     EXIT PARAGRAPH.
 
 *> DISPLAY-APPLICATION-JOB: Find and show job title, employer, and location
